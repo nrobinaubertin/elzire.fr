@@ -1,0 +1,9 @@
+app_landing:
+    path: /
+    defaults: { _controller: AppBundle:Default:index }
+remove_trailing_slash:
+    path: /{url}
+    defaults: { _controller: AppBundle:Redirecting:removeTrailingSlash }
+    requirements:
+        url: .*/$
+    methods: [GET]
