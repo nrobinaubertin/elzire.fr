@@ -1,0 +1,43 @@
+{% extends 'AppBundle::Base.html.twig' %}
+
+{% block title %}Elzire element{% endblock %}
+
+{% block body %}
+
+    <nav class="navbar navbar-light navbar-toggleable-sm">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<div class="navbar-nav">
+				<a href="#" class="nav-item nav-link">Accueil</a>
+				<a href="#" class="nav-item nav-link">Mariage</a>
+				<a href="#" class="nav-item nav-link">Naissance</a>
+				<a href="#" class="nav-item nav-link">Baptême</a>
+				<a href="#" class="nav-item nav-link">Mon parcours</a>
+				<a href="#" class="nav-item nav-link">Contact</a>
+			</div>
+        </div>
+    </nav>
+
+
+	<nav class="breadcrumb">
+		<a class="breadcrumb-item" href="#">Accueil</a>
+		<a class="breadcrumb-item" href="#">Mariage</a>
+		<a class="breadcrumb-item" href="#">Oiseaux aux alliances</a>
+		<span class="breadcrumb-item active">Carton réponse</span>
+	</nav>
+
+	<h5>
+		Collection mariage
+	</h5>
+	<h2>
+		Oiseaux aux alliances
+		<small class="text-muted">
+			<i style="font-size: 0.5rem;position:relative;bottom:0.35rem" class="fa fa-circle"></i> 
+			Carton réponse
+		</small>
+	</h2>
+
+
+{% endblock %}

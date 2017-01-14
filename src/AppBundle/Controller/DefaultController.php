@@ -10,6 +10,10 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-        return $this->render('AppBundle:Default:Landing.html.twig');
+        return $this->render('AppBundle:Default:landing.html.twig');
+    }
+    public function elementAction(Request $request)
+    {
+        return $this->render('AppBundle:Default:element.html.twig');
     }
 }
