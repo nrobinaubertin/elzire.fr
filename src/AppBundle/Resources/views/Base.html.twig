@@ -19,12 +19,22 @@
         {% block stylesheets %}
 			{% stylesheets 
 				filter="scssphp" 
-				output="css/app.css"
+				output="css/f.css"
 				'@AppBundle/Resources/public/fontawesome/scss/font-awesome.scss'
+			%}
+				<link rel="stylesheet" href="{{ asset_url }}" />
+			{% endstylesheets %}
+
+{# Something does not work in compiling bootstrap.scss for now
+			{% stylesheets 
+				filter="scssphp" 
+				output="css/b.css"
 				'@AppBundle/Resources/public/bootstrap/scss/bootstrap.scss'
 			%}
 				<link rel="stylesheet" href="{{ asset_url }}" />
 			{% endstylesheets %}
+#}
+
             {% stylesheets 
                 '@AppBundle/Resources/public/css/*.css' 
                 filter="cssrewrite"
