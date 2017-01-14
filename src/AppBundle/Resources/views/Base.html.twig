@@ -6,17 +6,20 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        {% block javascripts %}
+            {% javascripts 
+                '@AppBundle/Resources/public/js/init/*.js' 
+                '@AppBundle/Resources/public/js/*.js' 
+            %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
         
         {% block stylesheets %}
             {% stylesheets '@AppBundle/Resources/public/css/*.css' %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-            {% javascripts '@AppBundle/Resources/public/js/*.js' %}
-                <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}
         {% endblock %}
 
     </head>
