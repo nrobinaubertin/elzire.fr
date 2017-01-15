@@ -24,6 +24,14 @@
 			%}
 				<link rel="stylesheet" href="{{ asset_url }}" />
 			{% endstylesheets %}
+			
+            {% stylesheets 
+				filter="scssphp" 
+				output="scss/style.css"
+				'@AppBundle/Resources/public/scss/*.scss'
+			%}
+				<link rel="stylesheet" href="{{ asset_url }}" />
+			{% endstylesheets %}
 
 {# Something does not work in compiling bootstrap.scss for now
 			{% stylesheets 

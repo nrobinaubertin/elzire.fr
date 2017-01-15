@@ -1,0 +1,32 @@
+header {
+    .surlignage {
+        height: 1rem;
+        background: darkgreen;
+    }
+    .en-tete {
+        position: relative;
+
+        .logo {
+            z-index: 2;
+
+            img {
+                height: 8rem;
+                width: 8rem;
+            }
+            span {
+                font-size: 2rem;
+                position: relative;
+                top: 2rem;
+            }
+        }
+
+        .fleurs {
+            z-index: 1;
+            background: green;
+            height: 2rem;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+}
