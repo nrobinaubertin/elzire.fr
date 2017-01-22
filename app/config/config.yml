@@ -73,12 +73,14 @@ swiftmailer:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: "%kernel.debug%"
+    bundles:
+        - "AppBundle"
     filters:
         cssrewrite: ~
         scssphp:
             formatter: 'Leafo\ScssPhp\Formatter\Compressed'
-    bundles:
-        - AppBundle
+            import_paths: 
+                - '@AppBundle/Resources/public/bootstrap/scss/'
     assets:
         font-awesome-otf:
             inputs: '@AppBundle/Resources/public/fonts/FontAwesome.otf'
