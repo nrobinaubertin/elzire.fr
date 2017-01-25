@@ -1,219 +1,130 @@
-{% extends 'AppBundle::Base.html.twig' %}
+{% extends 'AppBundle::page.html.twig' %}
 
 {% block title %}Elzire element{% endblock %}
 
-{% block body %}
-
-    <header>
-        <div class="surlignage"></div>
-        <div class="pt-2 pb-2 en-tete">
-            <div class="container-fluid logo">
-                <img src="http://localhost/placeholder-squared.png" class="rounded-circle" />
-                <span> Elzire </span>
-            </div>
-            <div class="fleurs"></div>
-        </div>
-
-    </header>
-
-    <nav class="navbar navbar-light navbar-toggleable-sm">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="navbar-nav justify-content-around">
-                <a href="#" class="nav-item nav-link">Accueil</a>
-                <a href="#" class="nav-item nav-link">Mariage</a>
-                <a href="#" class="nav-item nav-link">Naissance</a>
-                <a href="#" class="nav-item nav-link">Baptême</a>
-                <a href="#" class="nav-item nav-link">Mon parcours</a>
-                <a href="#" class="nav-item nav-link">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-11">
-                <nav class="mx-3 breadcrumb">
-                    <a class="breadcrumb-item" href="#">Accueil</a>
-                    <a class="breadcrumb-item" href="#">Mariage</a>
-                    <a class="breadcrumb-item" href="#">Oiseaux aux alliances</a>
-                    <span class="breadcrumb-item active">Carton réponse</span>
-                </nav>
-
-                <div class="m-3 container-fluid">
-                    <h5>
-                        Collection mariage
-                    </h5>
-                    <h2>
-                        Oiseaux aux alliances
-                        <small class="text-muted">
-                            <i style="font-size: 0.5rem;position:relative;bottom:0.35rem" class="fa fa-circle"></i> 
-                            Carton réponse
-                        </small>
-                    </h2>
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-7">
+            <div class="mx-1 mb-3 row">
+                <div class="col">
+                    <img src="http://localhost/placeholder.png" class="img-fluid"/>
                 </div>
+            </div>
+            <div class="mx-5 row">
+                <div class="col-4 text-center">
+                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                </div>
+                <div class="col-4 text-center">
+                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                </div>
+                <div class="col-4 text-center">
+                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                </div>
+            </div>
+            <div class="m-1 row">
+                <p>
+                    Papier Argent 220gr/mm², découpes dentelle au choix, couleur ruban au choix<br>
+                    Avec enveloppe<br>
+                    A partir de 0.80 € l'unité
+                </p>
             </div>
         </div>
-    </div>
-
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-7">
-                <div class="mx-1 mb-3 row">
-                    <div class="col">
-                        <img src="http://localhost/placeholder.png" class="img-fluid"/>
+        <div class="col-4 pt-2 bg-faded">
+            <div class="container text-center">
+                Dans la même collection
+            </div>
+            <div class="row p-2">
+                <div class="col-6 text-center">
+                    <div class="img-card">
+                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                        <div class="title-footer">
+                            ceci est un titre
+                        </div>
                     </div>
                 </div>
-                <div class="mx-5 row">
-                    <div class="col-4 text-center">
+                <div class="col-6 text-center">
+                    <div class="img-card">
                         <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                        <div class="title-footer">
+                            ceci est un titre
+                        </div>
                     </div>
-                    <div class="col-4 text-center">
-                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                    </div>
-                    <div class="col-4 text-center">
-                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                    </div>
-                </div>
-                <div class="m-1 row">
-                    <p>
-                        Papier Argent 220gr/mm², découpes dentelle au choix, couleur ruban au choix<br>
-                        Avec enveloppe<br>
-                        A partir de 0.80 € l'unité
-                    </p>
                 </div>
             </div>
-            <div class="col-4 pt-2 bg-faded">
-                <div class="container text-center">
-                    Dans la même collection
-                </div>
-                <div class="row p-2">
-                    <div class="col-6 text-center">
-                        <div class="img-card">
-                            <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                            <div class="title-footer">
-                                ceci est un titre
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 text-center">
-                        <div class="img-card">
-                            <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                            <div class="title-footer">
-                                ceci est un titre
-                            </div>
+            <div class="row p-2">
+                <div class="col-6 text-center">
+                    <div class="img-card">
+                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                        <div class="title-footer">
+                            ceci est un titre
                         </div>
                     </div>
                 </div>
-                <div class="row p-2">
-                    <div class="col-6 text-center">
-                        <div class="img-card">
-                            <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                            <div class="title-footer">
-                                ceci est un titre
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 text-center">
-                        <div class="img-card">
-                            <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                            <div class="title-footer">
-                                ceci est un titre
-                            </div>
+                <div class="col-6 text-center">
+                    <div class="img-card">
+                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                        <div class="title-footer">
+                            ceci est un titre
                         </div>
                     </div>
                 </div>
-                <div class="row p-2">
-                    <div class="col-6 text-center">
-                        <div class="img-card">
-                            <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                            <div class="title-footer">
-                                ceci est un titre
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 text-center">
-                        <div class="img-card">
-                            <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                            <div class="title-footer">
-                                ceci est un titre
-                            </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-6 text-center">
+                    <div class="img-card">
+                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                        <div class="title-footer">
+                            ceci est un titre
                         </div>
                     </div>
                 </div>
-                <div class="row p-2">
-                    <div class="col-6 text-center">
-                        <div class="img-card">
-                            <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                            <div class="title-footer">
-                                ceci est un titre
-                            </div>
+                <div class="col-6 text-center">
+                    <div class="img-card">
+                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                        <div class="title-footer">
+                            ceci est un titre
                         </div>
                     </div>
-                    <div class="col-6 text-center">
-                        <div class="img-card">
-                            <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                            <div class="title-footer">
-                                ceci est un titre
-                            </div>
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-6 text-center">
+                    <div class="img-card">
+                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                        <div class="title-footer">
+                            ceci est un titre
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 text-center">
+                    <div class="img-card">
+                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                        <div class="title-footer">
+                            ceci est un titre
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    <div class="container">
-        <p>
-            Autres thèmes...
-        </p>
-        <div class="mx-5 mb-3 row">
-            <div class="col-4 text-center">
-                <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-            </div>
-            <div class="col-4 text-center">
-                <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-            </div>
-            <div class="col-4 text-center">
-                <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-            </div>
+<div class="container">
+    <p>
+        Autres thèmes...
+    </p>
+    <div class="mx-5 mb-3 row">
+        <div class="col-4 text-center">
+            <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+        </div>
+        <div class="col-4 text-center">
+            <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+        </div>
+        <div class="col-4 text-center">
+            <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
         </div>
     </div>
-
-
-    <footer>
-        <div class="container-fluid">
-            <div class="row d-flex justify-content-around">
-                <div class="my-3 mx-2 py-3 col-6 d-flex align-items-center justify-content-center copyright">
-                    <div>
-                        Copyright © 2017 - 2018 par Elzire <span class="hidden-lg-down">/ N°Siret 000 000 000 00000</span>
-                    </div>
-                </div>
-                <div class="col-5 d-flex align-items-center justify-content-center follow">
-                    <span class="mr-2 hidden-lg-down follow-me"> Suivez-moi ! </span>
-                    <span class="fa-stack fa-2x">
-                        <span class="fa fa-circle fa-stack-2x"></span>
-                        <span class="fa fa-facebook fa-stack-1x"></span>
-                    </span>
-                    <span class="fa-stack fa-2x">
-                        <span class="fa fa-circle fa-stack-2x"></span>
-                        <span class="fa fa-instagram fa-stack-1x"></span>
-                    </span>
-                    <span class="fa-stack fa-2x">
-                        <span class="fa fa-circle fa-stack-2x"></span>
-                        <span class="fa fa-pinterest-p fa-stack-1x"></span>
-                    </span>
-                    <span class="fa-stack fa-2x">
-                        <span class="fa fa-circle fa-stack-2x"></span>
-                        <span class="cv">mon<br>CV</span>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
+</div>
 {% endblock %}
