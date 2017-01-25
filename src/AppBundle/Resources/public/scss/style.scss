@@ -51,3 +51,36 @@ nav .navbar-nav {
         background-color: rgba(0, 0, 0, 0.2);
     }
 }
+
+footer {
+    $bg-footer: green;
+    background: $bg-footer;
+    .copyright {
+        color: white;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+    }
+    .follow {
+        .follow-me {
+            font-size: 1.5rem;
+        }
+        color: white;
+        .fa-stack-1x {
+            color: $bg-footer;
+        }
+        .fa-stack-2x {
+            color: rgba(255,255,255,0.5);
+        }
+        .cv {
+            color: $bg-footer;
+            font-size: 1rem;
+            line-height: 1rem;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    }
+}
