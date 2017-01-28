@@ -11,15 +11,16 @@ header {
         .logo {
             z-index: 2;
 
-            img {
+            .logo-img {
                 height: 12rem;
                 width: 12rem;
                 margin: 0.5rem 0.2rem 0.5rem 3rem;
+                background-color: white;
             }
-            span {
-                font-size: 3rem;
+            .elzire-img {
                 position: relative;
-                top: 2rem;
+                top: 1.3rem;
+                right: 1rem;
             }
         }
 
