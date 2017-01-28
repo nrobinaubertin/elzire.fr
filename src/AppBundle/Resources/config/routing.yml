@@ -10,3 +10,6 @@ landing:
 element:
     path: /element
     defaults: { _controller: AppBundle:Default:element }
+illustration:
+    path: /illustration
+    defaults: { _controller: AppBundle:Default:illustration }

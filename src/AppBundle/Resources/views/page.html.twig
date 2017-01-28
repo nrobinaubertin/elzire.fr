@@ -6,7 +6,7 @@
         <div class="surlignage"></div>
         <div class="pt-2 pb-2 en-tete">
             <div class="container-fluid logo">
-                <img src="http://localhost/placeholder-squared.png" class="rounded-circle" />
+                <img src="{{ asset('assets/logo.jpg') }}" class="rounded-circle" />
                 <span> Elzire </span>
             </div>
             <div class="fleurs"></div>
@@ -15,18 +15,18 @@
     {% endblock %}
 
     {% block navbar %}
-    <nav class="navbar navbar-light navbar-toggleable-sm">
+    <nav class="navbar navbar-light navbar-toggleable-sm bg-faded">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="navbar-nav justify-content-around">
                 <a href="#" class="nav-item nav-link">Accueil</a>
-                <a href="#" class="nav-item nav-link">Mariage</a>
-                <a href="#" class="nav-item nav-link">Naissance</a>
-                <a href="#" class="nav-item nav-link">Baptême</a>
-                <a href="#" class="nav-item nav-link">Mon parcours</a>
-                <a href="#" class="nav-item nav-link">Contact</a>
+                <a href="#" class="nav-item nav-link disabled">Mariage</a>
+                <a href="#" class="nav-item nav-link disabled">Naissance</a>
+                <a href="#" class="nav-item nav-link disabled">Baptême</a>
+                <a href="#" class="nav-item nav-link">Illustrations</a>
+                <a href="#" class="nav-item nav-link disabled">Contact</a>
             </div>
         </div>
     </nav>
@@ -43,7 +43,7 @@
                     <span class="breadcrumb-item active">Carton réponse</span>
                 </nav>
 
-                <div class="m-3 container-fluid">
+                <div class="mx-3 mb-3 container-fluid">
                     <h5>
                         Collection mariage
                     </h5>
@@ -61,6 +61,25 @@
     {% endblock %}
 
     {% block content %}
+    {% endblock %}
+
+    {% block other %}
+        <div class="container other pt-2 my-5">
+            <p>
+                Autres thèmes...
+            </p>
+            <div class="px-5 py-3 row">
+                <div class="col-4 text-center">
+                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                </div>
+                <div class="col-4 text-center">
+                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                </div>
+                <div class="col-4 text-center">
+                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
+                </div>
+            </div>
+        </div>
     {% endblock %}
 
 

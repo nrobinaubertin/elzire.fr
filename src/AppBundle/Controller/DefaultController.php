@@ -16,4 +16,8 @@ class DefaultController extends Controller
     {
         return $this->render('AppBundle:Default:element.html.twig');
     }
+    public function illustrationAction(Request $request)
+    {
+        return $this->render('AppBundle:Default:illustration.html.twig');
+    }
 }
