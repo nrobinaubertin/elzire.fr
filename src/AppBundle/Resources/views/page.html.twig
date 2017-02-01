@@ -2,7 +2,7 @@
 {% block body %}
 
     {% block header %}
-    <header>
+    <header class="page-header">
         <div class="surlignage"></div>
         <div class="pt-2 pb-2 en-tete">
             <div class="container-fluid logo">
@@ -36,6 +36,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-11">
+
                 <nav class="mx-3 breadcrumb">
                     <a class="breadcrumb-item" href="#">Accueil</a>
                     <a class="breadcrumb-item" href="#">Mariage</a>
@@ -43,18 +44,21 @@
                     <span class="breadcrumb-item active">Carton réponse</span>
                 </nav>
 
-                <div class="mx-3 mb-3 container-fluid">
-                    <h5>
+                <div class="breadcrumb-separator mx-3 mb-3"></div>
+
+                <div class="mx-3 mb-3">
+                    <h5 class="elziregreen">
                         Collection mariage
                     </h5>
                     <h2>
                         Oiseaux aux alliances
-                        <small class="text-muted">
+                        <small>
                             <i style="font-size: 0.5rem;position:relative;bottom:0.35rem" class="fa fa-circle"></i> 
-                            Carton réponse
+                            <span class="elziregreen">Carton réponse</span>
                         </small>
                     </h2>
                 </div>
+
             </div>
         </div>
     </div>
