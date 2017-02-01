@@ -13,3 +13,6 @@ element:
 illustration:
     path: /illustration
     defaults: { _controller: AppBundle:Default:illustration }
+illustration-list:
+    path: /illustration-list
+    defaults: { _controller: AppBundle:Default:illustrationList }
