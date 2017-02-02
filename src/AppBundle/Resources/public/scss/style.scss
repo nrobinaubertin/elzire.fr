@@ -1,5 +1,29 @@
 $elzire-green: #00A98D;
 $gray-dark: #292b2c;
+                
+@font-face {
+    font-family: "Roboto";
+    src: url('../fonts/roboto.woff') format('woff');
+    src: url('../fonts/roboto.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Roboto-Light";
+    src: url('../fonts/roboto-light.woff') format('woff');
+    src: url('../fonts/roboto-light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Roboto-Thin";
+    src: url('../fonts/roboto-thin.woff') format('woff');
+    src: url('../fonts/roboto-thin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Freestyle";
+    src: url('../fonts/freestyle.woff') format('woff');
+    src: url('../fonts/freestyle.ttf') format('truetype');
+}
 
 .elziregreen {
     color: $elzire-green;
@@ -23,7 +47,7 @@ $gray-dark: #292b2c;
         }
 
         .header-separator {
-            height: 2px;
+            height: 1px;
             background-color: $elzire-green;
             width: 25rem;
             max-width: 100%;
@@ -37,7 +61,7 @@ $gray-dark: #292b2c;
     .souslignage {
         height: 3rem;
         width: 100%;
-        background-color: #eee;
+        background-color: #f2f2f2;
     }
 }
 
@@ -87,8 +111,11 @@ $gray-dark: #292b2c;
 }
 
 
-nav .navbar-nav {
-    width: 100%;
+nav {
+    background-color: #e3e3e3;
+    .navbar-nav {
+        width: 100%;
+    }
 }
 
 .img-card {
@@ -109,8 +136,9 @@ nav .navbar-nav {
 
 .img-link {
     & > div {
+        font-family: "Roboto-Light";
+        text-transform: uppercase;
         opacity: 0;
-        background: $elzire-green;
         color: white;
         font-size: 2rem;
         padding: 5px 20px;
@@ -121,9 +149,11 @@ nav .navbar-nav {
         left: 50%;
         z-index: 2;
         transform: translate(-50%, -50%);
+        overflow: hidden;
     }
     &:hover > div {
-        opacity: 0.7;
+        opacity: 1;
+        background: rgba($elzire-green, 0.8);
     }
 }
 
@@ -143,6 +173,7 @@ footer {
         border-bottom: 1px solid white;
     }
     .follow {
+        font-size: 0.7rem;
         .follow-me {
             font-family: "Freestyle";
             font-size: 2rem;
@@ -152,18 +183,24 @@ footer {
             color: $bg-footer;
         }
         .fa-stack-2x {
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.75);
         }
         .cv {
             color: $bg-footer;
-            font-size: 1rem;
-            line-height: 1rem;
+            font-size: 0.7em;
+            line-height: 0.7em;
             display: block;
             position: absolute;
-            top: 50%;
+            top: calc(50% - 0.2em);
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+
+            .mon {
+                font-family: "Freestyle";
+                font-size: 0.7em;
+                text-transform: capitalize;
+            }
         }
     }
 }

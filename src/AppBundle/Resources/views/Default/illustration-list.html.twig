@@ -4,14 +4,28 @@
 
 {% block content %}
     <div class="container-fluid px-5 mx-5 mb-5">
-        <div class="row mb-5">
+
+        {% for illustration in illustrations %}
+            {% if loop.index0 % 4 == 0 %}
+                {% if loop.first == false %}
+                    </div>
+                {% endif %}
+                <div class="row mb-5">
+            {% endif %}
+
             <div class="col-3">
                 <a href="#" class="img-link">
-                    <img class="img-fluid" src="http://localhost/placeholder-squared.png"/>
-                    <div> Trio de rats </div>
+                    <img class="img-fluid" src="{{ asset(illustration["url"]) }}"/>
+                    <div>{{ illustration["name"] }}</div>
                 </a>
             </div>
-        </div>
+                
+            {% if loop.last %}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+
     </div>
 {% endblock %}
 
