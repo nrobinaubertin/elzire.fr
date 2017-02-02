@@ -79,9 +79,31 @@ assetic:
         cssrewrite: ~
         scssphp:
             formatter: 'Leafo\ScssPhp\Formatter\Compressed'
-            import_paths: 
-                - '@AppBundle/Resources/public/bootstrap/scss/'
     assets:
+        roboto-ttf:
+            inputs: '@AppBundle/Resources/public/fonts/roboto.ttf'
+            output: 'fonts/roboto.ttf'
+        roboto-woff:
+            inputs: '@AppBundle/Resources/public/fonts/roboto.woff'
+            output: 'fonts/roboto.woff'
+        roboto-thin-ttf:
+            inputs: '@AppBundle/Resources/public/fonts/roboto-thin.ttf'
+            output: 'fonts/roboto-thin.ttf'
+        roboto-thin-woff:
+            inputs: '@AppBundle/Resources/public/fonts/roboto-thin.woff'
+            output: 'fonts/roboto-thin.woff'
+        roboto-light-ttf:
+            inputs: '@AppBundle/Resources/public/fonts/roboto-light.ttf'
+            output: 'fonts/roboto-light.ttf'
+        roboto-light-woff:
+            inputs: '@AppBundle/Resources/public/fonts/roboto-light.woff'
+            output: 'fonts/roboto-light.woff'
+        freestyle-ttf:
+            inputs: '@AppBundle/Resources/public/fonts/freestyle.ttf'
+            output: 'fonts/freestyle.ttf'
+        freestyle-woff:
+            inputs: '@AppBundle/Resources/public/fonts/freestyle.woff'
+            output: 'fonts/freestyle.woff'
         font-awesome-otf:
             inputs: '@AppBundle/Resources/public/fonts/FontAwesome.otf'
             output: 'fonts/FontAwesome.otf'
