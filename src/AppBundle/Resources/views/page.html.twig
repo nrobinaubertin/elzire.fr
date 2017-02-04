@@ -1,11 +1,12 @@
 {% extends 'AppBundle::base.html.twig' %}
 {% block body %}
 
+
     {% block header %}
     <header class="page-header">
         <div class="surlignage"></div>
-        <div class="pt-2 pb-2 en-tete">
-            <div class="container-fluid logo">
+        <div class="pt-1 pb-1 en-tete">
+            <div class="container mx-auto logo">
                 <img src="{{ asset('assets/logo.png') }}" class="logo-img rounded-circle" />
                 <img src="{{ asset('assets/elzire.png') }}" class="elzire-img"/>
             </div>
@@ -16,21 +17,25 @@
 
     {% block navbar %}
     <nav class="navbar navbar-light navbar-toggleable-sm mb-3">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="navbar-nav justify-content-around">
-                <a href="#" class="nav-item nav-link">Accueil</a>
-                <a href="#" class="nav-item nav-link disabled">Mariage</a>
-                <a href="#" class="nav-item nav-link disabled">Naissance</a>
-                <a href="#" class="nav-item nav-link disabled">Baptême</a>
-                <a href="#" class="nav-item nav-link">Illustrations</a>
-                <a href="#" class="nav-item nav-link disabled">Contact</a>
+        <div class="container mx-auto">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav justify-content-around">
+                    <a href="/" class="nav-item nav-link">Accueil</a>
+                    <a href="#" class="nav-item nav-link disabled">Mariage</a>
+                    <a href="#" class="nav-item nav-link disabled">Naissance</a>
+                    <a href="#" class="nav-item nav-link disabled">Baptême</a>
+                    <a href="/illustrations" class="nav-item nav-link">Illustrations</a>
+                    <a href="#" class="nav-item nav-link disabled">Contact</a>
+                </div>
             </div>
         </div>
     </nav>
     {% endblock %}
+    
+    <div class="container mx-auto">
 
     {% block breadcrumbs %}
     <div class="container-fluid">
@@ -85,13 +90,15 @@
             </div>
         </div>
     {% endblock %}
+    
+    </div>
 
 
     {% block footer %}
     <footer>
-        <div class="container-fluid">
+        <div class="container mx-auto">
             <div class="row d-flex justify-content-around">
-                <div class="my-3 mx-2 py-3 col-6 d-flex align-items-center justify-content-center copyright">
+                <div class="my-2 mx-2 py-2 col-6 d-flex align-items-center justify-content-center copyright">
                     <div>
                         Copyright © 2017 - 2018 par Elzire <span class="hidden-lg-down">/ N°Siret 000 000 000 00000</span>
                     </div>
@@ -127,5 +134,6 @@
         </div>
     </footer>
     {% endblock %}
+
 
 {% endblock %}

@@ -3,28 +3,22 @@
 {% block title %}Elzire illustrations{% endblock %}
 
 {% block content %}
-    <div class="container-fluid px-5 mx-5 mb-5">
+    <div class="container-fluid px-5 mx-auto mb-5">
+
+        <div class="row mb-5">
 
         {% for illustration in illustrations %}
-            {% if loop.index0 % 4 == 0 %}
-                {% if loop.first == false %}
-                    </div>
-                {% endif %}
-                <div class="row mb-5">
-            {% endif %}
 
-            <div class="col-3">
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
                 <a href="#" class="img-link">
                     <img class="img-fluid" src="{{ asset(illustration["url"]) }}"/>
                     <div>{{ illustration["name"] }}</div>
                 </a>
             </div>
                 
-            {% if loop.last %}
-                </div>
-            {% endif %}
-
         {% endfor %}
+
+        </div>
 
     </div>
 {% endblock %}

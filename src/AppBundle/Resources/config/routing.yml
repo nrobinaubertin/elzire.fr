@@ -4,15 +4,17 @@ remove_trailing_slash:
     requirements:
         url: .*/$
     methods: [GET]
+
 landing:
     path: /
     defaults: { _controller: AppBundle:Default:index }
+illustrations:
+    path: /illustrations
+    defaults: { _controller: AppBundle:Default:illustrationList }
+
 element:
     path: /element
     defaults: { _controller: AppBundle:Default:element }
-illustration:
-    path: /illustration
+illu:
+    path: /illu
     defaults: { _controller: AppBundle:Default:illustration }
-illustration-list:
-    path: /illustration-list
-    defaults: { _controller: AppBundle:Default:illustrationList }
