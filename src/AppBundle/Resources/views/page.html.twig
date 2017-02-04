@@ -82,18 +82,14 @@
     {% block other %}
         <div class="container other pt-2 my-5">
             <p>
-                Autres thèmes...
+                {{ othersTitle }}
             </p>
             <div class="px-5 py-3 row">
-                <div class="col-4 text-center">
-                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                </div>
-                <div class="col-4 text-center">
-                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                </div>
-                <div class="col-4 text-center">
-                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                </div>
+                {% for el in others %}
+                    <a href="{{ el["url"] }}" class="col-4 text-center">
+                        <img src="{{ el["image"] }}" class="img-fluid"/>
+                    </a>
+                {% endfor %}
             </div>
         </div>
     {% endblock %}

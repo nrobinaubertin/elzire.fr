@@ -45,12 +45,37 @@ class IllustrationController extends Controller
             ["/illustrations", "Illustrations"],
             ["/illustrations/".$dir, $title] 
         );
+        
+        $others = [];
+        $webDir = $this->get('kernel')->getRootDir() . '/../web';
+        foreach(scandir($webDir . "/illustrations") as $i) {
+            if($i == "." || $i == ".." || $i == $dir) {
+                continue;
+            }
+            $other = [];
+            $other["url"] = "/illustrations/".$i;
+            foreach(scandir($webDir."/illustrations/".$i) as $p) {
+                if(preg_match("/AP/",$p)) {
+                    $other["image"] = "/illustrations/".$i."/".$p;
+                    break;
+                }
+            }
+            if(count($other) == 2) {
+                $others[] = $other;
+            }
+        }
+
+        shuffle($others);
+        $others = array_slice($others, 0, 3);
+
         return $this->render('AppBundle:Default:illustration.html.twig',array(
             "main_image" => $main_image,
             "miniatures" => $miniatures,
             "breadcrumbs" => $breadcrumbs,
             "title" => $title,
-            "categorie" => "Illustrations"
+            "categorie" => "Illustrations",
+            "others" => $others,
+            "othersTitle" => "Autres illustrations..."
         ));
     }
 
