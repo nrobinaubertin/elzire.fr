@@ -8,13 +8,16 @@ remove_trailing_slash:
 landing:
     path: /
     defaults: { _controller: AppBundle:Default:index }
-illustrations:
-    path: /illustrations
-    defaults: { _controller: AppBundle:Default:illustrationList }
+illustrationList:
+    path: /illustration
+    defaults: { _controller: AppBundle:IllustrationList:index }
+illutration_main:
+    path: /illustration/{dir}
+    defaults: { _controller: AppBundle:Illustration:index }
+illutration:
+    path: /illustration/{dir}/{id}
+    defaults: { _controller: AppBundle:Illustration:illustration }
 
 element:
     path: /element
     defaults: { _controller: AppBundle:Default:element }
-illu:
-    path: /illu
-    defaults: { _controller: AppBundle:Default:illustration }
