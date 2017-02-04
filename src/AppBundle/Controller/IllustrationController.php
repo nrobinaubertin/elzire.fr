@@ -13,7 +13,7 @@ class IllustrationController extends Controller
 
         // populate the $files array
         $files = [];
-        foreach(scandir($webDir . "/illustration/" . $dir) as $e) {
+        foreach(scandir($webDir . "/illustrations/" . $dir) as $e) {
             if($e == "." || $e == "..") {
                 continue;
             }
@@ -37,6 +37,23 @@ class IllustrationController extends Controller
         return $illustrations;
     }
 
+    private function renderHTML($dir, $main_image, $miniatures) {
+        $title = preg_replace("/^\d+[_-](.+)/","$1",$dir);
+        $title = preg_replace("/[_-]+/"," ",$title);
+        $breadcrumbs = array(
+            ["/", "Accueil"],
+            ["/illustrations", "Illustrations"],
+            ["/illustrations/".$dir, $title] 
+        );
+        return $this->render('AppBundle:Default:illustration.html.twig',array(
+            "main_image" => $main_image,
+            "miniatures" => $miniatures,
+            "breadcrumbs" => $breadcrumbs,
+            "title" => $title,
+            "categorie" => "Illustrations"
+        ));
+    }
+
     public function indexAction($dir)
     {
         $illustrations = $this->getFiles($dir);
@@ -45,23 +62,20 @@ class IllustrationController extends Controller
         $miniatures = [];
         foreach($illustrations as $i) {
             if($i["id"] == "A" && $i["type"] == "") {
-                $main_image = "/illustration/" . $dir . "/" . $i["file"];
+                $main_image = "/illustrations/" . $dir . "/" . $i["file"];
                 continue;
             }
             if($i["type"] != "") {
                 $miniatures[] = array(
-                    "/illustration/" . $dir . "/" . $i["file"],
-                    $i["id"]
+                    "/illustrations/" . $dir . "/" . $i["file"],
+                    "/illustrations/" . $dir . "/" . $i["id"]
                 );
                 continue;
             }
         }
-
-        return $this->render('AppBundle:Default:illustration.html.twig',array(
-            "main_image" => $main_image,
-            "miniatures" => $miniatures
-        ));
+        return $this->renderHTML($dir, $main_image, $miniatures);
     }
+
     public function illustrationAction($dir, $id)
     {
         $illustrations = $this->getFiles($dir);
@@ -70,21 +84,17 @@ class IllustrationController extends Controller
         $miniatures = [];
         foreach($illustrations as $i) {
             if($i["id"] == $id && $i["type"] == "") {
-                $main_image = "/illustration/" . $dir . "/" . $i["file"];
+                $main_image = "/illustrations/" . $dir . "/" . $i["file"];
                 continue;
             }
             if($i["type"] != "") {
                 $miniatures[] = array(
-                    "/illustration/" . $dir . "/" . $i["file"],
+                    "/illustrations/" . $dir . "/" . $i["file"],
                     $i["id"]
                 );
                 continue;
             }
         }
-
-        return $this->render('AppBundle:Default:illustration.html.twig',array(
-            "main_image" => $main_image,
-            "miniatures" => $miniatures
-        ));
+        return $this->renderHTML($dir, $main_image, $miniatures);
     }
 }

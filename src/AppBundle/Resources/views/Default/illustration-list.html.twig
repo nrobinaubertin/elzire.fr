@@ -1,6 +1,14 @@
 {% extends 'AppBundle::page.html.twig' %}
 
-{% block title %}Elzire illustrations{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block underTitle %}
+    <div class="mx-3 mb-3">
+        <h5 class="text-uppercase elziregreen">
+            {{ categorie }}
+        </h5>
+    </div>
+{% endblock %}
 
 {% block content %}
     <div class="container-fluid px-5 mx-auto mb-5">
@@ -10,8 +18,8 @@
         {% for illustration in illustrations %}
 
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-5">
-                <a href="#" class="img-link">
-                    <img class="img-fluid" src="{{ asset(illustration["url"]) }}"/>
+                <a href="{{ illustration["url"] }}" class="img-link">
+                    <img class="img-fluid" src="{{ asset(illustration["image"]) }}"/>
                     <div>{{ illustration["name"] }}</div>
                 </a>
             </div>

@@ -10,7 +10,7 @@ class IllustrationListController extends Controller
     public function indexAction()
     {
         $webDir = $this->get('kernel')->getRootDir() . '/../web';
-        $illustrations = scandir($webDir . "/illustration");
+        $illustrations = scandir($webDir . "/illustrations");
         $infos = [];
         foreach($illustrations as $illustration) {
             if($illustration == "." || $illustration == "..") {
@@ -18,7 +18,7 @@ class IllustrationListController extends Controller
             }
             $name = preg_replace("/^\d+_(.*)/","$1",$illustration);
             $name = str_replace('-'," ", $name);
-            $pics = scandir($webDir . "/illustration/" . $illustration);
+            $pics = scandir($webDir . "/illustrations/" . $illustration);
             $miniature = "";
             foreach($pics as $p) {
                 if(preg_match("/AP/",$p)) {
@@ -26,14 +26,23 @@ class IllustrationListController extends Controller
                     break;
                 }
             }
-            $url = "illustration/" . $illustration . "/" . $miniature;
+            $image = "illustrations/" . $illustration . "/" . $miniature;
+            $url = "illustrations/" . $illustration;
             $infos[] = array(
                 "name" => $name,
+                "image" => $image,
                 "url" => $url
             );
         }
+        $breadcrumbs = array(
+            ["/", "Accueil"],
+            ["/illustrations", "Illustrations"]
+        );
         return $this->render('AppBundle:Default:illustration-list.html.twig', array(
-            "illustrations" => $infos
+            "illustrations" => $infos,
+            "categorie" => "Illustrations",
+            "title" => "Illustrations",
+            "breadcrumbs" => $breadcrumbs
         ));
     }
 }
