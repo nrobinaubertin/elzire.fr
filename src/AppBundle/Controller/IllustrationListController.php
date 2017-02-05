@@ -16,8 +16,8 @@ class IllustrationListController extends Controller
             if($illustration == "." || $illustration == "..") {
                 continue;
             }
-            $name = preg_replace("/^\d+_(.*)/","$1",$illustration);
-            $name = str_replace('-'," ", $name);
+            $name = preg_replace("/^\d+_(.*)/", "$1", $illustration);
+            $name = preg_replace("/[_-]+/", " ", $name);
             $pics = scandir($webDir . "/illustrations/" . $illustration);
             $miniature = "";
             foreach($pics as $p) {
@@ -26,13 +26,15 @@ class IllustrationListController extends Controller
                     break;
                 }
             }
-            $image = "illustrations/" . $illustration . "/" . $miniature;
-            $url = "illustrations/" . $illustration;
-            $infos[] = array(
-                "name" => $name,
-                "image" => $image,
-                "url" => $url
-            );
+            if($miniature != "") {
+                $image = "illustrations/" . $illustration . "/" . $miniature;
+                $url = "illustrations/" . $illustration;
+                $infos[] = array(
+                    "name" => $name,
+                    "image" => $image,
+                    "url" => $url
+                );
+            }
         }
         $breadcrumbs = array(
             ["/", "Accueil"],
