@@ -1,6 +1,12 @@
-$elzire-green: #00A98D;
-$gray-dark: #292b2c;
-                
+//@import "custom";
+$elzire-green:              #00A98D;
+$gray-dark:                 #181a1b;
+$gray:                      #292b2c;
+$gray-light:                #464a4c;
+$gray-lighter:              #636c72;
+$gray-lightest:             #eceeef;
+$body-bg:                   #f7f7f7;
+
 @font-face {
     font-family: "Roboto";
     src: url('../fonts/roboto.woff') format('woff');
@@ -84,7 +90,7 @@ $gray-dark: #292b2c;
                 height: 8rem;
                 width: 8rem;
                 margin: 0.5rem 0.2rem 0.5rem 3rem;
-                background-color: white;
+                background-color: $body-bg;
             }
             .elzire-img {
                 position: relative;
@@ -168,8 +174,13 @@ nav {
 
 .other {
     border-top: 1px solid green;
+    & > p {
+        font-family: "Freestyle";
+        font-size: 2rem;
+        color: $gray-light;
+    }
     & > .row {
-        background: whitesmoke;
+        background: $gray-lightest;
     }
 }
 
