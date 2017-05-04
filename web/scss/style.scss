@@ -1,34 +1,31 @@
-//@import "custom";
-$elzire-green:              #00A98D;
-$gray-dark:                 #181a1b;
-$gray:                      #292b2c;
-$gray-light:                #464a4c;
-$gray-lighter:              #636c72;
-$gray-lightest:             #eceeef;
-$body-bg:                   #f7f7f7;
+@import "custom";
 
 @font-face {
     font-family: "Roboto";
-    src: url('/fonts/roboto.woff') format('woff');
     src: url('/fonts/roboto.ttf') format('truetype');
+    src: url('/fonts/roboto.woff') format('woff');
+    src: url('/fonts/roboto.woff2') format('woff2');
 }
 
 @font-face {
     font-family: "Roboto-Light";
-    src: url('/fonts/roboto-light.woff') format('woff');
     src: url('/fonts/roboto-light.ttf') format('truetype');
+    src: url('/fonts/roboto-light.woff') format('woff');
+    src: url('/fonts/roboto-light.woff2') format('woff2');
 }
 
 @font-face {
     font-family: "Roboto-Thin";
-    src: url('/fonts/roboto-thin.woff') format('woff');
     src: url('/fonts/roboto-thin.ttf') format('truetype');
+    src: url('/fonts/roboto-thin.woff') format('woff');
+    src: url('/fonts/roboto-thin.woff2') format('woff2');
 }
 
 @font-face {
     font-family: "Freestyle";
-    src: url('/fonts/freestyle.woff') format('woff');
     src: url('/fonts/freestyle.ttf') format('truetype');
+    src: url('/fonts/freestyle.woff') format('woff');
+    src: url('/fonts/freestyle.woff2') format('woff2');
 }
 
 .mb-30px {
