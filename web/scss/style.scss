@@ -28,6 +28,10 @@
     src: url('/fonts/freestyle.woff2') format('woff2');
 }
 
+.pos-r {
+    position: relative;
+}
+
 .mb-30px {
     margin-bottom: 30px !important;
 }
@@ -42,11 +46,8 @@
 
 .landing-header {
     .surlignage {
-        height: 0.3rem;
         background: rgba($elzire-green, 0.7);
-        color: white;
-        font-family: "Freestyle";
-        font-size: 2rem;
+        height: 0.2rem;
     }
     .en-tete {
         .logo-img {
@@ -64,11 +65,6 @@
             color: #999;
             text-transform: uppercase;
         }
-    }
-    .souslignage {
-        height: 3rem;
-        width: 100%;
-        background-color: #f2f2f2;
     }
 }
 
@@ -88,6 +84,7 @@
                 width: 8rem;
                 margin: 0.5rem 0.2rem 0.5rem 3rem;
                 background-color: $body-bg;
+                padding: 0.3rem;
             }
             .elzire-img {
                 position: relative;
@@ -98,12 +95,12 @@
         }
 
         .fleurs {
-            z-index: 1;
+            z-index: -10;
             background: $elzire-green;
             height: 2.5rem;
-            width: 100%;
             position: absolute;
             bottom: 0;
+            left: 0;
         }
     }
 }
@@ -119,9 +116,8 @@
     background: $elzire-green;
 }
 
-
 nav {
-    background-color: #e3e3e3;
+    background-color: #f0f0f0;
     .navbar-nav {
         width: 100%;
     }
@@ -259,9 +255,9 @@ footer {
 }
 
 .round-link {
-    font-size: 1.6rem;
-    width: 200px;
-    height: 200px;
+    font-size: 1.2rem;
+    width: 150px;
+    height: 150px;
     border-radius: 100%;
     border: 1px solid black;
     padding: 1rem;
@@ -270,7 +266,7 @@ footer {
     
 
     .mes {
-        font-size: 2.2rem;
+        font-size: 2rem;
         font-family: "Freestyle";
     }
 

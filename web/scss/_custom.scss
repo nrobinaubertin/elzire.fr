@@ -1,51 +1,44 @@
 // Bootstrap overrides
-//
-// Copy variables from `_variables.scss` to this file to override default values
-// without modifying source files.
-
 // elzire.fr theme
 
 // Colors
-//
-// Grayscale and brand colors for use across Bootstrap.
 
-// Start with assigning color names to specific hex values.
 $elzire-green: #00A98D;
-
-// Create grayscale
-$gray-dark:                 #181a1b;
-$gray:                      #292b2c;
-$gray-light:                #464a4c;
-$gray-lighter:              #636c72;
-$gray-lightest:             #eceeef;
-
-// Reassign color vars to semantic color scheme
-$brand-primary:             $elzire-green;
+$gray-dark: #181a1b;
+$gray: #292b2c;
+$gray-light: #464a4c;
+$gray-lighter: #636c72;
+$gray-lightest: #eceeef;
+$brand-primary: $elzire-green;
 
 // Body
-//
-// Settings for the `<body>` element.
 
-$body-bg:       #f7f7f7;
+$body-bg: #f7f7f7;
+
+// Spacing
+
+$spacer: 1rem !default;
 
 // Breadcrumbs
 
-$breadcrumb-padding-x:          0rem;
-
-$breadcrumb-bg:                 $body-bg; 
-$breadcrumb-divider-color:      $gray-light;
-$breadcrumb-active-color:       $gray;
-$breadcrumb-divider:            "-";
+$breadcrumb-padding-x: 0rem;
+$breadcrumb-bg: $body-bg; 
+$breadcrumb-divider-color: $gray-light;
+$breadcrumb-active-color: $gray;
+$breadcrumb-divider: "-";
 
 // Carousel
 
-$carousel-indicator-width:                    15px;
-$carousel-indicator-height:                   15px;
-$carousel-indicator-spacer:                   5px;
+$carousel-indicator-width: 15px;
+$carousel-indicator-height: 15px;
+$carousel-indicator-spacer: 5px;
 
 // Links
-//
-// Style anchor elements.
 
-$link-color:            $gray;
+$link-color: $gray;
 $link-hover-decoration: none;
+
+// Navbar
+
+$navbar-padding-x: $spacer !default;
+$navbar-padding-y: 0;
