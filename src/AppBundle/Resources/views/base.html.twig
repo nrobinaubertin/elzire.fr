@@ -5,43 +5,20 @@
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        {% block javascripts %}
-            {% javascripts 
-                '@AppBundle/Resources/public/js/init/*.js' 
-                '@AppBundle/Resources/public/js/*.js' 
-            %}
-                <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}
+        {% block head_javascripts %}
+            <script src="{{ asset('node_modules/jquery/dist/jquery.min.js') }}"></script>
+            <script src="{{ asset('node_modules/tether/dist/js/tether.min.js') }}"></script>
+            <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         {% endblock %}
         
-        {% block stylesheets %}
-			{% stylesheets 
-				filter="scssphp" 
-				output="css/f.css"
-				'@AppBundle/Resources/public/fontawesome/scss/font-awesome.scss'
-			%}
-				<link rel="stylesheet" href="{{ asset_url }}" />
-			{% endstylesheets %}
-			
-            {% stylesheets 
-				filter="scssphp" 
-				output="scss/style.css"
-				'@AppBundle/Resources/public/scss/style.scss'
-			%}
-				<link rel="stylesheet" href="{{ asset_url }}" />
-			{% endstylesheets %}
-
-            {% stylesheets 
-                '@AppBundle/Resources/public/css/*.css' 
-                filter="cssrewrite"
-            %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
-
+        {% block head_stylesheets %}
+            <link rel="stylesheet" href="{{ asset('node_modules/font-awesome/css/font-awesome.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('dist/css/bootstrap.css') }}" />
+            <link rel="stylesheet" href="{{ asset('dist/css/style.css') }}" />
         {% endblock %}
-    
+
     </head>
     <body>
         {% block body %}{% endblock %}

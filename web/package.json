@@ -1,0 +1,20 @@
+{
+    "name": "elzire.fr",
+    "version": "1.0.0",
+    "main": "app.php",
+    "license": "MIT",
+    "scripts": {
+        "cp:bootstrap": "cp scss/_custom.scss node_modules/bootstrap/scss/_custom.scss",
+        "build:bootstrap": "node-sass --output-style compressed --incude-path node_modules/bootstrap/scss/ node_modules/bootstrap/scss/bootstrap.scss dist/css/bootstrap.css",
+        "build:css": "node-sass --output-style compressed --incude-path scss/ scss/style.scss dist/css/style.css",
+        "clean": "rm -rf dist",
+        "ncu": "ncu"
+    },
+    "dependencies": {
+        "bootstrap": "^4.0.0",
+        "font-awesome": "^4.7.0",
+        "jquery": "^3.2.1",
+        "node-sass": "^4.5.2",
+        "npm-check-updates": "^2.11.0"
+    }
+}
