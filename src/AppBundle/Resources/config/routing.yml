@@ -11,12 +11,9 @@ landing:
 illustrationList:
     path: /illustrations
     defaults: { _controller: AppBundle:IllustrationList:index }
-illutration_main:
+illutration:
     path: /illustrations/{dir}
     defaults: { _controller: AppBundle:Illustration:index }
-illutration:
-    path: /illustrations/{dir}/{id}
-    defaults: { _controller: AppBundle:Illustration:illustration }
 
 element:
     path: /element

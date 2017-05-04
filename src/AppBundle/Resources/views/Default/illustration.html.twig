@@ -20,7 +20,7 @@
         <div class="row">
 
             {% for mini in miniatures %}
-                <a href="{{ mini[1] }}" class="col-4 col-sm-3 col-md-2 mb-4">
+                <a data-fancybox="gallery" href="{{ mini[1] }}" class="col-4 col-sm-3 col-md-2 mb-4">
                     <img class="img-fluid" src="{{ mini[0] }}"/>
                 </a>
             {% endfor %}

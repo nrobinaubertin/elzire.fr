@@ -24,13 +24,21 @@ class IllustrationController extends Controller
         foreach($files as $f) {
             $infos = preg_replace("/^(\d+)[_-]([A-Z])([A-Z])?[_-]([a-z\-]+).*/","$1 $2 $3 $4",$f);
             $infos = explode(" ", $infos);
+            // look for main file
+            foreach($files as $main) {
+                if(preg_match("/^".$infos[0]."[_-]".substr($infos[1], 0, 1)."[_-]".$infos[3].".*/",$main)) {
+                    $infos[] = $main;
+                    break;
+                }
+            }
             if(count($infos) > 3) {
                 $illustrations[] = array(
                     "file" => $f,
                     "num" => $infos[0],
                     "id" => $infos[1],
                     "type" => $infos[2],
-                    "name" => $infos[3]
+                    "name" => $infos[3],
+                    "main" => $infos[4]
                 );
             }
         }
@@ -93,29 +101,7 @@ class IllustrationController extends Controller
             if($i["type"] != "") {
                 $miniatures[] = array(
                     "/illustrations/" . $dir . "/" . $i["file"],
-                    "/illustrations/" . $dir . "/" . $i["id"]
-                );
-                continue;
-            }
-        }
-        return $this->renderHTML($dir, $main_image, $miniatures);
-    }
-
-    public function illustrationAction($dir, $id)
-    {
-        $illustrations = $this->getFiles($dir);
-        
-        $main_image = "";
-        $miniatures = [];
-        foreach($illustrations as $i) {
-            if($i["id"] == $id && $i["type"] == "") {
-                $main_image = "/illustrations/" . $dir . "/" . $i["file"];
-                continue;
-            }
-            if($i["type"] != "") {
-                $miniatures[] = array(
-                    "/illustrations/" . $dir . "/" . $i["file"],
-                    $i["id"]
+                    "/illustrations/" . $dir . "/" . $i["main"]
                 );
                 continue;
             }

@@ -11,6 +11,7 @@
         "ncu": "ncu"
     },
     "dependencies": {
+        "@fancyapps/fancybox": "^3.0.48",
         "bootstrap": "^4.0.0",
         "font-awesome": "^4.7.0",
         "jquery": "^3.2.1",
