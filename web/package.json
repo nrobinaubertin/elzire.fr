@@ -15,6 +15,7 @@
         "bootstrap": "^4.0.0",
         "font-awesome": "^4.7.0",
         "jquery": "^3.2.1",
+        "lazysizes": "^3.0.0",
         "node-sass": "^4.5.2",
         "npm-check-updates": "^2.11.0",
         "shx": "^0.2.2"

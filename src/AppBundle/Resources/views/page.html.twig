@@ -4,12 +4,12 @@
 {% block header %}
 <header class="page-header">
     <div class="surlignage"></div>
-    <div class="pt-1 pb-1 en-tete">
+    <div class="en-tete">
         <div class="container pos-r">
             <div class="container mx-auto">
-                <div class="logo">
-                    <img src="{{ asset('assets/logo.png') }}" class="logo-img rounded-circle" />
-                    <img src="{{ asset('assets/elzire.png') }}" class="elzire-img"/>
+                <div class="logo d-flex justify-content-center justify-content-md-start align-items-center">
+                    <img src="{{ asset('assets/logo.png') }}" class="logo-img rounded-circle my-3 p-2" />
+                    <img src="{{ asset('assets/elzire.png') }}" class="elzire-img hidden-sm-down"/>
                 </div>
                 <div class="fleurs container"></div>
             </div>
@@ -87,7 +87,7 @@
         <p>
         {{ othersTitle }}
         </p>
-        <div class="px-5 py-3 row">
+        <div class="px-1 px-sm-2 px-md-5 py-3 row">
             {% for el in others %}
             <a href="{{ el["url"] }}" class="col-4 text-center">
                 <img src="{{ el["image"] }}" class="img-fluid"/>

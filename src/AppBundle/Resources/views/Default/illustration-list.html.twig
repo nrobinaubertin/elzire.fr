@@ -19,7 +19,7 @@
 
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-30px">
                 <a href="{{ illustration["url"] }}" class="img-link bg-faded">
-                    <img class="img-fluid" src="{{ asset(illustration["image"]) }}"/>
+                    <img class="img-fluid lazyload" data-src="{{ asset(illustration["image"]) }}"/>
                     <div>{{ illustration["name"] }}</div>
                 </a>
             </div>
