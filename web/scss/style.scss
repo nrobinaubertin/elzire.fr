@@ -28,6 +28,10 @@
     src: url('/fonts/freestyle.woff2') format('woff2');
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .pos-r {
     position: relative;
 }
@@ -168,6 +172,10 @@ nav {
         opacity: 1;
         background: rgba($elzire-green, 0.8);
     }
+    img {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .other {
@@ -268,7 +276,7 @@ footer {
     padding: 1rem;
     color: black;
     text-decoration: none;
-    
+
 
     .mes {
         font-size: 2rem;

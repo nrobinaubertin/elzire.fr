@@ -5,6 +5,10 @@ remove_trailing_slash:
         url: .*/$
     methods: [GET]
 
+#image:
+#    path: /image/{width}/{height}/
+#    defaults: { _controller: AppBundle:Image:index }
+
 landing:
     path: /
     defaults: { _controller: AppBundle:Default:index }

@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Utils\ImageWorker;
 
 class IllustrationListController extends Controller
 {
@@ -29,10 +30,12 @@ class IllustrationListController extends Controller
             if($miniature != "") {
                 $image = "illustrations/" . $illustration . "/" . $miniature;
                 $url = "illustrations/" . $illustration;
+                $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($image));
                 $infos[] = array(
                     "name" => $name,
                     "image" => $image,
-                    "url" => $url
+                    "url" => $url,
+                    "placeholder" => $placeholder
                 );
             }
         }
