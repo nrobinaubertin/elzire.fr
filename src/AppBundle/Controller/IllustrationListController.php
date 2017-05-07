@@ -10,16 +10,16 @@ class IllustrationListController extends Controller
 {
     public function indexAction()
     {
-        $webDir = $this->get('kernel')->getRootDir() . '/../web';
-        $illustrations = scandir($webDir . "/illustrations");
+        $illustrationDir = $this->get('kernel')->getRootDir() . '/../data/illustrations/';
         $infos = [];
-        foreach($illustrations as $illustration) {
+
+        foreach(scandir($illustrationDir) as $illustration) {
             if($illustration == "." || $illustration == "..") {
                 continue;
             }
             $name = preg_replace("/^\d+_(.*)/", "$1", $illustration);
             $name = preg_replace("/[_-]+/", " ", $name);
-            $pics = scandir($webDir . "/illustrations/" . $illustration);
+            $pics = scandir($illustrationDir.$illustration);
             $miniature = "";
             foreach($pics as $p) {
                 if(preg_match("/AP/",$p)) {
@@ -28,9 +28,9 @@ class IllustrationListController extends Controller
                 }
             }
             if($miniature != "") {
-                $image = "illustrations/" . $illustration . "/" . $miniature;
-                $url = "illustrations/" . $illustration;
-                $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($image));
+                $image = "/miniature/illustrations/".$illustration."/".$miniature;
+                $url = "/illustrations/".$illustration;
+                $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($illustrationDir.$illustration."/".$miniature));
                 $infos[] = array(
                     "name" => $name,
                     "image" => $image,
@@ -39,6 +39,7 @@ class IllustrationListController extends Controller
                 );
             }
         }
+
         $breadcrumbs = array(
             ["/", "Accueil"],
             ["/illustrations", "Illustrations"]

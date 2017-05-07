@@ -9,11 +9,11 @@ class IllustrationController extends Controller
 {
 
     private function getFiles($dir) {
-        $webDir = $this->get('kernel')->getRootDir() . '/../web';
+        $illustrationDir = $this->get('kernel')->getRootDir() . '/../data/illustrations/';
 
         // populate the $files array
         $files = [];
-        foreach(scandir($webDir . "/illustrations/" . $dir) as $e) {
+        foreach(scandir($illustrationDir.$dir) as $e) {
             if($e == "." || $e == "..") {
                 continue;
             }
@@ -55,16 +55,16 @@ class IllustrationController extends Controller
         );
         
         $others = [];
-        $webDir = $this->get('kernel')->getRootDir() . '/../web';
-        foreach(scandir($webDir . "/illustrations") as $i) {
+        $illustrationDir = $this->get('kernel')->getRootDir() . '/../data/illustrations/';
+        foreach(scandir($illustrationDir) as $i) {
             if($i == "." || $i == ".." || $i == $dir) {
                 continue;
             }
             $other = [];
             $other["url"] = "/illustrations/".$i;
-            foreach(scandir($webDir."/illustrations/".$i) as $p) {
+            foreach(scandir($illustrationDir.$i) as $p) {
                 if(preg_match("/AP/",$p)) {
-                    $other["image"] = "/illustrations/".$i."/".$p;
+                    $other["image"] = "/miniature/illustrations/".$i."/".$p;
                     break;
                 }
             }
@@ -95,13 +95,13 @@ class IllustrationController extends Controller
         $miniatures = [];
         foreach($illustrations as $i) {
             if($i["id"] == "A" && $i["type"] == "") {
-                $main_image = "/illustrations/" . $dir . "/" . $i["file"];
+                $main_image = "/image/illustrations/" . $dir . "/" . $i["file"];
                 continue;
             }
             if($i["type"] != "") {
                 $miniatures[] = array(
-                    "/illustrations/" . $dir . "/" . $i["file"],
-                    "/illustrations/" . $dir . "/" . $i["main"]
+                    "/miniature/illustrations/" . $dir . "/" . $i["file"],
+                    "/image/illustrations/" . $dir . "/" . $i["main"]
                 );
                 continue;
             }
