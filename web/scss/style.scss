@@ -28,6 +28,18 @@
     src: url('/fonts/freestyle.woff2') format('woff2');
 }
 
+.freestyle {
+    font-family: "Freestyle";
+}
+
+.roboto-thin {
+    font-family: "Roboto-Thin";
+}
+
+.roboto-light {
+    font-family: "Roboto-Light";
+}
+
 body {
     overflow-x: hidden;
 }
@@ -46,6 +58,54 @@ body {
 
 .breadcrumb-item {
     color: $gray-dark;
+}
+
+.breadcrumb {
+    margin-bottom: 0rem !important;
+    font-size: 0.8rem !important;
+}
+.breadcrumb-separator {
+    height: 2px;
+    width: 12rem;
+    max-width: 100%;
+    background: $elzire-green;
+}
+
+nav {
+    background-color: #f0f0f0;
+    .navbar-nav {
+        width: 100%;
+    }
+}
+
+// bootstrap fix : https://github.com/twbs/bootstrap/issues/21611
+// will be fixed for beta1 
+.carousel-item.active, .carousel-item-next, .carousel-item-prev {
+    display: block !important;
+}
+
+.carousel-indicators {
+    justify-content: flex-end !important;
+    margin-right: 2% !important;
+    margin-left: 2% !important;
+
+    li {
+        border-radius: 100%;
+    }
+}
+
+.elzire-carousel-caption {
+    position: absolute;
+    right: 2rem ;
+    top: calc(50% - 6.5rem) ;
+    padding: 1rem 2rem ;
+    text-align: left ;
+    background-color: rgba($elzire-green, 0.7);
+    width: 14rem ;
+    bottom: initial ;
+    left: initial ;
+    z-index: 10;
+    color: white;
 }
 
 .landing-header {
@@ -111,24 +171,6 @@ body {
             z-index: -10;
             width: 100%;
         }
-    }
-}
-
-.breadcrumb {
-    margin-bottom: 0rem !important;
-    font-size: 0.8rem !important;
-}
-.breadcrumb-separator {
-    height: 2px;
-    width: 12rem;
-    max-width: 100%;
-    background: $elzire-green;
-}
-
-nav {
-    background-color: #f0f0f0;
-    .navbar-nav {
-        width: 100%;
     }
 }
 
@@ -238,39 +280,10 @@ footer {
     }
 }
 
-// bootstrap fix : https://github.com/twbs/bootstrap/issues/21611
-.carousel-item.active, .carousel-item-next, .carousel-item-prev {
-    display: block !important;
-}
-
-.carousel-indicators {
-    justify-content: flex-end !important;
-    margin-right: 2% !important;
-    margin-left: 2% !important;
-
-    li {
-        border-radius: 100%;
-    }
-}
-
-.elzire-carousel-caption {
-    position: absolute;
-    right: 2rem ;
-    top: calc(50% - 6.5rem) ;
-    padding: 1rem 2rem ;
-    text-align: left ;
-    background-color: rgba($elzire-green, 0.7);
-    width: 14rem ;
-    bottom: initial ;
-    left: initial ;
-    z-index: 10;
-    color: white;
-}
-
 .round-link {
     font-size: 1.2rem;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-radius: 100%;
     border: 1px solid black;
     padding: 1rem;
@@ -290,4 +303,8 @@ footer {
             color: white;
         }
     }
+}
+
+.main-image {
+    max-height: 90vh;
 }
