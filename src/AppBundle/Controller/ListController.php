@@ -6,20 +6,24 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Utils\ImageWorker;
 
-class IllustrationListController extends Controller
+class ListController extends Controller
 {
-    public function indexAction()
+    public function indexAction($location, $canonicalUrl, $categoryName)
     {
-        $illustrationDir = $this->get('kernel')->getRootDir() . '/../data/illustrations/';
+        $location = '/illustrations/';
+        $canonicalUrl = '/illustrations';
+        $categoryName = 'Illustrations';
+
+        $listDir = $this->get('kernel')->getRootDir() . '/../data' . $location;
         $infos = [];
 
-        foreach(scandir($illustrationDir) as $illustration) {
-            if($illustration == "." || $illustration == "..") {
+        foreach(scandir($listDir) as $collection) {
+            if($collection == "." || $collection == "..") {
                 continue;
             }
-            $name = preg_replace("/^\d+_(.*)/", "$1", $illustration);
+            $name = preg_replace("/^\d+_(.*)/", "$1", $collection);
             $name = preg_replace("/[_-]+/", " ", $name);
-            $pics = scandir($illustrationDir.$illustration);
+            $pics = scandir($listDir.$collection);
             $miniature = "";
             foreach($pics as $p) {
                 if(preg_match("/AP/",$p)) {
@@ -28,9 +32,9 @@ class IllustrationListController extends Controller
                 }
             }
             if($miniature != "") {
-                $image = "/miniature/illustrations/".$illustration."/".$miniature;
-                $url = "/illustrations/".$illustration;
-                $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($illustrationDir.$illustration."/".$miniature));
+                $image = "/miniature".$location.$collection."/".$miniature;
+                $url = $location.$collection;
+                $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($listDir.$collection."/".$miniature));
                 $infos[] = array(
                     "name" => $name,
                     "image" => $image,
@@ -42,12 +46,12 @@ class IllustrationListController extends Controller
 
         $breadcrumbs = array(
             ["/", "Accueil"],
-            ["/illustrations", "Illustrations"]
+            [$canonicalUrl, $categoryName]
         );
         return $this->render('AppBundle:Default:list.html.twig', array(
             "list" => $infos,
-            "categorie" => "Illustrations",
-            "title" => "Illustrations",
+            "categorie" => $categoryName,
+            "title" => $categoryName,
             "breadcrumbs" => $breadcrumbs
         ));
     }

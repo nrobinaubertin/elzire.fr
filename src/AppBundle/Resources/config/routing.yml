@@ -23,7 +23,12 @@ landing:
     defaults: { _controller: AppBundle:Default:index }
 illustrationList:
     path: /illustrations
-    defaults: { _controller: AppBundle:IllustrationList:index }
+    defaults: { 
+        _controller: AppBundle:List:index,
+        location: "/illustrations/",
+        canonicalUrl: "/illustrations",
+        categoryName: "Illustrations"
+      }
 illutration:
     path: /illustrations/{dir}
     defaults: { _controller: AppBundle:Illustration:index }
