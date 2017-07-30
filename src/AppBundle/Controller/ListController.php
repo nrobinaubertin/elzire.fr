@@ -10,10 +10,6 @@ class ListController extends Controller
 {
     public function indexAction($location, $canonicalUrl, $categoryName)
     {
-        $location = '/illustrations/';
-        $canonicalUrl = '/illustrations';
-        $categoryName = 'Illustrations';
-
         $listDir = $this->get('kernel')->getRootDir() . '/../data' . $location;
         $infos = [];
 
