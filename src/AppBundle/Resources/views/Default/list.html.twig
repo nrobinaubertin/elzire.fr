@@ -15,12 +15,12 @@
 
         <div class="row mb-5">
 
-        {% for illustration in illustrations %}
+        {% for collection in list %}
 
             <div class="col-6 col-md-4 col-lg-3 mb-30px">
-                <a href="{{ illustration["url"] }}" class="img-link bg-faded">
-                    <img class="img-fluid lazyload" src="{{ illustration["placeholder"] }}" data-src="{{ asset(illustration["image"]) }}"/>
-                    <div>{{ illustration["name"] }}</div>
+                <a href="{{ collection["url"] }}" class="img-link bg-faded">
+                    <img class="img-fluid lazyload" src="{{ collection["placeholder"] }}" data-src="{{ asset(collection["image"]) }}"/>
+                    <div>{{ collection["name"] }}</div>
                 </a>
             </div>
                 

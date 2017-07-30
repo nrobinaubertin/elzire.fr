@@ -44,8 +44,8 @@ class IllustrationListController extends Controller
             ["/", "Accueil"],
             ["/illustrations", "Illustrations"]
         );
-        return $this->render('AppBundle:Default:illustration-list.html.twig', array(
-            "illustrations" => $infos,
+        return $this->render('AppBundle:Default:list.html.twig', array(
+            "list" => $infos,
             "categorie" => "Illustrations",
             "title" => "Illustrations",
             "breadcrumbs" => $breadcrumbs
