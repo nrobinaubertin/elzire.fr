@@ -4,29 +4,50 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Utils\ImageWorker;
 
 class ListController extends Controller
 {
     public function indexAction($location, $canonicalUrl, $categoryName)
     {
+        // get the list of directories in that location
         $listDir = $this->get('kernel')->getRootDir() . '/../data' . $location;
         $infos = [];
 
+        // each directory is a collection
         foreach(scandir($listDir) as $collection) {
-            if($collection == "." || $collection == "..") {
+            if($collection == "." || $collection == ".." || !is_dir($listDir.$collection)) {
                 continue;
             }
+            // get the name of the collection
             $name = preg_replace("/^\d+_(.*)/", "$1", $collection);
             $name = preg_replace("/[_-]+/", " ", $name);
-            $pics = scandir($listDir.$collection);
             $miniature = "";
-            foreach($pics as $p) {
-                if(preg_match("/AP/",$p)) {
+            // now we need a miniature pic for the collection
+            // it can be a file with "AP" in the name or a file inside a presentation dir inside the collection
+            foreach(scandir($listDir.$collection) as $p) {
+                if(
+                    preg_match("/AP/",$p) &&
+                    preg_match("/image/",mime_content_type($listDir.$collection."/".$p))
+                ) {
                     $miniature = $p;
                     break;
                 }
+                if(is_dir($listDir.$collection."/".$p) && preg_match("/presentation/", $p)) {
+                    foreach(scandir($listDir.$collection."/".$p) as $pre) {
+                        echo $pre;
+                        if(
+                            is_file($listDir.$collection."/".$p."/".$pre) && 
+                            preg_match("/image/",mime_content_type($listDir.$collection."/".$p."/".$pre))
+                        ) {
+                            $miniature = $p."/".$pre;
+                            break;
+                        }
+                    }
+                }
             }
+            // if we have a miniature, then we fill the infos for this collection
             if($miniature != "") {
                 $image = "/miniature".$location.$collection."/".$miniature;
                 $url = $location.$collection;
@@ -39,7 +60,7 @@ class ListController extends Controller
                 );
             }
         }
-
+        // get breadcrumbs
         $breadcrumbs = array(
             ["/", "Accueil"],
             [$canonicalUrl, $categoryName]
