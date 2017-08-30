@@ -100,14 +100,14 @@
 
     {% block footer %}
         <footer>
-            <div class="container mx-auto">
+            <div class="container-fluid mx-auto mx-md-5">
                 <div class="row d-flex justify-content-around">
-                    <div class="my-3 mx-2 py-1 col-6 d-flex align-items-center justify-content-center copyright">
+                    <div class="my-3 mx-2 py-1 col-6 d-flex align-items-center justify-content-center copyright hidden-xs-down">
                         <div>
                             Copyright © 2017 - 2018 par Elzire <span class="hidden-lg-down">/ N°Siret 000 000 000 00000</span>
                         </div>
                     </div>
-                    <div class="col-5 d-flex align-items-center justify-content-center follow">
+                    <div class="col-5 d-flex align-items-center justify-content-center follow my-2">
                         <span class="mr-2 hidden-lg-down follow-me"> Suivez-moi ! </span>
                         <a href="#" class="d-flex align-items-center">
                             <span class="fa-stack fa-2x">
@@ -141,9 +141,9 @@
 
     {% block end_body %}
         <script>
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-})
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         </script>
     {% endblock %}
 {% endblock %}

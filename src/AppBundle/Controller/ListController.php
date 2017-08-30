@@ -36,7 +36,6 @@ class ListController extends Controller
                 }
                 if(is_dir($listDir.$collection."/".$p) && preg_match("/presentation/", $p)) {
                     foreach(scandir($listDir.$collection."/".$p) as $pre) {
-                        echo $pre;
                         if(
                             is_file($listDir.$collection."/".$p."/".$pre) && 
                             preg_match("/image/",mime_content_type($listDir.$collection."/".$p."/".$pre))

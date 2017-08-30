@@ -23,6 +23,37 @@ class ImageWorker
         return $im;
     }
 
+    public function displayMiniature($source)
+    {
+        $filename = sys_get_temp_dir()."/".sha1($source.$width.$height);
+        if (file_exists($filename)) {
+            header("Content-Type: image/jpeg");
+            readfile($filename);
+            return true;
+        }
+
+		$im = new \Imagick();
+		try {
+			if(!$im->readImage($source)) {
+                throw new Exception("Impossible to read source image");
+			}
+		} catch(Exception $e) {
+			return false;
+		}
+
+		$im->cropThumbnailImage(250, 250);
+		$im->setImageFormat('jpeg');
+		$im->setImageCompression(\Imagick::COMPRESSION_JPEG);
+		$im->setImageCompressionQuality(90);
+
+        header("Content-Type: image/jpeg");
+        echo $im;
+
+		$im->writeImage($filename);
+		$im->destroy();
+		return true;
+    }
+
     public function displayImage($source, $width, $height)
     {
         $filename = sys_get_temp_dir()."/".sha1($source.$width.$height);

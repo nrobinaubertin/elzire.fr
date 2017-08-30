@@ -108,6 +108,10 @@ nav {
     color: white;
 }
 
+.content-div {
+    min-height: calc(100vh - 437px);
+}
+
 .landing-header {
     .surlignage {
         background: rgba($elzire-green, 0.7);
@@ -241,7 +245,7 @@ footer {
         border-bottom: 1px solid white;
     }
     .follow {
-        font-size: 0.7rem;
+        font-size: 0.78rem;
         .follow-me {
             font-family: "Freestyle";
             font-size: 2rem;
