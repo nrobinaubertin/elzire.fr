@@ -7,6 +7,38 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class IllustrationController extends Controller
 {
+    public function indexAction($dir)
+    {
+        $illustrationDir = $this->get('kernel')->getRootDir() . '/../data/illustrations/';
+        foreach(scandir($illustrationDir) as $directory) {
+            if(
+                is_dir($illustrationDir.$directory)
+                && preg_match("/".$dir."/i", $directory)
+            ) {
+                $dir = $directory;
+                break;
+            }
+        }
+
+        $illustrations = $this->getFiles($dir);
+
+        $main_image = "";
+        $miniatures = [];
+        foreach($illustrations as $i) {
+            if($i["id"] == "A" && $i["type"] == "") {
+                $main_image = "/image/illustrations/" . $dir . "/" . $i["file"];
+                continue;
+            }
+            if($i["type"] != "") {
+                $miniatures[] = array(
+                    "/miniature/illustrations/" . $dir . "/" . $i["file"],
+                    "/image/illustrations/" . $dir . "/" . $i["main"]
+                );
+                continue;
+            }
+        }
+        return $this->renderHTML($dir, $main_image, $miniatures);
+    }
 
     private function getFiles($dir) {
         $illustrationDir = $this->get('kernel')->getRootDir() . '/../data/illustrations/';
@@ -85,27 +117,5 @@ class IllustrationController extends Controller
             "others" => $others,
             "othersTitle" => "Autres illustrations..."
         ));
-    }
-
-    public function indexAction($dir)
-    {
-        $illustrations = $this->getFiles($dir);
-
-        $main_image = "";
-        $miniatures = [];
-        foreach($illustrations as $i) {
-            if($i["id"] == "A" && $i["type"] == "") {
-                $main_image = "/image/illustrations/" . $dir . "/" . $i["file"];
-                continue;
-            }
-            if($i["type"] != "") {
-                $miniatures[] = array(
-                    "/miniature/illustrations/" . $dir . "/" . $i["file"],
-                    "/image/illustrations/" . $dir . "/" . $i["main"]
-                );
-                continue;
-            }
-        }
-        return $this->renderHTML($dir, $main_image, $miniatures);
     }
 }

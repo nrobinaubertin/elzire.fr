@@ -49,7 +49,7 @@ class ListController extends Controller
             // if we have a miniature, then we fill the infos for this collection
             if($miniature != "") {
                 $image = "/miniature".$location.$collection."/".$miniature;
-                $url = $location.$collection;
+                $url = strtolower($location.preg_replace("/^\d+[_-]+/","",$collection));
                 $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($listDir.$collection."/".$miniature));
                 $infos[] = array(
                     "name" => $name,
