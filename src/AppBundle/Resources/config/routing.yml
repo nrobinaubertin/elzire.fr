@@ -41,6 +41,10 @@ mariageList:
         categoryName: "Mariages"
       }
 
+collection_mariage:
+    path: /mariages/{dir}
+    defaults: { _controller: AppBundle:Collection:index }
+
 illutration:
     path: /illustrations/{dir}
     defaults: { _controller: AppBundle:Illustration:index }
