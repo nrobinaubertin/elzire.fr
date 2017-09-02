@@ -3,8 +3,48 @@
 {% block title %}Elzire collection{% endblock %}
 
 {% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!--
+        <div class="col-3 green-header">
+            {% for other in others %}
+            <a href="{{ other['url'] }}">
+                <div class="">
+                    {{ other['name'] }}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        -->
+        <div class="col-12">
+            <div class="mb-4">
+                <div class="img-card">
+                    <img src="{{ main_image }}" class="img-fluid img-fill"/>
+                    <div class="big-title-footer">
+                        Ceci est un texte qui doit être écrit par Elzire.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for element in elements %}
+                <a href="{{ element['url'] }}" class="col-4 mb-4">
+                    <div class="img-card">
+                        <img src="{{ element['miniature'] }}" class="img-fluid img-fill"/>
+                        <div class="title-footer">
+                            {{ element['name'] }}
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 
 {% block other %}
+{% endblock %}
+
+{% block end_body %}
 {% endblock %}
