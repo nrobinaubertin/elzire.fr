@@ -5,22 +5,16 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-7">
-            <div class="mx-1 mb-3 row">
-                <div class="col">
-                    <img src="http://localhost/placeholder.png" class="img-fluid"/>
-                </div>
+        <div class="col-12 col-lg-8">
+            <div class="mb-4 text-center bg-faded">
+                <img role="button" onclick="$.fancybox.open(window.gallery).jumpTo(0)" class="img-fluid main-image" src="/image/{{ base_url }}{{main_image}}"/>
             </div>
-            <div class="mx-5 row">
-                <div class="col-4 text-center">
-                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                </div>
-                <div class="col-4 text-center">
-                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                </div>
-                <div class="col-4 text-center">
-                    <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                </div>
+            <div class="row">
+                {% for image in images %}
+                <a data-fancybox="gallery" href="/image/{{ base_url }}{{ image }}" class="col-6 col-sm-4 col-lg-3 mb-4">
+                    <img class="img-fluid img-fill" src="/miniature/{{ base_url }}{{ image }}"/>
+                </a>
+                {% endfor %}
             </div>
             <div class="m-1 row">
                 <p>
@@ -30,84 +24,29 @@
                 </p>
             </div>
         </div>
-        <div class="col-4 pt-2 bg-faded">
+        <div class="col-4 pt-2 bg-faded hidden-md-down">
             <div class="container text-center">
                 Dans la même collection
             </div>
             <div class="row p-2">
-                <div class="col-6 text-center">
+                {% for other in others %}
+                <a href="{{ other['url'] }}" class="col-6 text-center mb-3">
                     <div class="img-card">
-                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                        <div class="title-footer">
-                            ceci est un titre
+                        <img src="/miniature/{{ base_url }}{{ other['miniature'] }}" class="img-fluid img-fill"/>
+                        <div class="green-title-footer">
+                            {{ other['name'] }}
                         </div>
                     </div>
-                </div>
-                <div class="col-6 text-center">
-                    <div class="img-card">
-                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                        <div class="title-footer">
-                            ceci est un titre
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-6 text-center">
-                    <div class="img-card">
-                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                        <div class="title-footer">
-                            ceci est un titre
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 text-center">
-                    <div class="img-card">
-                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                        <div class="title-footer">
-                            ceci est un titre
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-6 text-center">
-                    <div class="img-card">
-                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                        <div class="title-footer">
-                            ceci est un titre
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 text-center">
-                    <div class="img-card">
-                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                        <div class="title-footer">
-                            ceci est un titre
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row p-2">
-                <div class="col-6 text-center">
-                    <div class="img-card">
-                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                        <div class="title-footer">
-                            ceci est un titre
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 text-center">
-                    <div class="img-card">
-                        <img src="http://localhost/placeholder-squared.png" class="img-fluid"/>
-                        <div class="title-footer">
-                            ceci est un titre
-                        </div>
-                    </div>
-                </div>
+                </a>
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
 
+{% block end_body %}
+<script>
+    window.gallery = $('[data-fancybox="gallery"]').fancybox();
+</script>
 {% endblock %}

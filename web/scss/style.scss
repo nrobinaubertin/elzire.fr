@@ -191,10 +191,21 @@ nav {
         max-height: 50%;
         background-color: rgba(255, 255, 255, 0.9);
     }
+    .green-title-footer {
+        padding: 0.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        max-height: 50%;
+        color: white;
+        background-color: rgba($elzire-green, 0.9);
+    }
     .big-title-footer {
         padding: 1rem;
         font-size: 1.5rem;
-        color: white;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -203,6 +214,7 @@ nav {
         width: 100%;
         max-height: 50%;
         min-height: 15%;
+        color: white;
         background-color: rgba($elzire-green, 0.9);
     }
 }
