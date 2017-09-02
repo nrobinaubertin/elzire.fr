@@ -19,7 +19,7 @@
         <div class="col-12">
             <div class="mb-4">
                 <div class="img-card">
-                    <img src="{{ main_image }}" class="img-fluid img-fill"/>
+                    <img src="{{ main_image }}" class="img-fluid"/>
                     <div class="big-title-footer">
                         Ceci est un texte qui doit être écrit par Elzire.
                     </div>
@@ -27,7 +27,7 @@
             </div>
             <div class="row">
                 {% for element in elements %}
-                <a href="{{ element['url'] }}" class="col-4 mb-4">
+                <a href="{{ element['url'] }}" class="col-6 col-md-4 col-xl-3 mb-4">
                     <div class="img-card">
                         <img src="{{ element['miniature'] }}" class="img-fluid img-fill"/>
                         <div class="title-footer">

@@ -14,13 +14,13 @@
 <div class="container-fluid mx-auto">
 
     <div class="mb-4 text-center bg-faded">
-        <img role="button" onclick="$.fancybox.open(window.gallery).jumpTo(0)" class="img-fluid img-fill main-image" src="{{ main_image }}"/>
+        <img role="button" onclick="$.fancybox.open(window.gallery).jumpTo(0)" class="img-fluid main-image" src="{{ main_image }}"/>
     </div>
 
     <div class="row">
 
         {% for mini in miniatures %}
-        <a data-fancybox="gallery" href="{{ mini[1] }}" class="col-4 col-sm-3 col-md-2 mb-4">
+        <a data-fancybox="gallery" href="{{ mini[1] }}" class="col-6 col-sm-4 col-md-3 col-xl-2 mb-4">
             <img class="img-fluid img-fill" src="{{ mini[0] }}"/>
         </a>
         {% endfor %}
