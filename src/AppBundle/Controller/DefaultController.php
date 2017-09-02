@@ -12,11 +12,11 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-        return $this->render('AppBundle:Default:landing.html.twig');
+        return $this->render('@App/landing.html.twig');
     }
     public function elementAction(Request $request)
     {
-        return $this->render('AppBundle:Default:element.html.twig');
+        return $this->render('@App/element.html.twig');
     }
     public function imageAction($path, Request $request)
     {

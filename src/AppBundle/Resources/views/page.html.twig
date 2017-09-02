@@ -1,149 +1,134 @@
 {% extends 'AppBundle::base.html.twig' %}
 
 {% block body %}
-    {% block header %}
-        <header class="page-header">
-            <div class="surlignage"></div>
-            <div class="en-tete container pos-r">
-                <div class="container mx-auto">
-                    <div class="logo d-flex justify-content-center justify-content-md-start align-items-center">
-                        <img src="{{ asset('assets/logo.png') }}" class="logo-img rounded-circle my-3 p-2" />
-                        <img src="{{ asset('assets/elzire.png') }}" class="elzire-img hidden-sm-down"/>
-                    </div>
-                    <div class="fleurs container"></div>
-                </div>
+{% block header %}
+<header class="page-header">
+    <div class="surlignage"></div>
+    <div class="en-tete container pos-r">
+        <div class="container mx-auto">
+            <div class="logo d-flex justify-content-center justify-content-md-start align-items-center">
+                <img src="{{ asset('assets/logo.png') }}" class="logo-img rounded-circle my-3 p-2" />
+                <img src="{{ asset('assets/elzire.png') }}" class="elzire-img hidden-sm-down"/>
             </div>
-        </header>
-    {% endblock %}
-
-    {% block navbar %}
-        <div class="container mb-2">
-            <nav class="navbar navbar-light navbar-toggleable-sm">
-                <div class="container mx-auto">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <div class="navbar-nav justify-content-around">
-                            <a href="/" class="nav-item nav-link">Accueil</a>
-                            <a href="#" class="nav-item nav-link disabled" data-toggle="tooltip" data-placement="bottom" title="Très prochainement !">Faire-parts</a>
-                            <a href="/illustrations" class="nav-item nav-link">Illustrations</a>
-                            <a href="#" class="nav-item nav-link disabled">A propos</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            <div class="fleurs container"></div>
         </div>
-    {% endblock %}
-
-    <div class="container mx-auto">
-
-        {% block contentHeader %}
-            <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-12">
-
-                        {% block breadcrumbs %}
-                            <nav class="breadcrumb">
-                                {% for breadcrumb in breadcrumbs %}
-                                    {% if loop.last %}
-                                        <span class="breadcrumb-item active">{{ breadcrumb[1] }}</span>
-                                    {% else %}
-                                        <a class="breadcrumb-item" href="{{ breadcrumb[0] }}">{{ breadcrumb[1] }}</a>
-                                    {% endif %}
-                                {% endfor %}
-                            </nav>
-                        {% endblock %}
-
-                        <div class="breadcrumb-separator mb-3"></div>
-
-                        {% block underTitle %}
-                            <div class="mb-3">
-                                <h5 class="elziregreen">
-                                    {{ categorie }}
-                                </h5>
-                                <h2>
-                                    {{ title }}
-                                    <small>
-                                        <i style="font-size: 0.5rem;position:relative;bottom:0.35rem" class="fa fa-circle"></i> 
-                                        <span class="elziregreen">Carton réponse</span>
-                                    </small>
-                                </h2>
-                            </div>
-                        {% endblock %}
-
-                    </div>
-                </div>
-            </div>
-        {% endblock %}
-
-        {% block content %}
-        {% endblock %}
-
-        {% block other %}
-            <div class="container other pt-2 my-5">
-                <p>
-                {{ othersTitle }}
-                </p>
-                <div class="px-1 px-sm-2 px-md-5 py-3 row">
-                    {% for el in others %}
-                        <a href="{{ el["url"] }}" class="col-4 text-center">
-                            <img src="{{ el["image"] }}" class="img-fluid"/>
-                        </a>
-                    {% endfor %}
-                </div>
-            </div>
-        {% endblock %}
-
     </div>
+</header>
+{% endblock %}
 
-
-    {% block footer %}
-        <footer>
-            <div class="container-fluid mx-auto mx-md-5">
-                <div class="row d-flex justify-content-around">
-                    <div class="my-3 mx-2 py-1 col-6 d-flex align-items-center justify-content-center copyright hidden-xs-down">
-                        <div>
-                            Copyright © 2017 - 2018 par Elzire <span class="hidden-lg-down">/ N°Siret 000 000 000 00000</span>
-                        </div>
-                    </div>
-                    <div class="col-5 d-flex align-items-center justify-content-center follow my-2">
-                        <span class="mr-2 hidden-lg-down follow-me"> Suivez-moi ! </span>
-                        <a href="#" class="d-flex align-items-center">
-                            <span class="fa-stack fa-2x">
-                                <span class="fa fa-circle fa-stack-2x"></span>
-                                <span class="fa fa-facebook fa-stack-1x"></span>
-                            </span>
-                        </a>
-                        <a href="#" class="d-flex align-items-center">
-                            <span class="fa-stack fa-2x">
-                                <span class="fa fa-circle fa-stack-2x"></span>
-                                <span class="fa fa-instagram fa-stack-1x"></span>
-                            </span>
-                        </a>
-                        <a href="#" class="d-flex align-items-center">
-                            <span class="fa-stack fa-2x">
-                                <span class="fa fa-circle fa-stack-2x"></span>
-                                <span class="fa fa-pinterest-p fa-stack-1x"></span>
-                            </span>
-                        </a>
-                        <a href="#" class="d-flex align-items-center">
-                            <span class="fa-stack fa-2x">
-                                <span class="fa fa-circle fa-stack-2x"></span>
-                                <span class="cv"><span class="mon">mon</span><br>CV</span>
-                            </span>
-                        </a>
-                    </div>
+{% block navbar %}
+<div class="container mb-2">
+    <nav class="navbar navbar-light navbar-toggleable-sm">
+        <div class="container mx-auto">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav justify-content-around">
+                    <a href="/" class="nav-item nav-link">Accueil</a>
+                    <a href="#" class="nav-item nav-link disabled" data-toggle="tooltip" data-placement="bottom" title="Très prochainement !">Faire-parts</a>
+                    <a href="/illustrations" class="nav-item nav-link">Illustrations</a>
+                    <a href="#" class="nav-item nav-link disabled">A propos</a>
                 </div>
             </div>
-        </footer>
+        </div>
+    </nav>
+</div>
+{% endblock %}
+
+<div class="container mx-auto">
+
+    {% block contentHeader %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12">
+
+                {% block breadcrumbs %}
+                <nav class="breadcrumb">
+                    {% for breadcrumb in breadcrumbs %}
+                    {% if loop.last %}
+                    <span class="breadcrumb-item active">{{ breadcrumb[1] }}</span>
+                    {% else %}
+                    <a class="breadcrumb-item" href="{{ breadcrumb[0] }}">{{ breadcrumb[1] }}</a>
+                    {% endif %}
+                    {% endfor %}
+                </nav>
+                {% endblock %}
+
+                <div class="breadcrumb-separator mb-3"></div>
+
+                {% block underTitle %}
+                <div class="mb-3">
+                    <h5 class="elziregreen">
+                        {{ categorie }}
+                    </h5>
+                    <h2>
+                        {{ title }}
+                        <small>
+                            <i style="font-size: 0.5rem;position:relative;bottom:0.35rem" class="fa fa-circle"></i> 
+                            <span class="elziregreen">Carton réponse</span>
+                        </small>
+                    </h2>
+                </div>
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
     {% endblock %}
 
-    {% block end_body %}
-        <script>
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
-            })
-        </script>
+    {% block content %}
     {% endblock %}
+
+</div>
+
+
+{% block footer %}
+<footer>
+    <div class="container-fluid mx-auto mx-md-5">
+        <div class="row d-flex justify-content-around">
+            <div class="my-3 mx-2 py-1 col-6 d-flex align-items-center justify-content-center copyright hidden-xs-down">
+                <div>
+                    Copyright © 2017 - 2018 par Elzire <span class="hidden-lg-down">/ N°Siret 000 000 000 00000</span>
+                </div>
+            </div>
+            <div class="col-5 d-flex align-items-center justify-content-center follow my-2">
+                <span class="mr-2 hidden-lg-down follow-me"> Suivez-moi ! </span>
+                <a href="#" class="d-flex align-items-center">
+                    <span class="fa-stack fa-2x">
+                        <span class="fa fa-circle fa-stack-2x"></span>
+                        <span class="fa fa-facebook fa-stack-1x"></span>
+                    </span>
+                </a>
+                <a href="#" class="d-flex align-items-center">
+                    <span class="fa-stack fa-2x">
+                        <span class="fa fa-circle fa-stack-2x"></span>
+                        <span class="fa fa-instagram fa-stack-1x"></span>
+                    </span>
+                </a>
+                <a href="#" class="d-flex align-items-center">
+                    <span class="fa-stack fa-2x">
+                        <span class="fa fa-circle fa-stack-2x"></span>
+                        <span class="fa fa-pinterest-p fa-stack-1x"></span>
+                    </span>
+                </a>
+                <a href="#" class="d-flex align-items-center">
+                    <span class="fa-stack fa-2x">
+                        <span class="fa fa-circle fa-stack-2x"></span>
+                        <span class="cv"><span class="mon">mon</span><br>CV</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+
+{% block end_body %}
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+{% endblock %}
 {% endblock %}

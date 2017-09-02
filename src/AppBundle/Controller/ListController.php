@@ -64,7 +64,7 @@ class ListController extends Controller
             ["/", "Accueil"],
             [$canonicalUrl, $categoryName]
         );
-        return $this->render('AppBundle:Default:list.html.twig', array(
+        return $this->render('@App/list.html.twig', array(
             "list" => $infos,
             "categorie" => $categoryName,
             "title" => $categoryName,
