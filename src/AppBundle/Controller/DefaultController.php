@@ -21,13 +21,13 @@ class DefaultController extends Controller
     public function imageAction($path, Request $request)
     {
         $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
-        ImageWorker::displayImage($path, 1024, 1024);
+        ImageWorker::displayImage($path, 1200, 1200);
         return new Response("");
     }
     public function miniatureAction($path, Request $request)
     {
         $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
-        ImageWorker::displayMiniature($path);
+        ImageWorker::displayMiniature($path, 400);
         return new Response("");
     }
 }

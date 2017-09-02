@@ -23,9 +23,9 @@ class ImageWorker
         return $im;
     }
 
-    public function displayMiniature($source)
+    public function displayMiniature($source, $size)
     {
-        $filename = sys_get_temp_dir()."/".sha1($source.$width.$height);
+        $filename = sys_get_temp_dir()."/".sha1($source.$size);
         if (file_exists($filename)) {
             header("Content-Type: image/jpeg");
             readfile($filename);
@@ -41,7 +41,7 @@ class ImageWorker
 			return false;
 		}
 
-		$im->cropThumbnailImage(250, 250);
+		$im->cropThumbnailImage($size, $size);
 		$im->setImageFormat('jpeg');
 		$im->setImageCompression(\Imagick::COMPRESSION_JPEG);
 		$im->setImageCompressionQuality(90);
