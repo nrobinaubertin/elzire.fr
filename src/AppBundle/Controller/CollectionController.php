@@ -8,44 +8,44 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CollectionController extends Controller
 {
-    public function indexAction($dir)
+    public function indexAction($collection)
     {
         // first we find the root directory of the collection
-        $collectionDir = $this->get('kernel')->getRootDir() . '/../data/mariages/';
-        foreach(scandir($collectionDir) as $directory) {
+        $listDir = $this->get('kernel')->getRootDir() . '/../data/mariages/';
+        foreach(scandir($listDir) as $directory) {
             if(
-                is_dir($collectionDir.$directory)
-                && preg_match("/".$dir."/i", $directory)
+                is_dir($listDir.$directory)
+                && preg_match("/".$collection."/i", $directory)
             ) {
-                $dir = $directory;
+                $collectionDir = $directory;
                 break;
             }
         }
 
-        $infos = $this->getFiles($collectionDir.$dir);
+        $infos = $this->getFiles($listDir, $collectionDir);
 
-        $main_image = "/image/mariages/" . $dir . "/" . $infos["main_image"];
+        $main_image = "/image/mariages/" . $collectionDir . "/" . $infos["main_image"];
         foreach($infos["elements"] as $k=>$v) {
-            $infos["elements"][$k]["miniature"] = "/miniature/mariages/" . $dir . "/" . $v["miniature"];
+            $infos["elements"][$k]["miniature"] = "/miniature/mariages/" . $collectionDir . "/" . $v["miniature"];
         }
-        return $this->renderHTML($dir, $main_image, $infos["elements"]);
+        return $this->renderHTML($collectionDir, $main_image, $infos["elements"]);
     }
 
-    public function getFiles($dir)
+    public function getFiles($listDir, $collectionDir)
     {
         // now we need to find all the elements of the collection
         $elements = [];
         $main_image = "";
-        foreach(scandir($dir) as $elementDir) {
+        foreach(scandir($listDir.$collectionDir) as $elementDir) {
             if($elementDir == "." || $elementDir == ".." || is_file($elementDir)) {
                 continue;
             }
             // the "presentation" dir is here only for the main_image
             if(preg_match("/^\d+[_-]presentation/",$elementDir)) {
-                foreach(scandir($dir."/".$elementDir) as $file) {
+                foreach(scandir($listDir.$collectionDir."/".$elementDir) as $file) {
                     if(
-                        is_file($dir."/".$elementDir."/".$file)
-                        && preg_match("/image/", mime_content_type($dir."/".$elementDir."/".$file))
+                        is_file($listDir.$collectionDir."/".$elementDir."/".$file)
+                        && preg_match("/image/", mime_content_type($listDir.$collectionDir."/".$elementDir."/".$file))
                     ) {
                         $main_image = $elementDir."/".$file;
                         break;
@@ -55,13 +55,13 @@ class CollectionController extends Controller
             }
             $element = array(
                 "name" => $this->getName($elementDir),
-                "url" => $this->getNiceUrl($elementDir)
+                "url" => $this->getNiceUrl($collectionDir."/".$elementDir)
             );
             // let's find the miniature for this element
-            foreach(scandir($dir."/".$elementDir) as $file) {
+            foreach(scandir($listDir.$collectionDir."/".$elementDir) as $file) {
                 if(
-                    is_file($dir."/".$elementDir."/".$file)
-                    && preg_match("/image/", mime_content_type($dir."/".$elementDir."/".$file))
+                    is_file($listDir.$collectionDir."/".$elementDir."/".$file)
+                    && preg_match("/image/", mime_content_type($listDir.$collectionDir."/".$elementDir."/".$file))
                     && preg_match("/^V/", $file)
                 ) {
                     $element["miniature"] = $elementDir."/".$file;
@@ -79,7 +79,7 @@ class CollectionController extends Controller
     }
 
     private function getNiceUrl($url) {
-        return strtolower(preg_replace("/^\d+[_-]+/","", $url));
+        return strtolower(preg_replace("/\d+[_-]+/","", $url));
     }
 
     private function getName($str) {
@@ -88,18 +88,18 @@ class CollectionController extends Controller
         return $name;
     }
 
-    private function renderHTML($dir, $main_image, $elements) {
-        $title = $this->getName($dir);
+    private function renderHTML($collectionDir, $main_image, $elements) {
+        $collection = $this->getName($collectionDir);
         $breadcrumbs = array(
             ["/", "Accueil"],
             ["/mariages", "Mariages"],
-            ["/mariages/".$dir, $title] 
+            ["/mariages/".$collectionDir, $collection] 
         );
         
         $others = [];
-        $collectionDir = $this->get('kernel')->getRootDir() . '/../data/mariages/';
-        foreach(scandir($collectionDir) as $e) {
-            if($e == "." || $e == ".." || !is_dir($collectionDir.$e)) {
+        $listDir = $this->get('kernel')->getRootDir() . '/../data/mariages/';
+        foreach(scandir($listDir) as $e) {
+            if($e == "." || $e == ".." || !is_dir($listDir.$e)) {
                 continue;
             }
             $others[] = array(
@@ -112,7 +112,7 @@ class CollectionController extends Controller
             "main_image" => $main_image,
             "elements" => $elements,
             "breadcrumbs" => $breadcrumbs,
-            "categorie" => "Mariages - ".$title,
+            "categorie" => $collection,
             "others" => $others,
             "title" => "",
             "subtitle" => "",
