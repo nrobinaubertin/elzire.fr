@@ -72,22 +72,6 @@ nav {
     }
 }
 
-// bootstrap fix : https://github.com/twbs/bootstrap/issues/21611
-// will be fixed for beta1 
-.carousel-item.active, .carousel-item-next, .carousel-item-prev {
-    display: block !important;
-}
-
-.carousel-indicators {
-    justify-content: flex-end !important;
-    margin-right: 2% !important;
-    margin-left: 2% !important;
-
-    li {
-        border-radius: 100%;
-    }
-}
-
 .elzire-carousel-caption {
     position: absolute;
     right: 2rem ;
@@ -349,4 +333,9 @@ footer {
 
 .bg-white {
     background-color: white;
+}
+
+.others-carousel-indicators {
+    position: static !important;
+    margin-top: 1rem;
 }

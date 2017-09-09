@@ -133,3 +133,11 @@
 
 {% block other %}
 {% endblock %}
+
+{% block end_body %}
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+{% endblock %}

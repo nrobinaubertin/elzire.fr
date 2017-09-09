@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid mb-3">
     <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
             <div class="mb-4 text-center bg-faded">
@@ -48,17 +48,38 @@
             <div class="container text-center">
                 Dans la même collection
             </div>
-            <div class="row p-2">
-                {% for other in others %}
-                <a href="{{ other['url'] }}" class="col-6 text-center mb-3">
-                    <div class="img-card">
-                        <img src="/miniature/{{ base_url }}{{ other['miniature'] }}" class="img-fluid img-fill"/>
-                        <div class="green-title-footer">
-                            {{ other['name'] }}
+            <div id="others" class="carousel slide" data-interval="false">
+                <ol class="carousel-indicators others-carousel-indicators">
+                    {% for other in others %}
+                    {% if loop.index0 % 8 == 0 %}
+                    <li data-target="#others" data-slide-to="{{ loop.index0 // 8 }}"
+                        {% if loop.index0 == 0 %} class="active" {% endif %}
+                        ></li>
+                    {% endif %}
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row p-2"> 
+                            {% for other in others %}
+                            <a href="{{ other['url'] }}" class="col-6 text-center mb-3">
+                                <div class="img-card">
+                                    <img src="/miniature/{{ base_url }}{{ other['miniature'] }}" class="img-fluid img-fill"/>
+                                    <div class="green-title-footer">
+                                        {{ other['name'] }}
+                                    </div>
+                                </div>
+                            </a>
+                            {% if loop.index % 8 == 0 %}
                         </div>
                     </div>
-                </a>
-                {% endfor %}
+                    <div class="carousel-item">
+                        <div class="row p-2"> 
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
