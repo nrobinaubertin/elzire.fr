@@ -2,20 +2,40 @@
 
 {% block title %}Elzire collection{% endblock %}
 
+{% block underTitle %}
+{% endblock %}
+
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid mt-2">
     <div class="row">
-        <div class="col-3">
-            <div class="green-separator mb-1"></div>
-            {% for other in others %}
-            <a href="{{ other['url'] }}">
-                <div class="">
-                    {{ other['name'] }}
+        <div class="d-none d-lg-block col-3">
+            <div class="green-separator mb-3"></div>
+            <div class="mb-3">
+                <h5 class="elziregreen">
+                    {{ categorie }}
+                </h5>
+            </div>
+            <div class="bg-white pb-2">
+                <div class="green-separator mb-2"></div>
+                <div class="px-2">
+                    <h6 class="elziregreen">
+                        AUTRES THÈMES
+                        <br/>
+                        <small class="elziregreen">
+                            DANS LES COLLECTIONS MARIAGE
+                        </small>
+                    </h6>
+                    {% for other in others %}
+                    <a href="{{ other['url'] }}">
+                        <div class="">
+                            {{ other['name'] }}
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
-            </a>
-            {% endfor %}
+            </div>
         </div>
-        <div class="col-9">
+        <div class="col-12 col-lg-9">
             <div class="mb-4">
                 <div class="img-card">
                     <img src="{{ main_image }}" class="img-fluid"/>
@@ -26,7 +46,7 @@
             </div>
             <div class="row">
                 {% for element in elements %}
-                <a href="{{ element['url'] }}" class="col-6 col-md-4 col-xl-4 mb-4">
+                <a href="{{ element['url'] }}" class="col-6 col-md-4 col-xl-4 mb-4 color-black">
                     <div class="img-card">
                         <img src="{{ element['miniature'] }}" class="img-fluid img-fill"/>
                         <div class="title-footer">

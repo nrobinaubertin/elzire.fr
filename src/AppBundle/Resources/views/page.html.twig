@@ -39,12 +39,12 @@
 <div class="container mx-auto">
 
     {% block contentHeader %}
-    <div class="container-fluid mb-3">
+    <div class="container-fluid mb-1">
         <div class="row justify-content-center">
             <div class="col-12">
 
                 {% block breadcrumbs %}
-                <nav class="breadcrumb">
+                <nav class="breadcrumb py-0">
                     {% for breadcrumb in breadcrumbs %}
                     {% if loop.last %}
                     <span class="breadcrumb-item active">{{ breadcrumb[1] }}</span>
@@ -55,9 +55,8 @@
                 </nav>
                 {% endblock %}
 
-                <div class="green-separator mb-3"></div>
-
                 {% block underTitle %}
+                <div class="w-25 green-separator mb-3"></div>
                 <div class="mb-3">
                     <h5 class="elziregreen">
                         {{ categorie }}

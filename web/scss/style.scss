@@ -132,7 +132,7 @@ nav {
 
 .page-header {
     .surlignage {
-        height: 1rem;
+        height: 0.6rem;
         background: rgba($elzire-green, 0.7);
     }
     .en-tete {
@@ -336,23 +336,16 @@ footer {
     max-height: 90vh;
 }
 
-// .green-header:before {
-//     content: '';
-//     background-color: #00A98D;
-//     height: 2px;
-//     width: 100%;
-//     display: block;
-//     margin-bottom: 0.5rem;
-// }
-// .breadcrumb-separator {
-//     height: 2px;
-//     width: 12rem;
-//     max-width: 100%;
-//     background: $elzire-green;
-// }
 .green-separator {
-    width: 12rem;
-    height: 2px;
-    max-width: 100%;
+    width: 100%;
+    height: 4px;
     background: $elzire-green;
+}
+
+.color-black {
+    color: black !important;
+}
+
+.bg-white {
+    background-color: white;
 }
