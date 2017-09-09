@@ -21,7 +21,9 @@ class DefaultController extends Controller
     public function imageAction($path, Request $request)
     {
         $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
-        ImageWorker::displayImage($path, 1200, 1200);
+        $watermark = $this->get('kernel')->getRootDir()."/../web/assets/watermark.png";
+
+        ImageWorker::displayImage($path, 1200, 1200, $watermark);
         return new Response("");
     }
     public function miniatureAction($path, Request $request)
