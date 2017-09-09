@@ -172,7 +172,7 @@ nav {
         bottom: 0px;
         width: 100%;
         max-height: 50%;
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(255, 255, 255, 0.8);
     }
     .green-title-footer {
         padding: 0.3rem;
@@ -184,7 +184,7 @@ nav {
         width: 100%;
         max-height: 50%;
         color: white;
-        background-color: rgba($elzire-green, 0.7);
+        background-color: rgba($elzire-green, 0.8);
     }
     .big-title-footer {
         padding: 1rem;
@@ -198,7 +198,7 @@ nav {
         max-height: 50%;
         min-height: 15%;
         color: white;
-        background-color: rgba($elzire-green, 0.7);
+        background-color: rgba($elzire-green, 0.8);
     }
 }
 
@@ -281,14 +281,13 @@ footer {
 
 .round-link {
     font-size: 1.2rem;
-    width: 120px;
-    height: 120px;
+    width: 125px;
+    height: 125px;
     border-radius: 100%;
     border: 1px solid black;
     padding: 1rem;
     color: black;
-    text-decoration: none;
-
+    text-decoration: none !important;
 
     .mes {
         font-size: 2rem;
@@ -328,6 +327,17 @@ footer {
     margin-top: 1rem;
 
     li {
-        height: 30px;
+        height: 1rem;
+        width: 1rem;
+        border-radius: 100%;
+        background-color: rgba($elzire-green, 0.3);
+
+        &.active {
+            background-color: rgba($elzire-green, 0.6);
+        }
     }
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
