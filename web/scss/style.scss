@@ -40,8 +40,11 @@
     font-family: "Roboto-Light";
 }
 
+$bg-color: #f8f9fa; 
+
 body {
     overflow-x: hidden;
+    background: $bg-color;
 }
 
 .pos-r {
@@ -63,6 +66,7 @@ body {
 .breadcrumb {
     margin-bottom: 0rem !important;
     font-size: 0.8rem !important;
+    background: transparent !important;
 }
 
 nav {
@@ -98,6 +102,7 @@ nav {
     .en-tete {
         .logo-img {
             height: 12rem;
+            background: $bg-color;
         }
 
         .header-separator {
@@ -271,23 +276,6 @@ footer {
         .fa-stack:hover {
             color: rgba(255, 255, 255, 0.95);
         }
-        .cv {
-            color: $bg-footer;
-            font-size: 0.6em;
-            line-height: 1.1em;
-            display: block;
-            position: absolute;
-            top: calc(50% - 0.1em);
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-
-            .mon {
-                font-family: "Freestyle";
-                font-size: 1.2em;
-                text-transform: capitalize;
-            }
-        }
     }
 }
 
@@ -338,4 +326,8 @@ footer {
 .others-carousel-indicators {
     position: static !important;
     margin-top: 1rem;
+
+    li {
+        height: 30px;
+    }
 }

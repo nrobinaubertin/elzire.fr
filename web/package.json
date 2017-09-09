@@ -19,6 +19,7 @@
         "lazysizes": "^3.0.0",
         "node-sass": "^4.5.2",
         "npm-check-updates": "^2.11.0",
+        "popper.js": "^1.12.5",
         "shx": "^0.2.2"
     }
 }

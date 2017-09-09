@@ -8,7 +8,7 @@
         <div class="container mx-auto">
             <div class="logo d-flex justify-content-center justify-content-md-start align-items-center">
                 <img src="{{ asset('assets/logo.png') }}" class="logo-img rounded-circle my-3 p-2" />
-                <img src="{{ asset('assets/elzire.png') }}" class="elzire-img hidden-sm-down"/>
+                <img src="{{ asset('assets/elzire.png') }}" class="elzire-img d-none d-md-block"/>
             </div>
             <div class="fleurs container"></div>
         </div>
@@ -17,8 +17,8 @@
 {% endblock %}
 
 {% block navbar %}
-<div class="container mb-2">
-    <nav class="navbar navbar-light navbar-toggleable-sm">
+<div class="container mb-2 p-0">
+    <nav class="navbar navbar-light navbar-expand-md p-0">
         <div class="container mx-auto">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -44,7 +44,7 @@
             <div class="col-12">
 
                 {% block breadcrumbs %}
-                <nav class="breadcrumb">
+                <nav class="breadcrumb px-0">
                     {% for breadcrumb in breadcrumbs %}
                     {% if loop.last %}
                     <span class="breadcrumb-item active">{{ breadcrumb[1] }}</span>
@@ -90,13 +90,13 @@
 <footer>
     <div class="container-fluid mx-auto mx-md-5">
         <div class="row d-flex justify-content-around">
-            <div class="my-3 mx-2 py-1 col-6 d-flex align-items-center justify-content-center copyright hidden-xs-down">
+            <div class="my-3 mx-2 py-1 col-6 align-items-center justify-content-center copyright d-none d-sm-flex">
                 <div>
-                    Copyright © 2017 - 2018 par Elzire <span class="hidden-lg-down">/ N°Siret 000 000 000 00000</span>
+                    Copyright © 2017 - 2018 par Elzire <span class="d-none d-lg-inline">/ N°Siret 000 000 000 00000</span>
                 </div>
             </div>
             <div class="col-5 d-flex align-items-center justify-content-center follow my-2">
-                <span class="mr-2 hidden-lg-down follow-me"> Suivez-moi ! </span>
+                <span class="mr-2 d-none d-lg-block follow-me"> Suivez-moi ! </span>
                 <a href="#" class="d-flex align-items-center">
                     <span class="fa-stack fa-2x">
                         <span class="fa fa-circle fa-stack-2x"></span>
@@ -113,12 +113,6 @@
                     <span class="fa-stack fa-2x">
                         <span class="fa fa-circle fa-stack-2x"></span>
                         <span class="fa fa-pinterest-p fa-stack-1x"></span>
-                    </span>
-                </a>
-                <a href="#" class="d-flex align-items-center">
-                    <span class="fa-stack fa-2x">
-                        <span class="fa fa-circle fa-stack-2x"></span>
-                        <span class="cv"><span class="mon">mon</span><br>CV</span>
                     </span>
                 </a>
             </div>
