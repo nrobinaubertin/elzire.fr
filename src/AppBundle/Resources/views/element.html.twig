@@ -2,6 +2,26 @@
 
 {% block title %}Elzire element{% endblock %}
 
+{% block underTitle %}
+<!-- <div class="w-25 green-separator mb-3"></div> -->
+<div class="mb-3">
+    <h5 class="elziregreen">
+        {{ categorie }}
+    </h5>
+    {% if title %}
+    <h2>
+        {{ title }}
+        {% if subtitle %}
+        <small>
+            <i style="font-size: 0.5rem;position:relative;bottom:0.35rem" class="fa fa-circle"></i> 
+            <span class="elziregreen">{{ subtitle }}</span>
+        </small>
+        {% endif %}
+    </h2>
+    {% endif %}
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid">
     <div class="row justify-content-center">

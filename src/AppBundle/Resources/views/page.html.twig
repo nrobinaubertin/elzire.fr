@@ -39,12 +39,12 @@
 <div class="container mx-auto">
 
     {% block contentHeader %}
-    <div class="container-fluid mb-1">
+    <div class="container-fluid mb-3">
         <div class="row justify-content-center">
             <div class="col-12">
 
                 {% block breadcrumbs %}
-                <nav class="breadcrumb py-0">
+                <nav class="breadcrumb">
                     {% for breadcrumb in breadcrumbs %}
                     {% if loop.last %}
                     <span class="breadcrumb-item active">{{ breadcrumb[1] }}</span>

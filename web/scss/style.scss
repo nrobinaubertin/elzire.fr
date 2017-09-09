@@ -333,12 +333,13 @@ footer {
 }
 
 .main-image {
-    max-height: 90vh;
+    max-height: 80vh;
+    overflow: hidden;
 }
 
 .green-separator {
     width: 100%;
-    height: 4px;
+    height: 3px;
     background: $elzire-green;
 }
 
