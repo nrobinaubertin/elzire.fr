@@ -112,7 +112,7 @@ class CollectionController extends Controller
             "main_image" => $main_image,
             "elements" => $elements,
             "breadcrumbs" => $breadcrumbs,
-            "categorie" => $collection,
+            "categorie" => "COLLECTIONS MARIAGE",
             "others" => $others,
             "title" => "",
             "subtitle" => "",

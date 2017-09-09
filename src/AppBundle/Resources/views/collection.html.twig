@@ -5,8 +5,8 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <!--
-        <div class="col-3 green-header">
+        <div class="col-3">
+            <div class="green-separator mb-1"></div>
             {% for other in others %}
             <a href="{{ other['url'] }}">
                 <div class="">
@@ -15,8 +15,7 @@
             </a>
             {% endfor %}
         </div>
-        -->
-        <div class="col-12">
+        <div class="col-9">
             <div class="mb-4">
                 <div class="img-card">
                     <img src="{{ main_image }}" class="img-fluid"/>
@@ -27,7 +26,7 @@
             </div>
             <div class="row">
                 {% for element in elements %}
-                <a href="{{ element['url'] }}" class="col-6 col-md-4 col-xl-3 mb-4">
+                <a href="{{ element['url'] }}" class="col-6 col-md-4 col-xl-4 mb-4">
                     <div class="img-card">
                         <img src="{{ element['miniature'] }}" class="img-fluid img-fill"/>
                         <div class="title-footer">
