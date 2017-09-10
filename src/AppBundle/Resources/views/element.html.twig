@@ -25,13 +25,13 @@
 {% block content %}
 <div class="container-fluid mb-3">
     <div class="row justify-content-center">
-        <div class="col-12 col-lg-8">
+        <div class="col-60 col-lg-40">
             <div class="mb-4 text-center bg-light">
                 <img role="button" onclick="$.fancybox.open(window.gallery).jumpTo(0)" class="cursor-pointer img-fluid main-image" src="/image/{{ base_url }}{{main_image}}"/>
             </div>
             <div class="row">
                 {% for image in images %}
-                <a data-fancybox="gallery" href="/image/{{ base_url }}{{ image }}" class="col-6 col-sm-4 col-lg-3 mb-4">
+                <a data-fancybox="gallery" href="/image/{{ base_url }}{{ image }}" class="col-30 col-sm-20 col-lg-15 mb-4">
                     <img class="img-fluid img-fill" src="/miniature/{{ base_url }}{{ image }}"/>
                 </a>
                 {% endfor %}
@@ -44,7 +44,7 @@
                 </p>
             </div>
         </div>
-        <div class="col-4 pt-2 bg-light d-none d-lg-block">
+        <div class="col-20 pt-2 bg-light d-none d-lg-block">
             <div class="container text-center">
                 Dans la même collection
             </div>
@@ -62,7 +62,7 @@
                     <div class="carousel-item active">
                         <div class="row p-2"> 
                             {% for other in others %}
-                            <a href="{{ other['url'] }}" class="col-6 text-center mb-3">
+                            <a href="{{ other['url'] }}" class="col-30 text-center mb-3">
                                 <div class="img-card">
                                     <img src="/miniature/{{ base_url }}{{ other['miniature'] }}" class="img-fluid img-fill"/>
                                     <div class="green-title-footer">
