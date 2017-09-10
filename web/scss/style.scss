@@ -42,6 +42,18 @@
 
 $bg-color: #f7f7f7; 
 
+.bg-gray-lightest {
+    background-color: $gray-lightest;
+}
+
+.bg-gray-light {
+    background-color: $gray-light;
+}
+
+.bg-gray {
+    background-color: $gray;
+}
+
 body {
     overflow-x: hidden;
     background: $bg-color;

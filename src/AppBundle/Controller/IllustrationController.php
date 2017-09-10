@@ -106,7 +106,7 @@ class IllustrationController extends Controller
         }
 
         shuffle($others);
-        $others = array_slice($others, 0, 3);
+        $others = array_slice($others, 0, 5);
 
         return $this->render('@App/illustration.html.twig',array(
             "main_image" => $main_image,

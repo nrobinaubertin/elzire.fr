@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container-fluid mt-2">
     <div class="row">
-        <div class="d-none d-lg-block col-20">
+        <div class="d-none d-lg-block col-15">
             <!--<div class="green-separator mb-3"></div>-->
             <div class="mb-3">
                 <h5 class="elziregreen">
@@ -27,7 +27,7 @@
                     </h6>
                     {% for other in others %}
                     <a href="{{ other['url'] }}">
-                        <div class="color-black">
+                        <div class="">
                             {{ other['name'] }}
                         </div>
                     </a>
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-60 col-lg-40">
+        <div class="col-60 col-lg-45">
             <div class="mb-4">
                 <div class="img-card main-image">
                     <img src="{{ main_image }}" class="img-fluid"/>
