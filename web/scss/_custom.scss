@@ -1,5 +1,7 @@
 // Bootstrap overrides
-// elzire.fr theme
+/* 
+ * elzire.fr theme
+ */
 
 // Colors
 
@@ -11,13 +13,17 @@ $gray-lighter: #636c72;
 $gray-lightest: #eceeef;
 $brand-primary: $elzire-green;
 
+// Grid
+
+$grid-columns: 60;
+
 // Body
 
 $body-bg: #f7f7f7;
 
 // Spacing
 
-$spacer: 1rem !default;
+$spacer: 1rem;
 
 // Breadcrumbs
 

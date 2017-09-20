@@ -85,7 +85,7 @@ class CollectionController extends Controller
     private function getName($str) {
         $name = preg_replace("/^\d+[_-](.+)/","$1",$str);
         $name = preg_replace("/[_-]+/"," ",$name);
-        return $name;
+        return ucfirst($name);
     }
 
     private function renderHTML($collectionDir, $main_image, $elements) {
