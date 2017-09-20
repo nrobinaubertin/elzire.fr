@@ -1,14 +1,8 @@
-/*!
- * Bootstrap v4.0.0-beta (https://getbootstrap.com)
- * Copyright 2011-2017 The Bootstrap Authors
- * Copyright 2011-2017 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-@import "custom";
-
 @import "functions";
 @import "variables";
+
+@import "scss/_custom.scss";
+
 @import "mixins";
 @import "print";
 @import "reboot";
@@ -41,3 +35,5 @@
 @import "popover";
 @import "carousel";
 @import "utilities";
+
+@import "scss/style.scss";
