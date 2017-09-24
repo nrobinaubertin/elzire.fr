@@ -87,7 +87,7 @@ class ImageWorker
 
     public function displayImage($source, $width, $height, $watermark)
     {
-        $filename = sys_get_temp_dir()."/".sha1($source.$width.$height);
+        $filename = sys_get_temp_dir()."/".sha1($source.$width.$height.$watermark);
         if (file_exists($filename)) {
             header("Content-Type: image/jpeg");
             readfile($filename);
@@ -105,7 +105,9 @@ class ImageWorker
 
         $im->thumbnailImage($width, $height, true);
 
-        $im = ImageWorker::applyWatermark($im, $watermark);
+        if (!empty($watermark)) {
+            $im = ImageWorker::applyWatermark($im, $watermark);
+        }
 
         $im->setImageFormat('jpeg');
         $im->setImageCompression(\Imagick::COMPRESSION_JPEG);

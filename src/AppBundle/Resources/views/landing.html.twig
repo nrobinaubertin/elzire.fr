@@ -18,121 +18,98 @@
 <div class="mb-5">
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel" data-slide-to="1"></li>
-            <li data-target="#carousel" data-slide-to="2"></li>
+            {% for ban in bannieres %}
+            <li data-target="#carousel" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %}class="active"{% endif %}></li>
+            {% endfor %}
         </ol>
         <div class="carousel-inner" role="listbox">
+            {% for ban in bannieres %}
+            {% if loop.index0 == 0 %}
             <div class="carousel-item active">
-                <img class="d-block img-fluid" src="https://unsplash.it/2200/800/"/>
-                <div class="elzire-carousel-caption d-none d-md-block">
-                    <h3>
-                        Tur aut et experum hit dolent
-                    </h3>
-                    <p>
-                        Laccum estiate
-                    </p>
+                {% else %}
+                <div class="carousel-item">
+                    {% endif %}
+                    <img class="d-block img-fluid" src="{{ ban['url'] }}"/>
+                    <div class="elzire-carousel-caption d-none d-md-block">
+                        <h3>{{ ban["title"] }}</h3>
+                        <p>{{ ban["text"] }}</p>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            <div class="carousel-item">
-                <img class="d-block img-fluid" src="https://unsplash.it/2201/800/"/>
-                <div class="elzire-carousel-caption d-none d-md-block">
-                    <h3>
-                        Tur aut et experum hit dolent
-                    </h3>
-                    <p>
-                        Laccum estiate
-                    </p>
+        </div>
+    </div>
+
+    <div class="container-fluid mb-5" data-interval="10000" data-pause="hover">
+
+        <div class="container mb-5">
+            <!--<h3 style="font-size: 4rem; font-family:Freestyle"> Bonjour ! </h3>-->
+            <p>
+                <strong>Il y a des événements qui valent la peine d’être partagés.</strong>
+                <br/>
+            Que ce soient des mariages, des naissances ou des baptêmes, ces événements sont fondateurs de notre vie familiale et occupent une place importante dans nos coeurs.
+            <br />
+            Je vous accompagne dans leur réalisation en vous proposant des faire-parts élégants qui sauront porter votre message.
+            <br />
+            Du concept à la création, mes collections sont intégralements produites par moi. Mon artisanat et mon professionnalisme vous assureront originalité et une grande qualité d'exécution.
+            <br />
+            Un faire-part à votre image est une invitation réussie et un bon départ pour votre mariage.
+            </p>
+        </div>
+
+        <div class="container mb-5">
+            <div class="row d-flex align-items-start">
+                <div class="col-20 d-flex justify-content-center align-items-center flex-column">
+                    <a href="#" class="round-link d-flex justify-content-center align-items-center flex-column mb-3">
+                        <span class="mes">Mes</span>
+                        <span class="roboto-thin mb-4">faire-parts</span>
+                    </a>
+                    <div class="text-justify">
+                        J’illustre avec passion
+                        des thèmes afin de
+                        réaliser des collection
+                        de faire-part et de jolies
+                        cartes, dont la plupart
+                        sont entièrement
+                        dessinées à la main ou à
+                        la tablette graphique.
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block img-fluid" src="https://unsplash.it/2202/800/"/>
-                <div class="elzire-carousel-caption d-none d-md-block">
-                    <h3>
-                        Tur aut et experum hit dolent
-                    </h3>
-                    <p>
-                        Laccum estiate
-                    </p>
+                <div class="col-20 d-flex justify-content-center align-items-center flex-column">
+                    <a href="/illustrations" class="round-link d-flex justify-content-center align-items-center flex-column mb-3">
+                        <span class="mes">Mes</span>
+                        <span class="roboto-thin mb-4">illustrations</span>
+                    </a>
+                    <div class="text-justify">
+                        Mon loisir N°1,
+                        l’illustration, C’est ici que
+                        je dévoile ma «pâttes»
+                        graphique.
+                        Toujours avec un
+                        mélange de symétrie,
+                        d’élégance et de flore.
+                    </div>
+                </div>
+                <div class="col-20 d-flex justify-content-center align-items-center flex-column">
+                    <a href="#" class="round-link d-flex justify-content-center align-items-center flex-column mb-3">
+                        <span class="mes">A</span>
+                        <span class="roboto-thin mb-4">propos</span>
+                    </a>
+                    <div class="text-justify">
+                        Mes études, mon
+                        parcours professionnel...
+                        ce qui m’a mené à me
+                        lancer dans ce projet
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container-fluid mb-5" data-interval="10000" data-pause="hover">
+    {% endblock %}
 
-    <div class="container mb-5">
-        <h3 style="font-size: 4rem; font-family:Freestyle"> Bonjour ! </h3>
-        <p>
-            Je suis Sabine, dite Elzire. Je suis passionnée et spécialisé dans le print qui adore son métier et qui place la qualité et
-            l’authenticité au premier plan. Je mes en avant
-            Très loin de la production de faire-part faite à la chaîne, je mes en avant l’artisanat, mon style graphique et mon professionalisme. il est
-            primordial pour moi de porter une attention toute particulière à vos créations. Nous échangerons ensemble par mail tout au long de la
-            création et je serai disponible pour vous écouter.
-        </p>
-        <p>
-            Je suis Sabine, dite Elzire. Je suis passionnée et spécialisé dans le print qui adore son métier et qui place la qualité et
-            l’authenticité au premier plan. Je mes en avant
-            Très loin de la production de faire-part faite à la chaîne, je mes en avant l’artisanat, mon style graphique et mon professionalisme. il est
-            primordial pour moi de porter une attention toute particulière à vos créations. Nous échangerons ensemble par mail tout au long de la
-            création et je serai disponible pour vous écouter.
-        </p>
-    </div>
+    {% block other %}
+    {% endblock %}
 
-    <div class="container mb-5">
-        <div class="row d-flex align-items-start">
-            <div class="col-20 d-flex justify-content-center align-items-center flex-column">
-                <a href="#" class="round-link d-flex justify-content-center align-items-center flex-column mb-3">
-                    <span class="mes">Mes</span>
-                    <span class="roboto-thin mb-4">faire-parts</span>
-                </a>
-                <div class="text-justify">
-                    J’illustre avec passion
-                    des thèmes afin de
-                    réaliser des collection
-                    de faire-part et de jolies
-                    cartes, dont la plupart
-                    sont entièrement
-                    dessinées à la main ou à
-                    la tablette graphique.
-                </div>
-            </div>
-            <div class="col-20 d-flex justify-content-center align-items-center flex-column">
-                <a href="/illustrations" class="round-link d-flex justify-content-center align-items-center flex-column mb-3">
-                    <span class="mes">Mes</span>
-                    <span class="roboto-thin mb-4">illustrations</span>
-                </a>
-                <div class="text-justify">
-                    Mon loisir N°1,
-                    l’illustration, C’est ici que
-                    je dévoile ma «pâttes»
-                    graphique.
-                    Toujours avec un
-                    mélange de symétrie,
-                    d’élégance et de flore.
-                </div>
-            </div>
-            <div class="col-20 d-flex justify-content-center align-items-center flex-column">
-                <a href="#" class="round-link d-flex justify-content-center align-items-center flex-column mb-3">
-                    <span class="mes">A</span>
-                    <span class="roboto-thin mb-4">propos</span>
-                </a>
-                <div class="text-justify">
-                    Mes études, mon
-                    parcours professionnel...
-                    ce qui m’a mené à me
-                    lancer dans ce projet
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-{% endblock %}
-
-{% block other %}
-{% endblock %}
-
-{% block end_body %}
-{% endblock %}
+    {% block end_body %}
+    {% endblock %}

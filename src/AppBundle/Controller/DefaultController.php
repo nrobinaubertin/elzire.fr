@@ -10,10 +10,6 @@ use AppBundle\Utils\ImageWorker;
 
 class DefaultController extends Controller
 {
-    public function indexAction(Request $request)
-    {
-        return $this->render('@App/landing.html.twig');
-    }
     public function elementAction(Request $request)
     {
         return $this->render('@App/element.html.twig');
@@ -22,6 +18,14 @@ class DefaultController extends Controller
     {
         $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
         $watermark = $this->get('kernel')->getRootDir()."/../web/assets/watermark.png";
+
+        ImageWorker::displayImage($path, 1200, 1200, $watermark);
+        return new Response("");
+    }
+    public function banniereAction($path, Request $request)
+    {
+        $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
+        $watermark = "";
 
         ImageWorker::displayImage($path, 1200, 1200, $watermark);
         return new Response("");
