@@ -26,7 +26,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav justify-content-around">
                     <a href="/" class="nav-item nav-link">Accueil</a>
-                    <a href="#" class="nav-item nav-link disabled" data-toggle="tooltip" data-placement="bottom" title="Très prochainement !">Faire-parts</a>
+                    <div class="dropdown">
+                        <button class="bg-transparent btn nav-item nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                            Faire-parts
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/mariages">Mariages</a>
+                            <a class="dropdown-item disabled" href="#" data-toggle="tooltip" data-placement="right" title="Très prochainement !">Naissances</a>
+                            <a class="dropdown-item disabled" href="#" data-toggle="tooltip" data-placement="right" title="Très prochainement !">Baptèmes</a>
+                        </div>
+                    </div>
                     <a href="/illustrations" class="nav-item nav-link">Illustrations</a>
                     <a href="#" class="nav-item nav-link disabled">A propos</a>
                 </div>
