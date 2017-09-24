@@ -99,6 +99,10 @@ class ElementController extends Controller
             if($e == "." || $e == ".." || !is_dir($listDir.$e)) {
                 continue;
             }
+            // we exclude the presentation folder
+            if(preg_match("/presentation/", $e)) {
+                continue;
+            }
             foreach(scandir($listDir.$e) as $file) {
                 if(
                     is_file($listDir.$e."/".$file)
