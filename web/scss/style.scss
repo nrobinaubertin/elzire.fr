@@ -1,3 +1,5 @@
+/*
+
 @font-face {
     font-family: "Roboto";
     src: url('/fonts/roboto.ttf') format('truetype');
@@ -29,13 +31,17 @@
 .freestyle {
     font-family: "Freestyle";
 }
+*/
 
-.roboto-thin {
-    font-family: "Roboto-Thin";
+$script-font: "Dancing Script";
+
+.script-font {
+    font-family: $script-font, cursive;
 }
 
-.roboto-light {
-    font-family: "Roboto-Light";
+.roboto-thin, .roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: "300"
 }
 
 $bg-color: #f7f7f7; 
@@ -55,6 +61,8 @@ $bg-color: #f7f7f7;
 body {
     overflow-x: hidden;
     background: $bg-color;
+    font-family: "Roboto", sans-serif;
+    font-weight: "400";
 }
 
 .pos-r {
@@ -257,7 +265,7 @@ nav {
 .other {
     border-top: 1px solid green;
     & > p {
-        font-family: "Freestyle";
+        font-family: $script-font;
         font-size: 2rem;
         color: $gray-light;
     }
@@ -277,7 +285,7 @@ footer {
     .follow {
         font-size: 0.78rem;
         .follow-me {
-            font-family: "Freestyle";
+            font-family: $script-font;
             font-size: 2rem;
         }
         color: white;
@@ -309,7 +317,7 @@ footer {
 
     .mes {
         font-size: 2rem;
-        font-family: "Freestyle";
+        font-family: $script-font;
     }
 
     &:hover {
