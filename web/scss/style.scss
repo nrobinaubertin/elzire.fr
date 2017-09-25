@@ -41,7 +41,12 @@ $script-font: "Dancing Script";
 
 .roboto-thin, .roboto-light {
     font-family: "Roboto", sans-serif;
-    font-weight: "300"
+    font-weight: 300;
+}
+
+@mixin roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
 }
 
 $bg-color: #f7f7f7; 
@@ -61,8 +66,6 @@ $bg-color: #f7f7f7;
 body {
     overflow-x: hidden;
     background: $bg-color;
-    font-family: "Roboto", sans-serif;
-    font-weight: "400";
 }
 
 .pos-r {
@@ -236,7 +239,7 @@ nav {
     display: block;
     text-align: center;
     & > div {
-        font-family: "Roboto-Light";
+        @include roboto-light;
         text-transform: uppercase;
         opacity: 0;
         color: white;
