@@ -39,7 +39,21 @@ $script-font: "Dancing Script";
     font-family: $script-font, cursive;
 }
 
-.roboto-thin, .roboto-light {
+@mixin script-font {
+    font-family: $script-font, cursive;
+}
+
+.roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+}
+
+@mixin roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+}
+
+.roboto-light {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
 }

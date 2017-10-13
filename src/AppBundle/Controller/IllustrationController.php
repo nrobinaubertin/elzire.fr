@@ -10,15 +10,22 @@ class IllustrationController extends Controller
     public function indexAction($dir)
     {
         $illustrationDir = $this->get('kernel')->getRootDir() . '/../data/illustrations/';
+        $tmpDir = "";
+        $levenshtein_score = 10000;
         foreach(scandir($illustrationDir) as $directory) {
             if(
                 is_dir($illustrationDir.$directory)
-                && preg_match("/".$dir."/i", $directory)
+                && stristr($directory, $dir) !== false
             ) {
-                $dir = $directory;
-                break;
+                $l = levenshtein($dir, $directory);
+                if ($l < $levenshtein_score) {
+                    $tmpDir = $directory;
+                    $levenshtein_score = $l;
+                }
             }
         }
+        $dir = $tmpDir;
+
 
         $illustrations = $this->getFiles($dir);
 
@@ -56,6 +63,9 @@ class IllustrationController extends Controller
         foreach($files as $f) {
             $infos = preg_replace("/^(\d+)[_-]([A-Z])([A-Z])?[_-]([a-z\-]+).*/","$1 $2 $3 $4",$f);
             $infos = explode(" ", $infos);
+            if (count($infos) < 4) {
+                throw "ERROR: cannot find infos about illustration. Bad filename.";
+            }
             // look for main file
             foreach($files as $main) {
                 if(preg_match("/^".$infos[0]."[_-]".substr($infos[1], 0, 1)."[_-]".$infos[3].".*/",$main)) {
