@@ -1,39 +1,29 @@
-/*
-
 @font-face {
-    font-family: "Roboto";
-    src: url('/fonts/roboto.ttf') format('truetype');
-    src: url('/fonts/roboto.woff') format('woff');
-    src: url('/fonts/roboto.woff2') format('woff2');
+    font-family: "Roboto-Regular";
+    src: url('/fonts/roboto-400.woff2') format('woff2');
 }
 
 @font-face {
     font-family: "Roboto-Light";
-    src: url('/fonts/roboto-light.ttf') format('truetype');
-    src: url('/fonts/roboto-light.woff') format('woff');
-    src: url('/fonts/roboto-light.woff2') format('woff2');
+    src: url('/fonts/roboto-300.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: "Roboto-Thin";
-    src: url('/fonts/roboto-thin.ttf') format('truetype');
-    src: url('/fonts/roboto-thin.woff') format('woff');
-    src: url('/fonts/roboto-thin.woff2') format('woff2');
+    font-family: "Roboto";
+    src: url('/fonts/roboto-400.woff2') format('woff2');
 }
+
+// @font-face {
+//     font-family: "Roboto-Thin";
+//     src: url('/fonts/roboto-100.woff2') format('woff2');
+// }
 
 @font-face {
-    font-family: "Freestyle";
-    src: url('/fonts/freestyle.ttf') format('truetype');
-    src: url('/fonts/freestyle.woff') format('woff');
-    src: url('/fonts/freestyle.woff2') format('woff2');
+    font-family: "DancingScript";
+    src: url('/fonts/dancingscript.woff2') format('woff2');
 }
 
-.freestyle {
-    font-family: "Freestyle";
-}
-*/
-
-$script-font: "Dancing Script";
+$script-font: "DancingScript";
 
 .script-font {
     font-family: $script-font, cursive;
@@ -43,24 +33,34 @@ $script-font: "Dancing Script";
     font-family: $script-font, cursive;
 }
 
-.roboto-thin {
-    font-family: "Roboto", sans-serif;
-    font-weight: 100;
-}
-
-@mixin roboto-thin {
-    font-family: "Roboto", sans-serif;
-    font-weight: 100;
-}
+// .roboto-thin {
+//     font-family: "Roboto-Thin", sans-serif;
+//     font-weight: 100;
+// }
+// 
+// @mixin roboto-thin {
+//     font-family: "Roboto-Thin", sans-serif;
+//     font-weight: 100;
+// }
 
 .roboto-light {
     font-family: "Roboto", sans-serif;
-    font-weight: 300;
+    font-weight: 300 !important;
 }
 
 @mixin roboto-light {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
+}
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400 !important;
+}
+
+@mixin roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
 }
 
 $bg-color: #f7f7f7; 
@@ -80,6 +80,7 @@ $bg-color: #f7f7f7;
 body {
     overflow-x: hidden;
     background: $bg-color;
+    @include roboto-regular;
 }
 
 .pos-r {
