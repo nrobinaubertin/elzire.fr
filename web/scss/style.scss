@@ -206,8 +206,17 @@ nav {
     }
 }
 
+.zoom-on-hover {
+    transition: 0.2s all;
+    &:hover {
+        transform: scale(1.2);
+    }
+}
+
 .img-card {
     position: relative;
+    overflow: hidden;
+
     .title-footer {
         padding: 0.3rem;
         display: flex;
