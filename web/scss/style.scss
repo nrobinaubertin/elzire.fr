@@ -191,19 +191,22 @@ nav {
         }
 
         .fleurs {
-            background-image: url("/assets/feuilles.png");
-            height: 2.5rem;
             position: absolute;
             bottom: 0;
             left: 0;
-            background-size: 4.3rem;
-            opacity: 0.2;
-            background-color: #efefef;
-            background-position: 0 1.2rem;
-            z-index: -10;
-            width: 100%;
         }
     }
+}
+
+.fleurs {
+    background-image: url("/assets/feuilles.png");
+    height: 2.5rem;
+    background-size: 4.3rem;
+    opacity: 0.2;
+    background-color: #efefef;
+    background-position: 0 1.2rem;
+    z-index: -10;
+    width: 100%;
 }
 
 .zoom-on-hover {
