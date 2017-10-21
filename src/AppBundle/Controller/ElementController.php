@@ -36,7 +36,7 @@ class ElementController extends Controller
         $path = [$listDir, $collectionDir, $elementDir];
         $infos = $this->getFiles($listDir, $collectionDir, $elementDir);
         $base_url = "/mariages/".$collectionDir."/";
-        return $this->renderHTML($path, $infos["main_image"], $infos["images"], $base_url);
+        return $this->renderHTML($path, $infos, $base_url);
     }
 
     public function getFiles($listDir, $collectionDir, $elementDir)
@@ -51,22 +51,34 @@ class ElementController extends Controller
                 $file == "."
                 || $file == ".."
                 || !is_file($fullPath."/".$file)
-                || !preg_match("/image/", mime_content_type($fullPath."/".$file))
             ) {
                 continue;
             }
 
-            if(preg_match("/^V/", $file)) {
-                $main_image = $elementDir."/".$file;
-                array_unshift($images, $elementDir."/".$file);
-            } else {
-                $images[] = $elementDir."/".$file;
+            if ($file == "description.txt") {
+                $description = file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file);
+                $description = nl2br($description);
+                continue;
             }
+
+            if (preg_match("/image/", mime_content_type($fullPath."/".$file))) {
+                if(preg_match("/^V/", $file)) {
+                    $main_image = $elementDir."/".$file;
+                    array_unshift($images, $elementDir."/".$file);
+                } else {
+                    $images[] = $elementDir."/".$file;
+                }
+            }
+        }
+
+        if (!isset($description)) {
+            $description = "";
         }
 
         $infos = array(
             "main_image" => $main_image,
-            "images" => $images
+            "images" => $images,
+            "description" => $description,
         );
         return $infos;
     }
@@ -81,7 +93,7 @@ class ElementController extends Controller
         return $name;
     }
 
-    private function renderHTML($path, $main_image, $images, $base_url) {
+    private function renderHTML($path, $infos, $base_url) {
 
         $collection = $this->getName($path[1]);
         $element = $this->getName($path[2]);
@@ -122,8 +134,9 @@ class ElementController extends Controller
 
         return $this->render('@App/element.html.twig',array(
             "base_url" => $base_url,
-            "main_image" => $main_image,
-            "images" => $images,
+            "main_image" => $infos["main_image"],
+            "images" => $infos["images"],
+            "description" => $infos["description"],
             "breadcrumbs" => $breadcrumbs,
             "categorie" => $collection." - ".$element,
             "others" => $others,
