@@ -34,10 +34,10 @@
                         {% endif %}
                         <img class="d-block img-fluid" src="{{ ban['image'] }}"/>
                         <div class="elzire-carousel-caption d-none d-md-block roboto-light">
-                            <h3 class="roboto-thin">{{ ban["title"] }}</h3>
+                            <h2 class="roboto-thin">{{ ban["title"] }}</h2>
                             <p>{{ ban["text"] }}</p>
                             {% if ban['url'] != "" %}
-                            <p>Cliquez pour découvrir la collection</p>
+                            <p class="roboto-regular"><small>Cliquez pour découvrir la collection</small></p>
                             {% endif %}
                         </div>
                         {% if ban['url'] != "" %}

@@ -1,23 +1,23 @@
-@font-face {
-    font-family: "Roboto-Regular";
-    src: url('/fonts/roboto-400.woff2') format('woff2');
-}
-
-@font-face {
-    font-family: "Roboto-Light";
-    src: url('/fonts/roboto-300.woff2') format('woff2');
-}
-
-@font-face {
-    font-family: "Roboto";
-    src: url('/fonts/roboto-400.woff2') format('woff2');
-}
-
-@font-face {
-    font-family: "Roboto-Thin";
-    src: url('/fonts/roboto-100.woff2') format('woff2');
-}
-
+// @font-face {
+//     font-family: "Roboto-Regular";
+//     src: url('/fonts/roboto-400.woff2') format('woff2');
+// }
+// 
+// @font-face {
+//     font-family: "Roboto-Light";
+//     src: url('/fonts/roboto-300.woff2') format('woff2');
+// }
+// 
+// @font-face {
+//     font-family: "Roboto";
+//     src: url('/fonts/roboto-400.woff2') format('woff2');
+// }
+// 
+// @font-face {
+//     font-family: "Roboto-Thin";
+//     src: url('/fonts/roboto-100.woff2') format('woff2');
+// }
+ 
 @font-face {
     font-family: "DancingScript";
     src: url('/fonts/dancingscript.woff2') format('woff2');
@@ -34,12 +34,12 @@ $script-font: "DancingScript";
 }
 
 .roboto-thin {
-    font-family: "Roboto-Thin", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 100;
 }
 
 @mixin roboto-thin {
-    font-family: "Roboto-Thin", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 100;
 }
 
