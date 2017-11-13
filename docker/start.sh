@@ -28,6 +28,10 @@ status=$?
 if [ "$status" -eq 0 ]
 then
     echo "$pathToProject"
-    sudo docker run --init -d -v "${pathToProject}":/www --name elzire elzire
-    #sudo docker run --init --rm -it -p 80:8080 -v "${pathToProject}":/www --name elzire elzire
+    if [ "$1" = "--dev" ]
+    then
+        sudo docker run --init --rm -it -p 80:8080 -v "${pathToProject}":/www --name elzire elzire
+    else
+        sudo docker run --init -d -v "${pathToProject}":/www --name elzire elzire
+    fi
 fi
