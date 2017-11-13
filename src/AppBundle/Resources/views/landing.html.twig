@@ -29,11 +29,20 @@
                 {% else %}
                 <div class="carousel-item">
                     {% endif %}
-                    <img class="d-block img-fluid" src="{{ ban['url'] }}"/>
-                    <div class="elzire-carousel-caption d-none d-md-block roboto-light">
-                        <h3>{{ ban["title"] }}</h3>
-                        <p>{{ ban["text"] }}</p>
-                    </div>
+                    {% if ban['url'] != "" %}
+                    <a href="{{ ban['url'] }}">
+                        {% endif %}
+                        <img class="d-block img-fluid" src="{{ ban['image'] }}"/>
+                        <div class="elzire-carousel-caption d-none d-md-block roboto-light">
+                            <h3 class="roboto-thin">{{ ban["title"] }}</h3>
+                            <p>{{ ban["text"] }}</p>
+                            {% if ban['url'] != "" %}
+                            <p>Cliquez pour découvrir la collection</p>
+                            {% endif %}
+                        </div>
+                        {% if ban['url'] != "" %}
+                    </a>
+                    {% endif %}
                 </div>
                 {% endfor %}
             </div>

@@ -18,28 +18,37 @@ class LandingController extends Controller
             if($dir == "." || $dir == ".." || is_file($dir)) {
                 continue;
             }
-            $url = "";
+            $image = "";
             $title = "";
             $text = "";
+            $url = "";
             foreach(scandir($banniereDir.$dir) as $file) {
                 if(!is_file($banniereDir.$dir."/".$file)) {
                     continue;
                 }
                 if(preg_match("/image/", mime_content_type($banniereDir.$dir."/".$file))) {
-                    $url = "/banniere/bannieres/".$dir."/".$file;
+                    $image = "/banniere/bannieres/".$dir."/".$file;
                 } else {
                     if(preg_match("/titre/", $file)) {
                         $title = file_get_contents($banniereDir.$dir."/".$file);
-                    } else {
+                        continue;
+                    }
+                    if(preg_match("/texte/", $file)) {
                         $text = file_get_contents($banniereDir.$dir."/".$file);
+                        continue;
+                    }
+                    if(preg_match("/lien/", $file)) {
+                        $url = file_get_contents($banniereDir.$dir."/".$file);
+                        continue;
                     }
                 }
             }
-            if (!empty($url) && !empty($title) && !empty($text)) {
+            if (!empty($image) && !empty($title) && !empty($text)) {
                 $bannieres[] = array(
-                    "url" => $url,
+                    "image" => $image,
                     "title" => $title,
-                    "text" => $text
+                    "text" => $text,
+                    "url" => $url
                 );
             }
         }

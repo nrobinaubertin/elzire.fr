@@ -13,10 +13,10 @@
     src: url('/fonts/roboto-400.woff2') format('woff2');
 }
 
-// @font-face {
-//     font-family: "Roboto-Thin";
-//     src: url('/fonts/roboto-100.woff2') format('woff2');
-// }
+@font-face {
+    font-family: "Roboto-Thin";
+    src: url('/fonts/roboto-100.woff2') format('woff2');
+}
 
 @font-face {
     font-family: "DancingScript";
@@ -33,15 +33,15 @@ $script-font: "DancingScript";
     font-family: $script-font, cursive;
 }
 
-// .roboto-thin {
-//     font-family: "Roboto-Thin", sans-serif;
-//     font-weight: 100;
-// }
-// 
-// @mixin roboto-thin {
-//     font-family: "Roboto-Thin", sans-serif;
-//     font-weight: 100;
-// }
+.roboto-thin {
+    font-family: "Roboto-Thin", sans-serif;
+    font-weight: 100;
+}
+
+@mixin roboto-thin {
+    font-family: "Roboto-Thin", sans-serif;
+    font-weight: 100;
+}
 
 .roboto-light {
     font-family: "Roboto", sans-serif;
