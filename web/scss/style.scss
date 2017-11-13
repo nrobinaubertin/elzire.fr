@@ -132,7 +132,11 @@ nav {
     z-index: 10;
     color: white;
     transform: translateY(-50%);
-    background-color: rgba($elzire-green, 0.7);
+    background-color: rgba($elzire-green, 0.8);
+
+    p {
+        margin: 0;
+    }
 }
 
 .content-div {
@@ -244,18 +248,16 @@ nav {
         background-color: rgba($elzire-green, 0.8);
     }
     .big-title-footer {
+        @include roboto-light;
         padding: 1rem;
-        font-size: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         position: absolute;
         bottom: 0px;
         width: 100%;
         max-height: 50%;
         min-height: 15%;
         color: white;
-        background-color: rgba($elzire-green, 0.8);
+        background-color: rgba(0,169,141,0.8);
+        text-align: center;
     }
 }
 

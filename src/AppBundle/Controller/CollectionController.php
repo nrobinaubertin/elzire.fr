@@ -24,11 +24,11 @@ class CollectionController extends Controller
 
         $infos = $this->getFiles($listDir, $collectionDir);
 
-        $main_image = "/image/mariages/" . $collectionDir . "/" . $infos["main_image"];
+        $infos["main_image"] = "/image/mariages/" . $collectionDir . "/" . $infos["main_image"];
         foreach($infos["elements"] as $k=>$v) {
             $infos["elements"][$k]["miniature"] = "/miniature/mariages/" . $collectionDir . "/" . $v["miniature"];
         }
-        return $this->renderHTML($collectionDir, $main_image, $infos["elements"]);
+        return $this->renderHTML($collectionDir, $infos);
     }
 
     public function getFiles($listDir, $collectionDir)
@@ -36,6 +36,7 @@ class CollectionController extends Controller
         // now we need to find all the elements of the collection
         $elements = [];
         $main_image = "";
+        $title = "";
         foreach(scandir($listDir.$collectionDir) as $elementDir) {
             if($elementDir == "." || $elementDir == ".." || is_file($elementDir)) {
                 continue;
@@ -43,12 +44,16 @@ class CollectionController extends Controller
             // the "presentation" dir is here only for the main_image
             if(preg_match("/^\d+[_-]presentation/",$elementDir)) {
                 foreach(scandir($listDir.$collectionDir."/".$elementDir) as $file) {
+                    if(preg_match("/texte\-presentation/", $file)) {
+                        $title = nl2br(file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file));
+                        continue;
+                    }
                     if(
                         is_file($listDir.$collectionDir."/".$elementDir."/".$file)
                         && preg_match("/image/", mime_content_type($listDir.$collectionDir."/".$elementDir."/".$file))
                     ) {
                         $main_image = $elementDir."/".$file;
-                        break;
+                        continue;
                     }
                 }
                 continue;
@@ -73,7 +78,8 @@ class CollectionController extends Controller
 
         $infos = array(
             "main_image" => $main_image,
-            "elements" => $elements
+            "elements" => $elements,
+            "title" => $title
         );
         return $infos;
     }
@@ -88,7 +94,7 @@ class CollectionController extends Controller
         return ucfirst($name);
     }
 
-    private function renderHTML($collectionDir, $main_image, $elements) {
+    private function renderHTML($collectionDir, $infos) {
         $collection = $this->getName($collectionDir);
         $breadcrumbs = array(
             ["/", "Accueil"],
@@ -109,8 +115,9 @@ class CollectionController extends Controller
         }
 
         return $this->render('@App/collection.html.twig',array(
-            "main_image" => $main_image,
-            "elements" => $elements,
+            "main_image" => $infos["main_image"],
+            "elements" => $infos["elements"],
+            "collection_title" => $infos["title"],
             "breadcrumbs" => $breadcrumbs,
             "categorie" => "COLLECTIONS MARIAGE",
             "others" => $others,
