@@ -17,7 +17,7 @@
 
         {% for collection in list %}
 
-        <div class="col-30 col-md-20 col-lg-15 col-xl-12 mb-30px">
+        <div class="col-60 col-md-30 col-lg-20 col-xl-20 mb-30px">
             <a href="{{ collection["url"] }}" class="img-link bg-light">
                 <img class="img-fluid img-fill lazyload" src="{{ collection["placeholder"] }}" data-src="{{ asset(collection["image"]) }}"/>
                 <div>{{ collection["name"] }}</div>
