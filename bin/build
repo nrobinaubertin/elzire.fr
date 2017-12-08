@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cdroot() {
+    if ! [ -d ".git" ] && [ "$(pwd)" != "/" ]
+    then
+        cd ..
+        cdroot
+    fi
+}
+
+cdroot
+php bin/console c:c --env=prod
+cd web || exit
+yarn build
+

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# go to the root of the git repository
 cdroot() {
     if ! [ -d ".git" ] && [ "$(pwd)" != "/" ]
     then
