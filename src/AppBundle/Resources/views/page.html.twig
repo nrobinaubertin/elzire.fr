@@ -4,7 +4,7 @@
 {% block header %}
 <header class="page-header">
     <div class="surlignage"></div>
-    <div class="en-tete container pos-r">
+    <div class="en-tete container-fluid pos-r justify-content-center">
         <div class="container mx-auto">
             <div class="logo d-flex justify-content-center justify-content-md-start align-items-center">
                 <a href="/">
@@ -12,14 +12,14 @@
                 </a>
                 <img src="{{ asset('assets/elzire.png') }}" class="elzire-img d-none d-md-block"/>
             </div>
-            <div class="fleurs container"></div>
         </div>
+        <div class="fleurs container-fluid"></div>
     </div>
 </header>
 {% endblock %}
 
 {% block navbar %}
-<div class="container mb-0 p-0">
+<div class="container-fluid justify-content-center mb-0 p-0">
     <nav class="navbar navbar-light navbar-expand-md p-0 roboto-light">
         <div class="container mx-auto">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
