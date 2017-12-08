@@ -27,8 +27,7 @@
         "fortawesome/font-awesome": "~4.7"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~3.0",
-        "symfony/phpunit-bridge": "~3.0"
+        "sensio/generator-bundle": "~3.0"
     },
     "scripts": {
         "symfony-scripts": [
