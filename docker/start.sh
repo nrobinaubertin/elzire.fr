@@ -9,6 +9,30 @@ cdroot() {
     fi
 }
 
+start_docker_service() {
+    if [ -n "$(which systemctl 2>/dev/null)" ]
+    then
+        sudo systemctl start docker
+        return
+    fi
+    if [ -n "$(which service 2>/dev/null)" ]
+    then
+        sudo service docker start
+        return
+    fi
+}
+
+isDockerRunning() {
+    if [[ -n $(docker info 2>&1 1>/dev/null) ]] && [[ -z $(docker info) ]]
+    then
+        echo "the docker daemon is not running"
+        exit 1
+    fi
+}
+
+start_docker_service
+isDockerRunning
+
 cdroot
 # using the UID of php inside docker
 HTTPDUSER=791
