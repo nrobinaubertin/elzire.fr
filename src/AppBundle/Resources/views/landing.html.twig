@@ -1,7 +1,7 @@
 {% extends 'AppBundle::page.html.twig' %}
 
 {% block header %}
-<header class="landing-header mb-1">
+<header class="landing-header mb-3">
     <div class="surlignage"></div>
     <div class="pt-2 pb-2 en-tete d-flex flex-column justify-content-center align-items-center">
         <img src="{{ asset('assets/logo-elzire.png') }}" class="logo-img" />
@@ -52,7 +52,7 @@
     <div class="container-fluid mb-5" data-interval="10000" data-pause="hover">
 
         <div class="container mb-5">
-            <h4>Il y a des événements qui valent la peine d’être partagés.</h4>
+            <h5 class="roboto-light uppercase">Il y a des événements qui valent la peine d’être partagés.</h5>
             <p class="roboto-light">
                 Que ce soient des mariages, des naissances ou des baptêmes, ces événements sont fondateurs de notre vie familiale et occupent une place importante dans nos coeurs.
                 <br />
@@ -61,14 +61,18 @@
                 Du concept à la création, mes collections sont intégralements produites par moi. Mon artisanat et mon professionnalisme vous assureront originalité et une grande qualité d'exécution.
                 <br />
                 Un faire-part à votre image est une invitation réussie et un bon départ pour votre événement.
+                <br /><br />
+                Tous mes produits sont personnalisables : choisissez votre texte et vos couleurs préférées !
+                <br />
+                Pour toute demande ou pour passer commande, <strong><a href="/contact">contactez Elzire !</a></strong>
             </p>
         </div>
 
         <div class="container mb-5">
             <div class="row d-flex align-items-start">
                 <div class="col-60 col-md-20 d-flex justify-content-center align-items-center flex-column mb-4">
-                    <a href="#" class="round-link d-flex justify-content-center align-items-center flex-column mb-3">
-                        <span class="mes"><strong>Mes</strong></span>
+                    <a href="#" class="round-link d-flex justify-content-center align-items-center flex-column mb-5">
+                        <span class="mes">Mes</span>
                         <span class="roboto-light mb-4">collections</span>
                     </a>
                     <div class="text-center roboto-light">
@@ -83,8 +87,8 @@
                     </div>
                 </div>
                 <div class="col-60 col-md-20 d-flex justify-content-center align-items-center flex-column mb-4">
-                    <a href="/illustrations" class="round-link d-flex justify-content-center align-items-center flex-column mb-3">
-                        <span class="mes"><strong>Mes</strong></span>
+                    <a href="/illustrations" class="round-link d-flex justify-content-center align-items-center flex-column mb-5">
+                        <span class="mes">Mes</span>
                         <span class="roboto-light mb-4">illustrations</span>
                     </a>
                     <div class="text-center roboto-light">
@@ -98,8 +102,8 @@
                     </div>
                 </div>
                 <div class="col-60 col-md-20 d-flex justify-content-center align-items-center flex-column mb-4">
-                    <a href="#" class="round-link d-flex justify-content-center align-items-center flex-column mb-3">
-                        <span class="mes"><strong>A</strong></span>
+                    <a href="#" class="round-link d-flex justify-content-center align-items-center flex-column mb-5">
+                        <span class="mes">À</span>
                         <span class="roboto-light mb-4">propos</span>
                     </a>
                     <div class="text-center roboto-light">
