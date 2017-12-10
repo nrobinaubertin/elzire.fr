@@ -6,6 +6,8 @@
 // Colors
 
 $elzire-green: #00A98D;
+$bg-color: #fefefe; 
+$bg-footer: $elzire-green;
 $gray-dark: #181a1b;
 $gray: #292b2c;
 $gray-light: #464a4c;
@@ -19,7 +21,7 @@ $grid-columns: 60;
 
 // Body
 
-$body-bg: #f7f7f7;
+$body-bg: $bg-color;
 
 // Spacing
 

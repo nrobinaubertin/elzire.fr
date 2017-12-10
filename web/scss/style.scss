@@ -63,9 +63,6 @@ $script-font: "DancingScript";
     font-weight: 400;
 }
 
-$bg-color: #fefefe; 
-$bg-footer: $elzire-green;
-
 .bg-gray-lightest {
     background-color: $gray-lightest;
 }
@@ -360,9 +357,9 @@ footer {
     width: 125px;
     height: 125px;
     border-radius: 100%;
-    border: 1px solid #888;
+    box-shadow: 0px 0px 10px #ccc;
     padding: 1rem;
-    color: black;
+    color: #444;
     text-decoration: none !important;
     background-color: $bg-color;
     transition: background 0.3s ease;
