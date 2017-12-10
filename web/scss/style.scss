@@ -17,7 +17,7 @@
 //     font-family: "Roboto-Thin";
 //     src: url('/fonts/roboto-100.woff2') format('woff2');
 // }
- 
+
 @font-face {
     font-family: "DancingScript";
     src: url('/fonts/dancingscript.woff2') format('woff2');
@@ -63,7 +63,8 @@ $script-font: "DancingScript";
     font-weight: 400;
 }
 
-$bg-color: #f7f7f7; 
+$bg-color: #fefefe; 
+$bg-footer: $elzire-green;
 
 .bg-gray-lightest {
     background-color: $gray-lightest;
@@ -80,6 +81,7 @@ $bg-color: #f7f7f7;
 body {
     overflow-x: hidden;
     background: $bg-color;
+    position: relative;
     @include roboto-regular;
 }
 
@@ -184,7 +186,7 @@ nav {
             .logo-img {
                 height: 8rem;
                 width: 8rem;
-                background-color: $body-bg;
+                background-color: $bg-color;
             }
             .elzire-img {
                 position: relative;
@@ -202,15 +204,17 @@ nav {
     }
 }
 
-.fleurs {
-    background-image: url("/assets/feuilles.png");
-    height: 2.5rem;
-    background-size: 4.3rem;
-    opacity: 0.2;
-    background-color: #efefef;
-    background-position: 0 1.2rem;
-    z-index: -10;
-    width: 100%;
+header {
+    .fleurs {
+        background-image: url("/assets/feuilles.png");
+        height: 2.5rem;
+        background-size: 4.3rem;
+        opacity: 0.2;
+        background-color: #efefef;
+        background-position: 0 1.2rem;
+        z-index: -10;
+        width: 100%;
+    }
 }
 
 .zoom-on-hover {
@@ -307,33 +311,46 @@ nav {
     }
 }
 
+.fleurs-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to top, transparent 10%, $bg-color 100%), url("/assets/feuilles.png") repeat;
+    height: 40rem;
+    background-size: 4.3rem;
+    opacity: 0.2;
+    z-index: -10;
+    width: 100%;
+}
+
 footer {
-    $bg-footer: $elzire-green;
-    background: $bg-footer;
-    .copyright {
-        color: white;
-        border-top: 1px solid white;
-        border-bottom: 1px solid white;
-    }
-    .follow {
-        font-size: 0.78rem;
-        .follow-me {
-            font-family: $script-font;
-            font-size: 2rem;
+    .footer {
+        background: $bg-footer;
+        .copyright {
+            color: white;
+            border-top: 1px solid white;
+            border-bottom: 1px solid white;
         }
-        color: white;
-        .fa-stack-1x {
-            color: $bg-footer;
-        }
-        .fa-stack {
-            line-height: 1.8em;
-            color: rgba(255, 255, 255, 0.75);
-            .fa-stack-2x {
-                font-size: 1.8em;
+        .follow {
+            font-size: 0.78rem;
+            .follow-me {
+                font-family: $script-font;
+                font-size: 2rem;
             }
-        }
-        .fa-stack:hover {
-            color: rgba(255, 255, 255, 0.95);
+            color: white;
+            .fa-stack-1x {
+                color: $bg-footer;
+            }
+            .fa-stack {
+                line-height: 1.8em;
+                color: rgba(255, 255, 255, 0.75);
+                .fa-stack-2x {
+                    font-size: 1.8em;
+                }
+            }
+            .fa-stack:hover {
+                color: rgba(255, 255, 255, 0.95);
+            }
         }
     }
 }
