@@ -56,7 +56,7 @@ class ImageWorker
 
     public function displayMiniature($source, $size)
     {
-        $filename = sys_get_temp_dir()."/".sha1($source.$size);
+        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, $size, "");
         if (file_exists($filename)) {
             header("Content-Type: image/jpeg");
             readfile($filename);
@@ -87,7 +87,7 @@ class ImageWorker
 
     public function displayImage($source, $width, $height, $watermark)
     {
-        $filename = sys_get_temp_dir()."/".sha1($source.$width.$height.$watermark);
+        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, $width*$height, $watermark);
         if (file_exists($filename)) {
             header("Content-Type: image/jpeg");
             readfile($filename);
@@ -119,5 +119,28 @@ class ImageWorker
         $im->writeImage($filename);
         $im->destroy();
         return true;
+    }
+
+    private function getThumbnailHash($source, $size, $watermark)
+    {
+        try {
+            if ($source) {
+                $filehash = sha1_file($source);
+            } else {
+                return "";
+            }
+        } catch(Exception $e) {
+            return "";
+        }
+        try {
+            if ($watermark) {
+                $watermarkhash = sha1_file($watermark);
+            } else {
+                $watermarkhash = "";
+            }
+        } catch(Exception $e) {
+            $watermarkhash = "";
+        }
+        return sha1($filehash.$size.$watermarkhash);
     }
 } 
