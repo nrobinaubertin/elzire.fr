@@ -122,3 +122,39 @@
 
 {% block end_body %}
 {% endblock %}
+
+{% block footer %}
+<div class="fleurs-footer"><div class="fleurs"></div><div class="gradient"></div></div>
+<footer>
+    <div class="footer container-fluid">
+        <div class="row d-flex justify-content-around">
+            <div class="my-3 mx-2 py-1 col-30 align-items-center justify-content-center copyright d-none d-sm-flex">
+                <div>
+                    Copyright © 2017 - 2018 par Elzire <span class="d-none d-lg-inline">/ N°Siret 000 000 000 00000</span>
+                </div>
+            </div>
+            <div class="col-25 d-flex align-items-center justify-content-center follow my-2">
+                <span class="mr-2 d-none d-lg-block follow-me"> Suivez-moi ! </span>
+                <a href="https://www.facebook.com/elzirefr" class="d-flex align-items-center">
+                    <span class="fa-stack fa-2x">
+                        <span class="fa fa-circle fa-stack-2x"></span>
+                        <span class="fa fa-facebook fa-stack-1x"></span>
+                    </span>
+                </a>
+                <a href="https://www.instagram.com/elzirefr" class="d-flex align-items-center">
+                    <span class="fa-stack fa-2x">
+                        <span class="fa fa-circle fa-stack-2x"></span>
+                        <span class="fa fa-instagram fa-stack-1x"></span>
+                    </span>
+                </a>
+                <a href="https://www.pinterest.com/elzirefr" class="d-flex align-items-center">
+                    <span class="fa-stack fa-2x">
+                        <span class="fa fa-circle fa-stack-2x"></span>
+                        <span class="fa fa-pinterest-p fa-stack-1x"></span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
