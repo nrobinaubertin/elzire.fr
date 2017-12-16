@@ -56,7 +56,7 @@ class ElementController extends Controller
             }
 
             if ($file == "description.txt") {
-                $description = utf8_encode(file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file));
+                $description = self::convertEncoding(file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file));
                 $description = nl2br($description);
                 continue;
             }
@@ -143,5 +143,13 @@ class ElementController extends Controller
             "title" => "",
             "subtitle" => "",
         ));
+    }
+
+    private function convertEncoding($str) {
+        $enc = mb_detect_encoding($str, mb_detect_order(), true);
+        if ($enc === "ISO-8859-1" || !$enc) {
+            return utf8_encode($str);
+        }
+        return $str;
     }
 }

@@ -45,7 +45,7 @@ class CollectionController extends Controller
             if(preg_match("/^\d+[_-]presentation/",$elementDir)) {
                 foreach(scandir($listDir.$collectionDir."/".$elementDir) as $file) {
                     if(preg_match("/texte\-presentation/", $file)) {
-                        $title = nl2br(utf8_encode(file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file)));
+                        $title = nl2br(self::convertEncoding(file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file)));
                         continue;
                     }
                     if(
@@ -124,5 +124,13 @@ class CollectionController extends Controller
             "title" => "",
             "subtitle" => "",
         ));
+    }
+
+    private function convertEncoding($str) {
+        $enc = mb_detect_encoding($str, mb_detect_order(), true);
+        if ($enc === "ISO-8859-1" || !$enc) {
+            return utf8_encode($str);
+        }
+        return $str;
     }
 }

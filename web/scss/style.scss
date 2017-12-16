@@ -352,6 +352,12 @@ header {
     }
 }
 
+@media (max-width: map-get($grid-breakpoints, "sm") - 1px) {
+    .fleurs-footer {
+        height: 60rem;
+    }
+}
+
 footer {
     .footer {
         background: $bg-footer;
