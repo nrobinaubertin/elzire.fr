@@ -18,6 +18,15 @@
 //     src: url('/fonts/roboto-100.woff2') format('woff2');
 // }
 
+.blur-up {
+    filter: blur(2px);
+    transition: filter 0.4s;
+}
+
+.blur-up.lazyloaded {
+    filter: blur(0);
+}
+
 @font-face {
     font-family: "DancingScript";
     src: url('/fonts/dancingscript.woff2') format('woff2');
@@ -269,12 +278,13 @@ header {
 .img-link {
     display: block;
     text-align: center;
+    overflow: hidden;
     & > div {
         @include roboto-light;
         text-transform: uppercase;
         opacity: 0;
         color: white;
-        font-size: 3em;
+        font-size: 2rem;
         padding: 5px 15px;
         height: 100%;
         width: calc(100% - 30px);
@@ -285,14 +295,19 @@ header {
         transform: translate(-50%, -50%);
         overflow: hidden;
         text-align: left;
+        transition: 0.3s ease;
     }
     &:hover > div {
         opacity: 1;
         background: rgba($elzire-green, 0.8);
     }
+    &:hover img {
+        filter: blur(2px);
+    }
     img {
         width: 100%;
         height: auto;
+        transition: 0.3s ease;
     }
 }
 
