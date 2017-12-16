@@ -56,7 +56,7 @@ class ElementController extends Controller
             }
 
             if ($file == "description.txt") {
-                $description = file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file);
+                $description = utf8_encode(file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file));
                 $description = nl2br($description);
                 continue;
             }

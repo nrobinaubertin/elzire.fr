@@ -4,7 +4,8 @@
 <header class="landing-header mb-3">
     <div class="surlignage"></div>
     <div class="pt-2 pb-2 en-tete d-flex flex-column justify-content-center align-items-center">
-        <img src="{{ asset('assets/logo-elzire.png') }}" class="logo-img" />
+        <img src="{{ asset('assets/logo-elzire.png') }}" class="logo-img d-none d-sm-block" />
+        <img src="{{ asset('assets/logo.png') }}" class="logo-img small-logo d-block d-sm-none mb-1" />
         <div class="mb-1 header-separator"></div>
         <div class="slogan"> Les faire-parts créatifs façon Elzire </div>
     </div>
@@ -15,110 +16,109 @@
 {% endblock %}
 
 {% block content %}
-<div class="mb-5">
-    <div id="carousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
+<div class="container-fluid mb-5">
+
+    <div id="carousel" class="carousel slide mb-3" data-ride="carousel">
+        <ol class="carousel-indicators d-none d-md-flex">
             {% for ban in bannieres %}
             <li data-target="#carousel" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %}class="active"{% endif %}></li>
             {% endfor %}
         </ol>
+
         <div class="carousel-inner" role="listbox">
             {% for ban in bannieres %}
-            {% if loop.index0 == 0 %}
-            <div class="carousel-item active">
+                {% if loop.index0 == 0 %}
+                    <div class="carousel-item active">
                 {% else %}
-                <div class="carousel-item">
-                    {% endif %}
+                    <div class="carousel-item">
+                {% endif %}
                     {% if ban['url'] != "" %}
-                    <a href="{{ ban['url'] }}">
-                        {% endif %}
-                        <img class="d-block img-fluid" src="{{ ban['image'] }}"/>
-                        <div class="elzire-carousel-caption d-none d-md-block roboto-light">
-                            <h2 class="roboto-thin">{{ ban["title"] | raw }}</h2>
-                            <p>{{ ban["text"] | raw }}</p>
-                            {% if ban['url'] != "" %}
-                            <p class="roboto-regular"><small>Cliquez pour découvrir la collection</small></p>
-                            {% endif %}
-                        </div>
+                        <a href="{{ ban['url'] }}">
+                    {% endif %}
+                    <img class="d-block img-fluid" src="{{ ban['image'] }}"/>
+                    <div class="elzire-carousel-caption d-none d-md-block roboto-light">
+                        <h2 class="roboto-thin">{{ ban["title"] | raw }}</h2>
+                        <p>{{ ban["text"] | raw }}</p>
                         {% if ban['url'] != "" %}
-                    </a>
+                            <p class="roboto-regular"><small>Cliquez pour découvrir la collection</small></p>
+                        {% endif %}
+                        </div>
+                    {% if ban['url'] != "" %}
+                        </a>
                     {% endif %}
                 </div>
-                {% endfor %}
-            </div>
+            {% endfor %}
         </div>
     </div>
 
-    <div class="mb-5" data-interval="10000" data-pause="hover">
-
-        <div class="mb-5">
-            <h5 class="roboto-light uppercase">Il y a des événements qui valent la peine d’être partagés.</h5>
-            <p class="roboto-light">
-                Que ce soient des mariages, des naissances ou des baptêmes, ces événements sont fondateurs de notre vie familiale et occupent une place importante dans nos coeurs.
-                <br />
-                Je vous accompagne dans leur réalisation en vous proposant des faire-parts élégants qui sauront porter votre message.
-                <br />
-                Du concept à la création, mes collections sont intégralements produites par moi. Mon artisanat et mon professionnalisme vous assureront originalité et une grande qualité d'exécution.
-                <br />
-                Un faire-part à votre image est une invitation réussie et un bon départ pour votre événement.
-                <br /><br />
-                Tous mes produits sont personnalisables : choisissez votre texte et vos couleurs préférées !
-                <br />
-                Pour toute demande ou pour passer commande, <strong><a href="/contact">contactez Elzire !</a></strong>
-            </p>
-
+    <div class="mb-5">
+        <h5 class="roboto-light uppercase">Il y a des événements qui valent la peine d’être partagés.</h5>
+        <p class="roboto-light">
+            Que ce soient des mariages, des naissances ou des baptêmes, ces événements sont fondateurs de notre vie familiale et occupent une place importante dans nos coeurs.
             <br />
-            
-            <h6 class="roboto-light uppercase">Commande d'échantillons</h6>
-            <p class="roboto-light">
-                Vous aimeriez voir de plus près le modèle de vos rèves ? C'est possible avec nos packs d'échantillons !
-                <br />
-                Chaque pack est composé du faire-part et de plusieurs éléments de la même collection (non personnalisés sauf sur demande).
-                <br />
-                Le tout pour seulement 6€, envoi compris ! Pour toute question, <strong><a href="/contact">contactez Elzire !</a></strong>
-            </p>
-        </div>
+            Je vous accompagne dans leur réalisation en vous proposant des faire-parts élégants qui sauront porter votre message.
+            <br />
+            Du concept à la création, mes collections sont intégralements produites par moi. Mon artisanat et mon professionnalisme vous assureront originalité et une grande qualité d'exécution.
+            <br />
+            Un faire-part à votre image est une invitation réussie et un bon départ pour votre événement.
+            <br /><br />
+            Tous mes produits sont personnalisables : choisissez votre texte et vos couleurs préférées !
+            <br />
+            Pour toute demande ou pour passer commande, <strong><a href="/contact">contactez Elzire !</a></strong>
+        </p>
 
-        <div class="mb-5">
-            <div class="row d-flex align-items-start">
-                <div class="col-60 col-md-20 d-flex justify-content-center align-items-center flex-column mb-5">
-                    <a href="/collections" class="round-link d-flex justify-content-center align-items-center flex-column mb-5">
-                        <span class="mes">Les</span>
-                        <span class="roboto-light mb-4">collections</span>
-                    </a>
-                    <div class="text-justify roboto-light mx-3">
-                        Pour annoncer votre évènement, l'invitation envoyée à vos proches devra être réalisée avec le plus grand soin.
-                        Que ce soit pour un mariage, un naissance ou un baptème, mes collections vous accompagnent à chaque étape de votre évènement.
-                    </div>
+        <br />
+
+        <h6 class="roboto-light uppercase">Commande d'échantillons</h6>
+        <p class="roboto-light">
+            Vous aimeriez voir de plus près le modèle de vos rèves ? C'est possible avec nos packs d'échantillons !
+            <br />
+            Chaque pack est composé du faire-part et de plusieurs éléments de la même collection (non personnalisés sauf sur demande).
+            <br />
+            Le tout pour seulement 6€, envoi compris ! Pour toute question, <strong><a href="/contact">contactez Elzire !</a></strong>
+        </p>
+    </div>
+
+    <div class="mb-5">
+        <div class="row d-flex align-items-start">
+            <div class="col-60 col-md-20 d-flex justify-content-center align-items-center flex-column mb-5">
+                <a href="/collections" class="round-link d-flex justify-content-center align-items-center flex-column mb-5">
+                    <span class="mes">Les</span>
+                    <span class="roboto-light mb-4">collections</span>
+                </a>
+                <div class="text-justify roboto-light mx-3">
+                    Pour annoncer votre évènement, l'invitation envoyée à vos proches devra être réalisée avec le plus grand soin.
+                    Que ce soit pour un mariage, un naissance ou un baptème, mes collections vous accompagnent à chaque étape de votre évènement.
                 </div>
-                <div class="col-60 col-md-20 d-flex justify-content-center align-items-center flex-column mb-5">
-                    <a href="/badges" class="round-link d-flex justify-content-center align-items-center flex-column mb-5">
-                        <span class="mes">Les</span>
-                        <span class="roboto-light mb-4">badges</span>
-                    </a>
-                    <div class="text-justify roboto-light mx-3">
-                        Miroirs, magnets ou simple badges, autant de souvenirs à emporter partout avec soi. Il y en a pour toutes les occasions !
-                        Ces badges sont fait en collaboration avec <strong><a href="https://www.etsy.com/shop/DorianeeMiroirs">Dorianee</a></strong>.
-                    </div>
+            </div>
+            <div class="col-60 col-md-20 d-flex justify-content-center align-items-center flex-column mb-5">
+                <a href="/badges" class="round-link d-flex justify-content-center align-items-center flex-column mb-5">
+                    <span class="mes">Les</span>
+                    <span class="roboto-light mb-4">badges</span>
+                </a>
+                <div class="text-justify roboto-light mx-3">
+                    Miroirs, magnets ou simple badges, autant de souvenirs à emporter partout avec soi. Il y en a pour toutes les occasions !
+                    Ces badges sont fait en collaboration avec <strong><a href="https://www.etsy.com/shop/DorianeeMiroirs">Dorianee</a></strong>.
                 </div>
-                <div class="col-60 col-md-20 d-flex justify-content-center align-items-center flex-column mb-5">
-                    <a href="/contact" class="round-link d-flex justify-content-center align-items-center flex-column mb-5">
-                        <span class="mes">Me</span>
-                        <span class="roboto-light mb-4">contacter</span>
-                    </a>
-                    <div class="text-justify roboto-light mx-3">
-                        Vous aimez une collection mais vous souhaitez changer la couleur ou intervertir la boite de dragées avec celle d'une autre collection ?
-                        Pour toute demande, n'hésitez pas à <strong><a href="/contact">envoyer un message à Elzire</a></strong>.
-                    </div>
+            </div>
+            <div class="col-60 col-md-20 d-flex justify-content-center align-items-center flex-column mb-5">
+                <a href="/contact" class="round-link d-flex justify-content-center align-items-center flex-column mb-5">
+                    <span class="mes">Me</span>
+                    <span class="roboto-light mb-4">contacter</span>
+                </a>
+                <div class="text-justify roboto-light mx-3">
+                    Vous aimez une collection mais vous souhaitez changer la couleur ou intervertir la boite de dragées avec celle d'une autre collection ?
+                    Pour toute demande, n'hésitez pas à <strong><a href="/contact">envoyer un message à Elzire</a></strong>.
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    {% endblock %}
+{% endblock %}
 
-    {% block other %}
-    {% endblock %}
+{% block other %}
+{% endblock %}
 
-    {% block end_body %}
-    {% endblock %}
+{% block end_body %}
+{% endblock %}
