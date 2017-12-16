@@ -45,7 +45,7 @@ class CollectionController extends Controller
             if(preg_match("/^\d+[_-]presentation/",$elementDir)) {
                 foreach(scandir($listDir.$collectionDir."/".$elementDir) as $file) {
                     if(preg_match("/texte\-presentation/", $file)) {
-                        $title = nl2br(file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file));
+                        $title = nl2br(utf8_encode(file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file)));
                         continue;
                     }
                     if(
