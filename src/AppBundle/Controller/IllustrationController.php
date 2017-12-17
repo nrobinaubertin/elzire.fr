@@ -26,16 +26,24 @@ class IllustrationController extends Controller
         }
         $dir = $tmpDir;
 
-
         $illustrations = $this->getFiles($dir);
 
         $main_image = "";
+        $description = "";
         $miniatures = [];
         foreach($illustrations as $i) {
+
+            if ($i["file"] == "description.txt") {
+                $description = self::convertEncoding(file_get_contents($illustrationDir.$dir."/".$i["file"]));
+                $description = nl2br($description);
+                continue;
+            }
+
             if($i["id"] == "A" && $i["type"] == "") {
                 $main_image = "/image/illustrations/" . $dir . "/" . $i["file"];
                 continue;
             }
+
             if($i["type"] != "") {
                 $miniatures[] = array(
                     "/miniature/illustrations/" . $dir . "/" . $i["file"],
@@ -44,7 +52,7 @@ class IllustrationController extends Controller
                 continue;
             }
         }
-        return $this->renderHTML($dir, $main_image, $miniatures);
+        return $this->renderHTML($dir, $main_image, $miniatures, $description);
     }
 
     private function getFiles($dir) {
@@ -61,6 +69,13 @@ class IllustrationController extends Controller
 
         $illustrations = [];
         foreach($files as $f) {
+            if ($f === "description.txt") {
+                $illustrations[] = array(
+                    "file" => $f,
+                    "ext" => pathinfo($f, PATHINFO_EXTENSION)
+                );
+                continue;
+            }
             $infos = preg_replace("/^(\d+)[_-]([A-Z])([A-Z])?[_-]([a-z\-]+).*/","$1 $2 $3 $4",$f);
             $infos = explode(" ", $infos);
             if (count($infos) < 4) {
@@ -80,14 +95,15 @@ class IllustrationController extends Controller
                     "id" => $infos[1],
                     "type" => $infos[2],
                     "name" => $infos[3],
-                    "main" => $infos[4]
+                    "main" => $infos[4],
+                    "ext" => pathinfo($f, PATHINFO_EXTENSION)
                 );
             }
         }
         return $illustrations;
     }
 
-    private function renderHTML($dir, $main_image, $miniatures) {
+    private function renderHTML($dir, $main_image, $miniatures, $description) {
         $title = preg_replace("/^\d+[_-](.+)/","$1",$dir);
         $title = preg_replace("/[_-]+/"," ",$title);
         $breadcrumbs = array(
@@ -125,7 +141,16 @@ class IllustrationController extends Controller
             "title" => $title,
             "categorie" => "Illustrations",
             "others" => $others,
-            "othersTitle" => "Autres illustrations..."
+            "othersTitle" => "Autres illustrations...",
+            "description" => $description
         ));
+    }
+
+    private function convertEncoding($str) {
+        $enc = mb_detect_encoding($str, mb_detect_order(), true);
+        if ($enc === "ISO-8859-1" || !$enc) {
+            return utf8_encode($str);
+        }
+        return $str;
     }
 }
