@@ -35,7 +35,7 @@
                     {% if ban['url'] != "" %}
                         <a href="{{ ban['url'] }}">
                     {% endif %}
-                    <img class="d-block img-fluid" src="{{ ban['image'] }}"/>
+                    <img class="d-block img-fill" src="{{ ban['image'] }}"/>
                     <div class="elzire-carousel-caption d-none d-md-block roboto-light">
                         <h2 class="roboto-thin">{{ ban["title"] | raw }}</h2>
                         <p>{{ ban["text"] | raw }}</p>

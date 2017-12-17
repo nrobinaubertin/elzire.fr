@@ -27,7 +27,7 @@ class DefaultController extends Controller
         $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
         $watermark = "";
 
-        ImageWorker::displayImage($path, 1200, 1200, $watermark);
+        ImageWorker::displayImage($path, 1024, 1024, $watermark);
         return new Response("");
     }
     public function miniatureAction($path, Request $request)
