@@ -22,7 +22,7 @@ start_docker_service() {
 }
 
 isDockerRunning() {
-    if [[ -n $(docker info 2>&1 1>/dev/null) ]] && [[ -z $(docker info) ]]
+    if [ -n "$(sudo docker info 2>&1 1>/dev/null)" ] && [ -z "$(sudo docker info)" ]
     then
         echo "the docker daemon is not running"
         exit 1
