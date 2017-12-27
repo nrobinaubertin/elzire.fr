@@ -128,8 +128,11 @@ class CollectionController extends Controller
 
     private function convertEncoding($str) {
         $enc = mb_detect_encoding($str, mb_detect_order(), true);
-        if ($enc === "ISO-8859-1" || !$enc) {
+        if ($enc === "ISO-8859-1") {
             return utf8_encode($str);
+        }
+        if($enc === "Windows-1252" || !$enc) {
+            return mb_convert_encoding($str, "UTF-8", "Windows-1252");
         }
         return $str;
     }
