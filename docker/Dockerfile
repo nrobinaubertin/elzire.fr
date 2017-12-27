@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.7
 
 ARG PHP_EXT
 ENV UID=791 GID=791
