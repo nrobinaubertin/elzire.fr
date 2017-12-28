@@ -59,3 +59,7 @@ collection_mariage:
 illutration:
     path: /illustrations/{dir}
     defaults: { _controller: AppBundle:Illustration:index }
+
+contact:
+    path: /contact
+    defaults: { _controller: AppBundle:Contact:index }
