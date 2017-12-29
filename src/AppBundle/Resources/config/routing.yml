@@ -63,3 +63,7 @@ illutration:
 contact:
     path: /contact
     defaults: { _controller: AppBundle:Contact:index }
+
+send_mail:
+    path: /send
+    defaults: { _controller: AppBundle:Contact:send }
