@@ -7,50 +7,39 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Utils\ImageWorker;
 
-class ListController extends Controller
+class CategoryController extends Controller
 {
-    public function indexAction($location, $canonicalUrl, $categoryName)
+    public function indexAction()
     {
         // get the list of directories in that location
-        $listDir = $this->get('kernel')->getRootDir() . '/../data' . $location;
+        $listDir = $this->get('kernel')->getRootDir() . "/../data/collections/";
         $infos = [];
 
-        // each directory is a collection
-        foreach(scandir($listDir) as $collection) {
-            if($collection == "." || $collection == ".." || !is_dir($listDir.$collection)) {
+        // each directory is a category
+        foreach(scandir($listDir) as $category) {
+            if($category == "." || $category == ".." || !is_dir($listDir.$category)) {
                 continue;
             }
+
             // get the name of the collection
-            $name = preg_replace("/^\d+_(.*)/", "$1", $collection);
+            $name = preg_replace("/^\d+_(.*)/", "$1", $category);
             $name = preg_replace("/[_-]+/", " ", $name);
             $miniature = "";
-            // now we need a miniature pic for the collection
-            // it can be a file with "AP" in the name or a file inside a presentation dir inside the collection
-            foreach(scandir($listDir.$collection) as $p) {
+
+            foreach(scandir($listDir.$category) as $p) {
                 if(
-                    preg_match("/AP/",$p) &&
-                    preg_match("/image/",mime_content_type($listDir.$collection."/".$p))
+                    preg_match("/image/",mime_content_type($listDir.$category."/".$p))
                 ) {
                     $miniature = $p;
                     break;
                 }
-                if(is_dir($listDir.$collection."/".$p) && preg_match("/presentation/", $p)) {
-                    foreach(scandir($listDir.$collection."/".$p) as $pre) {
-                        if(
-                            is_file($listDir.$collection."/".$p."/".$pre) && 
-                            preg_match("/image/",mime_content_type($listDir.$collection."/".$p."/".$pre))
-                        ) {
-                            $miniature = $p."/".$pre;
-                            break;
-                        }
-                    }
-                }
             }
-            // if we have a miniature, then we fill the infos for this collection
+
+            // if we have a miniature, then we fill the infos for this category
             if($miniature != "") {
-                $image = "/miniature".$location.$collection."/".$miniature;
-                $url = strtolower($location.preg_replace("/^\d+[_-]+/","",$collection));
-                $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($listDir.$collection."/".$miniature));
+                $image = "/miniature/collections/".$category."/".$miniature;
+                $url = strtolower("/collections/".preg_replace("/^\d+[_-]+/","",$category));
+                $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($listDir.$category."/".$miniature));
                 $infos[] = array(
                     "name" => $name,
                     "image" => $image,
@@ -59,15 +48,15 @@ class ListController extends Controller
                 );
             }
         }
+
         // get breadcrumbs
         $breadcrumbs = array(
             ["/", "Accueil"],
-            [$canonicalUrl, $categoryName]
+            ["/collections", "Collections"],
         );
-        return $this->render('@App/list.html.twig', array(
+        return $this->render('@App/category.html.twig', array(
             "list" => $infos,
-            "categorie" => $categoryName,
-            "title" => $categoryName,
+            "title" => "Collections",
             "breadcrumbs" => $breadcrumbs
         ));
     }

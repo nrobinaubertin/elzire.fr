@@ -75,9 +75,14 @@ collection:
     defaults:
         _controller: AppBundle:Collection:index
 
-collectionList:
+category:
     path: /collections/{category}
     requirements:
         category: .+
     defaults:
         _controller: AppBundle:List:index
+
+collectionsCategories:
+    path: /collections
+    defaults:
+        _controller: AppBundle:Category:index

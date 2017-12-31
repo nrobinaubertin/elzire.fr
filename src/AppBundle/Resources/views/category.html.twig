@@ -5,7 +5,7 @@
 {% block underTitle %}
 <div class="mb-3">
     <h5 class="text-uppercase elziregreen roboto-light">
-        {{ categorie }}
+        {{ title }}
     </h5>
 </div>
 {% endblock %}
@@ -18,9 +18,9 @@
         {% for collection in list %}
 
         <div class="col-60 col-md-30 col-lg-20 col-xl-20 mb-30px">
-            <a href="{{ collection["url"] }}" class="img-link bg-light">
+            <a href="{{ collection["url"] }}" class="img-link bg-light rounded-circle">
                 <img class="img-fluid img-fill lazyload blur-up" src="{{ collection["placeholder"] }}" data-src="{{ asset(collection["image"]) }}"/>
-                <div>{{ collection["name"] }}</div>
+                <div class="d-flex flex-column justify-content-center rounded-circle"><div class="text-center">{{ collection["name"] }}</div></div>
             </a>
         </div>
 
