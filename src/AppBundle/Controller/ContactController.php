@@ -45,10 +45,16 @@ class ContactController extends Controller
         if (!empty($result)) {
             $result = json_decode($result, true);
             if ($result["success"]) {
-                $message = (new \Swift_Message("Mail de contact"))
-                    ->setFrom($request->request->get("sender"))
+                if (empty($request->request->get("subject"))) {
+                    $subject = "Message de ".$request->request->get("sender"); 
+                } else {
+                    $subject = $request->request->get("subject");
+                }
+                $message = (new \Swift_Message($subject))
+                    ->setFrom([$request->request->get("sender") => "Page contact"])
                     ->setTo($this->getParameter("mail_to"))
-                    ->setBody($request->request->get("message"), "text/plain");
+                    ->setBody($request->request->get("message"), "text/plain")
+                    ->setReplyTo([$request->request->get("sender")]);
 
                 $this->get("mailer")->send($message);
                 return $this->redirect("/contact?sent=1", Response::HTTP_SEE_OTHER);
