@@ -87,8 +87,10 @@ $script-font: "DancingScript";
 body {
     overflow-x: hidden;
     background: $bg-color;
-    position: relative;
     @include roboto-regular;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 80px; // for the footer
 }
 
 .pos-r {
@@ -359,6 +361,13 @@ header {
 }
 
 footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 80px;
+    overflow: hidden;
+
     .footer {
         background: $bg-footer;
         .copyright {
@@ -466,4 +475,15 @@ footer {
 .img-fill {
     width: 100%;
     height: auto;
+}
+
+.content-holder {
+    position: relative;
+    z-index: 1;
+}
+
+// hiding the recaptcha badge for now
+// TODO: add the google terms in our legal texts
+.grecaptcha-badge {
+    display: none;
 }
