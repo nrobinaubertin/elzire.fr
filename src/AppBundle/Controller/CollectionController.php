@@ -11,7 +11,7 @@ class CollectionController extends Controller
     public function indexAction($collection)
     {
         // first we find the root directory of the collection
-        $listDir = $this->get('kernel')->getRootDir() . '/../data/mariages/';
+        $listDir = $this->get('kernel')->getRootDir() . '/../data/collections/mariages/';
         foreach(scandir($listDir) as $directory) {
             if(
                 is_dir($listDir.$directory)
@@ -24,9 +24,9 @@ class CollectionController extends Controller
 
         $infos = $this->getFiles($listDir, $collectionDir);
 
-        $infos["main_image"] = "/image/mariages/" . $collectionDir . "/" . $infos["main_image"];
+        $infos["main_image"] = "/image/collections/mariages/" . $collectionDir . "/" . $infos["main_image"];
         foreach($infos["elements"] as $k=>$v) {
-            $infos["elements"][$k]["miniature"] = "/miniature/mariages/" . $collectionDir . "/" . $v["miniature"];
+            $infos["elements"][$k]["miniature"] = "/miniature/collections/mariages/" . $collectionDir . "/" . $v["miniature"];
         }
         return $this->renderHTML($collectionDir, $infos);
     }
@@ -98,18 +98,19 @@ class CollectionController extends Controller
         $collection = $this->getName($collectionDir);
         $breadcrumbs = array(
             ["/", "Accueil"],
-            ["/mariages", "Mariages"],
-            ["/mariages/".$collectionDir, $collection] 
+            ["/collections", "Collections"],
+            ["/collections/mariages", "Mariages"],
+            ["/collections/mariages/".$collectionDir, $collection] 
         );
         
         $others = [];
-        $listDir = $this->get('kernel')->getRootDir() . '/../data/mariages/';
+        $listDir = $this->get('kernel')->getRootDir() . '/../data/collections/mariages/';
         foreach(scandir($listDir) as $e) {
             if($e == "." || $e == ".." || !is_dir($listDir.$e)) {
                 continue;
             }
             $others[] = array(
-                "url" => "/mariages/".$this->getNiceUrl($e),
+                "url" => "/collections/mariages/".$this->getNiceUrl($e),
                 "name" => $this->getName($e)
             );
         }

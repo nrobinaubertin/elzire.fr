@@ -1,0 +1,35 @@
+{% extends 'AppBundle::page.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block underTitle %}
+<div class="mb-3">
+    <h5 class="text-uppercase elziregreen roboto-light">
+        {{ categorie }}
+    </h5>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="content-div container-fluid mx-auto mb-5">
+
+    <div class="row mb-5">
+
+        {% for collection in list %}
+
+        <div class="col-60 col-md-30 col-lg-20 col-xl-20 mb-30px">
+            <a href="{{ collection["url"] }}" class="img-link bg-light">
+                <img class="img-fluid img-fill lazyload blur-up" src="{{ collection["placeholder"] }}" data-src="{{ asset(collection["image"]) }}"/>
+                <div>{{ collection["name"] }}</div>
+            </a>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block other %}
+{% endblock %}

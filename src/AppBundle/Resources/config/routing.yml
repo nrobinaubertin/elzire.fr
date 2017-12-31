@@ -1,69 +1,77 @@
 remove_trailing_slash:
     path: /{url}
-    defaults: { _controller: AppBundle:Redirecting:removeTrailingSlash }
+    defaults:
+        _controller: AppBundle:Redirecting:removeTrailingSlash
     requirements:
         url: .*/$
     methods: [GET]
 
 banniere:
     path: /banniere/{path}
-    defaults: { _controller: AppBundle:Default:banniere }
+    defaults:
+        _controller: AppBundle:Default:banniere
     requirements:
         path: .+
     methods: [GET]
 
 image:
     path: /image/{path}
-    defaults: { _controller: AppBundle:Default:image }
+    defaults:
+        _controller: AppBundle:Default:image
     requirements:
         path: .+
     methods: [GET]
 
 miniature:
     path: /miniature/{path}
-    defaults: { _controller: AppBundle:Default:miniature }
+    defaults:
+        _controller: AppBundle:Default:miniature
     requirements:
         path: .+
     methods: [GET]
 
 landing:
     path: /
-    defaults: { _controller: AppBundle:Landing:index }
-
-illustrationList:
-    path: /illustrations
-    defaults: { 
-        _controller: AppBundle:List:index,
-        location: "/illustrations/",
-        canonicalUrl: "/illustrations",
-        categoryName: "Illustrations"
-      }
-
-mariageList:
-    path: /mariages
-    defaults: { 
-        _controller: AppBundle:List:index,
-        location: "/mariages/",
-        canonicalUrl: "/mariages",
-        categoryName: "Mariages"
-      }
-
-element:
-    path: /mariages/{collection}/{element}
-    defaults: { _controller: AppBundle:Element:index }
-
-collection_mariage:
-    path: /mariages/{collection}
-    defaults: { _controller: AppBundle:Collection:index }
-
-illutration:
-    path: /illustrations/{dir}
-    defaults: { _controller: AppBundle:Illustration:index }
+    defaults:
+      _controller: AppBundle:Landing:index
 
 contact:
     path: /contact
-    defaults: { _controller: AppBundle:Contact:index }
+    defaults:
+        _controller: AppBundle:Contact:index
 
 send:
     path: /send
-    defaults: { _controller: AppBundle:Contact:send }
+    defaults:
+        _controller: AppBundle:Contact:send
+
+illustrationList:
+    path: /illustrations
+    defaults:
+        _controller: AppBundle:List:index
+        location: "/illustrations/"
+        canonicalUrl: "/illustrations"
+        categoryName: "Illustrations"
+
+illutration:
+    path: /illustrations/{dir}
+    defaults:
+        _controller: AppBundle:Illustration:index
+
+mariageList:
+    path: /collections/mariages
+    defaults:
+        _controller: AppBundle:List:index
+        location: "/collections/mariages/"
+        canonicalUrl: "/collections/mariages"
+        categoryName: "Mariages"
+
+element:
+    path: /collections/mariages/{collection}/{element}
+    defaults:
+        _controller: AppBundle:Element:index
+
+collection_mariage:
+    path: /collections/mariages/{collection}
+    defaults:
+        _controller: AppBundle:Collection:index

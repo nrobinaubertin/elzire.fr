@@ -11,7 +11,7 @@ class ElementController extends Controller
     public function indexAction($collection, $element)
     {
         // first we find the root directory of the collection
-        $listDir = $this->get('kernel')->getRootDir() . '/../data/mariages/';
+        $listDir = $this->get('kernel')->getRootDir() . '/../data/collections/mariages/';
         foreach(scandir($listDir) as $directory) {
             if(
                 is_dir($listDir.$directory)
@@ -35,7 +35,7 @@ class ElementController extends Controller
 
         $path = [$listDir, $collectionDir, $elementDir];
         $infos = $this->getFiles($listDir, $collectionDir, $elementDir);
-        $base_url = "/mariages/".$collectionDir."/";
+        $base_url = "/collections/mariages/".$collectionDir."/";
         return $this->renderHTML($path, $infos, $base_url);
     }
 
@@ -100,9 +100,10 @@ class ElementController extends Controller
 
         $breadcrumbs = array(
             ["/", "Accueil"],
-            ["/mariages", "Mariages"],
-            ["/mariages/".$path[1], $collection],
-            ["/mariages/".$path[1]."/".$path[2], $element],
+            ["/collections", "Collections"],
+            ["/collections/mariages", "Mariages"],
+            ["/collections/mariages/".$path[1], $collection],
+            ["/collections/mariages/".$path[1]."/".$path[2], $element],
         );
 
         $others = [];
@@ -126,7 +127,7 @@ class ElementController extends Controller
                 }
             }
             $others[] = array(
-                "url" => $this->getNiceUrl("/mariages/".$path[1]."/".$e),
+                "url" => $this->getNiceUrl("/collections/mariages/".$path[1]."/".$e),
                 "name" => $this->getName($e),
                 "miniature" => $miniature
             );
