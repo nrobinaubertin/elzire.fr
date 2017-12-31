@@ -1,5 +1,9 @@
 {% extends 'AppBundle::page.html.twig' %}
 
+{% block head_javascript %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
+
 {% block contentHeader %}
     <div class="container-fluid mb-1">
         <div class="row justify-content-center">
@@ -34,7 +38,7 @@
 {% block content %}
 <div class="container-fluid">
     {% if email_sent == false %}
-        <form method="post" action="/app_dev.php/send">
+        <form id="contactForm" method="post" action="/send">
             <div class="form-group">
                 <label for="sender">Votre email :</label>
                 <input type="email" class="form-control" name="sender" placeholder="Indiquez votre adresse mail ici" required>
@@ -43,10 +47,23 @@
                 <label for="message">Votre message :</label>
                 <textarea class="form-control" name="message" rows="4" placeholder="Ecrivez votre message ici" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Envoyer</button>
+            <button
+                class="btn btn-primary g-recaptcha"
+                data-sitekey="{{ g_recaptcha_key }}"
+                data-callback="submitContactForm()">
+                Envoyer
+            </button>
         </form>
     {% else %}
         <p>Message envoyé !</p>
     {% endif %}
 </div>
+{% endblock %}
+
+{% block end_body %}
+<script>
+    function submitContactForm() {
+        document.getElementById("contactForm").submit();
+    }
+</script>
 {% endblock %}

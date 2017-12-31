@@ -18,12 +18,15 @@ class ContactController extends Controller
                 ["/contact", "contact"]
             ],
             "title" => "CONTACT",
-            "email_sent" => $email_sent
+            "email_sent" => $email_sent,
+            "g_recaptcha_key" => $this->getParameter('google_recaptcha_site_key')
         ));
     }
 
     public function sendAction(Request $request)
     {
+        var_dump($_POST);
+        exit;
         $message = (new \Swift_Message('Mail de contact'))
             ->setFrom($request->request->get('sender'))
             ->setTo($this->getParameter('mail_to'))
