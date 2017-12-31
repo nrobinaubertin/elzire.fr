@@ -45,6 +45,11 @@ send:
     defaults:
         _controller: AppBundle:Contact:send
 
+illutration:
+    path: /illustrations/{dir}
+    defaults:
+        _controller: AppBundle:Illustration:index
+
 illustrationList:
     path: /illustrations
     defaults:
@@ -53,25 +58,26 @@ illustrationList:
         canonicalUrl: "/illustrations"
         categoryName: "Illustrations"
 
-illutration:
-    path: /illustrations/{dir}
-    defaults:
-        _controller: AppBundle:Illustration:index
-
-mariageList:
-    path: /collections/mariages
-    defaults:
-        _controller: AppBundle:List:index
-        location: "/collections/mariages/"
-        canonicalUrl: "/collections/mariages"
-        categoryName: "Mariages"
-
 element:
-    path: /collections/mariages/{collection}/{element}
+    path: /collections/{category}/{collection}/{element}
+    requirements:
+        category: .+
+        collection: .+
+        element: .+
     defaults:
         _controller: AppBundle:Element:index
 
-collection_mariage:
-    path: /collections/mariages/{collection}
+collection:
+    path: /collections/{category}/{collection}
+    requirements:
+        category: .+
+        collection: .+
     defaults:
         _controller: AppBundle:Collection:index
+
+collectionList:
+    path: /collections/{category}
+    requirements:
+        category: .+
+    defaults:
+        _controller: AppBundle:List:index

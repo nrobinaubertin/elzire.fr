@@ -8,10 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CollectionController extends Controller
 {
-    public function indexAction($collection)
+    public function indexAction($category, $collection)
     {
         // first we find the root directory of the collection
-        $listDir = $this->get('kernel')->getRootDir() . '/../data/collections/mariages/';
+        $listDir = $this->get('kernel')->getRootDir() . "/../data/collections/$category/";
         foreach(scandir($listDir) as $directory) {
             if(
                 is_dir($listDir.$directory)
@@ -24,11 +24,11 @@ class CollectionController extends Controller
 
         $infos = $this->getFiles($listDir, $collectionDir);
 
-        $infos["main_image"] = "/image/collections/mariages/" . $collectionDir . "/" . $infos["main_image"];
+        $infos["main_image"] = "/image/collections/$category/" . $collectionDir . "/" . $infos["main_image"];
         foreach($infos["elements"] as $k=>$v) {
-            $infos["elements"][$k]["miniature"] = "/miniature/collections/mariages/" . $collectionDir . "/" . $v["miniature"];
+            $infos["elements"][$k]["miniature"] = "/miniature/collections/$category/" . $collectionDir . "/" . $v["miniature"];
         }
-        return $this->renderHTML($collectionDir, $infos);
+        return $this->renderHTML($collectionDir, $infos, $category);
     }
 
     public function getFiles($listDir, $collectionDir)
@@ -94,17 +94,17 @@ class CollectionController extends Controller
         return ucfirst($name);
     }
 
-    private function renderHTML($collectionDir, $infos) {
+    private function renderHTML($collectionDir, $infos, $category) {
         $collection = $this->getName($collectionDir);
         $breadcrumbs = array(
             ["/", "Accueil"],
             ["/collections", "Collections"],
-            ["/collections/mariages", "Mariages"],
-            ["/collections/mariages/".$collectionDir, $collection] 
+            ["/collections/".$category, ucfirst($category)],
+            ["/collections/$category/".$collectionDir, $collection] 
         );
         
         $others = [];
-        $listDir = $this->get('kernel')->getRootDir() . '/../data/collections/mariages/';
+        $listDir = $this->get('kernel')->getRootDir() . "/../data/collections/$category/";
         foreach(scandir($listDir) as $e) {
             if($e == "." || $e == ".." || !is_dir($listDir.$e)) {
                 continue;
@@ -120,7 +120,7 @@ class CollectionController extends Controller
             "elements" => $infos["elements"],
             "collection_title" => $infos["title"],
             "breadcrumbs" => $breadcrumbs,
-            "categorie" => "COLLECTIONS MARIAGE",
+            "categorie" => "COLLECTIONS ". strtoupper($category),
             "others" => $others,
             "title" => "",
             "subtitle" => "",

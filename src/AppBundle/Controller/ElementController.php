@@ -8,10 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ElementController extends Controller
 {
-    public function indexAction($collection, $element)
+    public function indexAction($category, $collection, $element)
     {
         // first we find the root directory of the collection
-        $listDir = $this->get('kernel')->getRootDir() . '/../data/collections/mariages/';
+        $listDir = $this->get('kernel')->getRootDir() . "/../data/collections/$category/";
         foreach(scandir($listDir) as $directory) {
             if(
                 is_dir($listDir.$directory)
@@ -35,8 +35,8 @@ class ElementController extends Controller
 
         $path = [$listDir, $collectionDir, $elementDir];
         $infos = $this->getFiles($listDir, $collectionDir, $elementDir);
-        $base_url = "/collections/mariages/".$collectionDir."/";
-        return $this->renderHTML($path, $infos, $base_url);
+        $base_url = "/collections/$category/$collectionDir/";
+        return $this->renderHTML($path, $infos, $base_url, $category);
     }
 
     public function getFiles($listDir, $collectionDir, $elementDir)
@@ -93,7 +93,7 @@ class ElementController extends Controller
         return $name;
     }
 
-    private function renderHTML($path, $infos, $base_url) {
+    private function renderHTML($path, $infos, $base_url, $category) {
 
         $collection = $this->getName($path[1]);
         $element = $this->getName($path[2]);
@@ -101,9 +101,9 @@ class ElementController extends Controller
         $breadcrumbs = array(
             ["/", "Accueil"],
             ["/collections", "Collections"],
-            ["/collections/mariages", "Mariages"],
-            ["/collections/mariages/".$path[1], $collection],
-            ["/collections/mariages/".$path[1]."/".$path[2], $element],
+            ["/collections/$category", ucfirst($category)],
+            ["/collections/$category/".$path[1], $collection],
+            ["/collections/$category/".$path[1]."/".$path[2], $element],
         );
 
         $others = [];
@@ -127,7 +127,7 @@ class ElementController extends Controller
                 }
             }
             $others[] = array(
-                "url" => $this->getNiceUrl("/collections/mariages/".$path[1]."/".$e),
+                "url" => $this->getNiceUrl("/collections/$category/".$path[1]."/".$e),
                 "name" => $this->getName($e),
                 "miniature" => $miniature
             );

@@ -9,10 +9,17 @@ use AppBundle\Utils\ImageWorker;
 
 class ListController extends Controller
 {
-    public function indexAction($location, $canonicalUrl, $categoryName)
+    public function indexAction($location = "", $canonicalUrl = "", $categoryName = "", $category)
     {
         // get the list of directories in that location
-        $listDir = $this->get('kernel')->getRootDir() . '/../data' . $location;
+        if (empty($category)) {
+            $listDir = $this->get('kernel')->getRootDir() . '/../data' . $location;
+        } else {
+            $listDir = $this->get('kernel')->getRootDir() . '/../data/collections/' . $category ."/";
+            $location = "/collections/$category/";
+            $canonicalUrl = rtrim($location, "/ ");
+            $categoryName = ucfirst($category);
+        }
         $infos = [];
 
         // each directory is a collection
