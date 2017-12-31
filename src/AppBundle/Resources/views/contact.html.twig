@@ -50,12 +50,16 @@
             <button
                 class="btn btn-primary g-recaptcha"
                 data-sitekey="{{ g_recaptcha_key }}"
-                data-callback="submitContactForm()">
+                data-callback="submitContactForm">
                 Envoyer
             </button>
         </form>
     {% else %}
-        <p>Message envoyé !</p>
+        {% if success == 1 %}
+            <p>Message envoyé !</p>
+        {% else %}
+            <p>Une erreur s'est produite.</p>
+        {% endif %}
     {% endif %}
 </div>
 {% endblock %}
