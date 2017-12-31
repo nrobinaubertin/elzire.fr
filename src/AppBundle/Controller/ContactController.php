@@ -9,14 +9,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ContactController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $email_sent = !empty($request->query->get('sent'));
         return $this->render('@App/contact.html.twig', array(
             "breadcrumbs" => [
                 ["/", "Accueil"],
                 ["/contact", "contact"]
             ],
             "title" => "CONTACT",
+            "email_sent" => $email_sent
         ));
     }
 
@@ -24,10 +26,10 @@ class ContactController extends Controller
     {
         $message = (new \Swift_Message('Mail de contact'))
             ->setFrom($request->request->get('sender'))
-            ->setTo('elzire.fr@gmail.com')
+            ->setTo($this->getParameter('mail_to'))
             ->setBody($request->request->get('message'), 'text/plain');
 
         $this->get('mailer')->send($message);
-        return $this->render('@App/send.html.twig');
+        return $this->redirect("/contact?sent=1", Response::HTTP_SEE_OTHER);
     }
 }
