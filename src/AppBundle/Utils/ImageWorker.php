@@ -7,6 +7,18 @@ class ImageWorker
     public function getPlaceholder($source)
     {
         $im = new \Imagick();
+        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, "placeholder");
+        if (file_exists($filename)) {
+            try {
+                if(!$im->readImage($filename)) {
+                    throw new Exception("Impossible to read source image");
+                }
+                return $im;
+            } catch(Exception $e) {
+                return false;
+            }
+        }
+
         try {
             if(!$im->readImage($source)) {
                 throw new Exception("Impossible to read source image");
@@ -20,6 +32,7 @@ class ImageWorker
         $im->setImageFormat('jpeg');
         $im->setImageCompression(\Imagick::COMPRESSION_JPEG);
         $im->setImageCompressionQuality(50);
+        $im->writeImage($filename);
         return $im;
     }
 
@@ -56,7 +69,7 @@ class ImageWorker
 
     public function displayMiniature($source, $size)
     {
-        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, $size, "");
+        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, "miniature", $size, "");
         if (file_exists($filename)) {
             header("Content-Type: image/jpeg");
             readfile($filename);
@@ -87,7 +100,7 @@ class ImageWorker
 
     public function displayImage($source, $width, $height, $watermark)
     {
-        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, $width*$height, $watermark);
+        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, "image", $width*$height, $watermark);
         if (file_exists($filename)) {
             header("Content-Type: image/jpeg");
             readfile($filename);
@@ -121,7 +134,7 @@ class ImageWorker
         return true;
     }
 
-    private function getThumbnailHash($source, $size, $watermark)
+    private function getThumbnailHash($source, $salt = "", $size = "", $watermark = "")
     {
         try {
             if ($source) {
@@ -141,6 +154,6 @@ class ImageWorker
         } catch(Exception $e) {
             $watermarkhash = "";
         }
-        return sha1($filehash.$size.$watermarkhash);
+        return sha1($filehash.$size.$watermarkhash.$salt);
     }
 } 

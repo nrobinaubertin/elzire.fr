@@ -15,6 +15,12 @@ class ListController extends Controller
         if (empty($category)) {
             $listDir = $this->get('kernel')->getRootDir() . '/../data' . $location;
         } else {
+            foreach(scandir($this->get('kernel')->getRootDir()."/../data/collections/") as $dir) {
+                if (preg_match("/^\d+_$category/", $dir)) {
+                    $category = $dir;
+                    break;
+                }
+            }
             $listDir = $this->get('kernel')->getRootDir() . '/../data/collections/' . $category ."/";
             $location = "/collections/$category/";
             $canonicalUrl = rtrim($location, "/ ");
