@@ -313,7 +313,8 @@ header {
         background: rgba($elzire-green, 0.8);
     }
     &:hover img {
-        filter: blur(2px);
+        // removing blur since it doesn't work in chrome (image is moving)
+        filter: blur(0px);
     }
     img {
         width: 100%;
@@ -325,7 +326,7 @@ header {
 .img-link.disabled {
     filter: grayscale(1);
     &:hover > div {
-        background: rgba(100, 100, 100, 0.5);
+        background: rgba(100, 100, 100, 0.8);
     }
 }
 
