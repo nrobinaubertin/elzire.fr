@@ -24,7 +24,7 @@ class ListController extends Controller
             $listDir = $this->get('kernel')->getRootDir() . '/../data/collections/' . $category ."/";
             $location = "/collections/$category/";
             $canonicalUrl = rtrim($location, "/ ");
-            $categoryName = ucfirst($category);
+            $categoryName = ucfirst(preg_replace("/^\d+_(.*)/", "$1", $category));
         }
         $infos = [];
 

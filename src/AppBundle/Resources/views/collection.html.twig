@@ -38,7 +38,7 @@
         <div class="col-60 col-lg-45">
             <div class="mb-4">
                 <div class="img-card main-image">
-                    <img src="{{ main_image }}" class="img-fluid"/>
+                    <img alt="collection presentation" src="{{ main_image }}" class="img-fluid"/>
                     <div class="big-title-footer roboto-light">
                         {{ collection_title | raw }}
                     </div>
@@ -48,7 +48,7 @@
                 {% for element in elements %}
                 <a href="{{ element['url'] }}" class="col-30 col-md-20 col-xl-20 mb-4 color-black">
                     <div class="img-card">
-                        <img src="{{ element['miniature'] }}" class="img-fluid img-fill zoom-on-hover"/>
+                        <img alt="{{ element["name"] }}" src="{{ element['miniature'] }}" class="img-fluid img-fill zoom-on-hover"/>
                         <div class="title-footer roboto-light">
                             {{ element['name'] }}
                         </div>

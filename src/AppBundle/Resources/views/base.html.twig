@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <title>{% block title %}Elzire{% endblock %}</title>
 
@@ -11,22 +11,39 @@
         {% endblock %}
         
         {% block head_stylesheets %}
-            <link rel="stylesheet" href="{{ asset('node_modules/font-awesome/css/font-awesome.min.css') }}" />
-            <link rel="stylesheet" href="{{ asset('node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css') }}" />
             <link rel="stylesheet" href="{{ asset('dist/css/elzire.css') }}" />
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script|Roboto:100,300,400">
+            <noscript id="deferred-styles">
+                <link rel="stylesheet" href="{{ asset('node_modules/font-awesome/css/font-awesome.min.css') }}" />
+                <link rel="stylesheet" href="{{ asset('node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css') }}" />
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script|Roboto:100,300,400">
+            </noscript>
         {% endblock %}
 
     </head>
     <body>
         {% block body %}{% endblock %}
 
+        <script>
+            // https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery
+            var loadDeferredStyles = function() {
+                var addStylesNode = document.getElementById("deferred-styles");
+                var replacement = document.createElement("div");
+                replacement.innerHTML = addStylesNode.textContent;
+                document.body.appendChild(replacement)
+                addStylesNode.parentElement.removeChild(addStylesNode);
+            };
+            var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+            if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+            else window.addEventListener('load', loadDeferredStyles);
+        </script>
+
         {% block body_javascript %}
             <script src="{{ asset('node_modules/jquery/dist/jquery.min.js') }}"></script>
-            <script src="{{ asset('node_modules/popper.js/dist/umd/popper.min.js') }}"></script>
-            <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js') }}"></script>
-            <script src="{{ asset('node_modules/lazysizes/lazysizes.min.js') }}"></script>
+            <script async defer src="{{ asset('node_modules/popper.js/dist/umd/popper.min.js') }}"></script>
+            <script async defer src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <script async defer src="{{ asset('node_modules/lazysizes/lazysizes.min.js') }}"></script>
+            <script async defer src="{{ asset('node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js') }}"></script>
         {% endblock %}
 
         {% block end_body %}

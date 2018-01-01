@@ -45,10 +45,10 @@ class IllustrationController extends Controller
             }
 
             if($i["type"] != "") {
-                $miniatures[] = array(
+                $miniatures[] = [
                     "/miniature/illustrations/" . $dir . "/" . $i["file"],
                     "/image/illustrations/" . $dir . "/" . $i["main"]
-                );
+                ];
                 continue;
             }
         }

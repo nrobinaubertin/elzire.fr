@@ -6,8 +6,9 @@ class ImageWorker
 {
     public function getPlaceholder($source)
     {
+        $size = 16;
         $im = new \Imagick();
-        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, "placeholder");
+        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, "placeholder", $size);
         if (file_exists($filename)) {
             try {
                 if(!$im->readImage($filename)) {
@@ -27,10 +28,11 @@ class ImageWorker
             return false;
         }
 
-        $im->thumbnailImage(32, 32);
+        $im->thumbnailImage($size, $size);
         $im->blurImage(3, 1);
         $im->setImageFormat('jpeg');
         $im->setImageCompression(\Imagick::COMPRESSION_JPEG);
+        $im->setSamplingFactors(['2x2', '1x1', '1x1']);
         $im->setImageCompressionQuality(50);
         $im->writeImage($filename);
         return $im;
@@ -88,7 +90,8 @@ class ImageWorker
         $im->cropThumbnailImage($size, $size);
         $im->setImageFormat('jpeg');
         $im->setImageCompression(\Imagick::COMPRESSION_JPEG);
-        $im->setImageCompressionQuality(90);
+        $im->setSamplingFactors(['2x2', '1x1', '1x1']);
+        $im->setImageCompressionQuality(85);
 
         header("Content-Type: image/jpeg");
         echo $im;
@@ -124,7 +127,8 @@ class ImageWorker
 
         $im->setImageFormat('jpeg');
         $im->setImageCompression(\Imagick::COMPRESSION_JPEG);
-        $im->setImageCompressionQuality(90);
+        $im->setSamplingFactors(['2x2', '1x1', '1x1']);
+        $im->setImageCompressionQuality(85);
 
         header("Content-Type: image/jpeg");
         echo $im;

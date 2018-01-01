@@ -49,6 +49,8 @@
 
 {% block end_body %}
 <script>
-    window.gallery = $('[data-fancybox="gallery"]').fancybox();
+    document.addEventListener("DOMContentLoaded", () => {
+        window.gallery = $('[data-fancybox="gallery"]').fancybox();
+    });
 </script>
 {% endblock %}

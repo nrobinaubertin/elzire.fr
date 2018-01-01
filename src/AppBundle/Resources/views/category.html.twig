@@ -19,7 +19,7 @@
 
         <div class="col-60 col-md-30 col-lg-20 col-xl-20 mb-30px">
             <a {% if category["activated"] == true %}href="{{ category["url"] }}"{% endif %} class="img-link bg-light rounded-circle{% if category["activated"] == false %} disabled{% endif %}">
-                <img class="img-fluid img-fill lazyload blur-up" src="{{ category["placeholder"] }}" data-src="{{ asset(category["image"]) }}"/>
+                <img class="img-fluid img-fill lazyload blur-up" alt="{{ category["name"] }}" src="{{ category["placeholder"] }}" data-src="{{ asset(category["image"]) }}"/>
                 <div class="d-flex flex-column justify-content-center rounded-circle w-100">
                     <div class="text-center">
                         {{ category["name"] }}
