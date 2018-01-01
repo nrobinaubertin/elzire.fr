@@ -11,6 +11,12 @@ class CollectionController extends Controller
     public function indexAction($category, $collection)
     {
         // first we find the root directory of the collection
+        foreach(scandir($this->get('kernel')->getRootDir()."/../data/collections/") as $dir) {
+            if (preg_match("/^\d+_$category/", $dir)) {
+                $category = $dir;
+                break;
+            }
+        }
         $listDir = $this->get('kernel')->getRootDir() . "/../data/collections/$category/";
         foreach(scandir($listDir) as $directory) {
             if(
@@ -28,6 +34,8 @@ class CollectionController extends Controller
         foreach($infos["elements"] as $k=>$v) {
             $infos["elements"][$k]["miniature"] = "/miniature/collections/$category/" . $collectionDir . "/" . $v["miniature"];
         }
+        $infos["categoryName"] = preg_replace("/^\d+_(.*)/", "$1", $category);
+        $infos["category"] = $category;
         return $this->renderHTML($collectionDir, $infos, $category);
     }
 
@@ -45,7 +53,7 @@ class CollectionController extends Controller
             if(preg_match("/^\d+[_-]presentation/",$elementDir)) {
                 foreach(scandir($listDir.$collectionDir."/".$elementDir) as $file) {
                     if(preg_match("/texte\-presentation/", $file)) {
-                        $title = nl2br(self::convertEncoding(file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file)));
+                        $title = nl2br(trim(self::convertEncoding(file_get_contents($listDir.$collectionDir."/".$elementDir."/".$file))));
                         continue;
                     }
                     if(
@@ -94,13 +102,15 @@ class CollectionController extends Controller
         return ucfirst($name);
     }
 
-    private function renderHTML($collectionDir, $infos, $category) {
+    private function renderHTML($collectionDir, $infos) {
+        $categoryName = $infos["categoryName"];
+        $category = $infos["category"];
         $collection = $this->getName($collectionDir);
         $breadcrumbs = array(
             ["/", "Accueil"],
             ["/collections", "Collections"],
-            ["/collections/".$category, ucfirst($category)],
-            ["/collections/$category/".$collectionDir, $collection] 
+            ["/collections/$categoryName", ucfirst($categoryName)],
+            ["/collections/$categoryName/".$collectionDir, $collection] 
         );
         
         $others = [];
@@ -120,7 +130,7 @@ class CollectionController extends Controller
             "elements" => $infos["elements"],
             "collection_title" => $infos["title"],
             "breadcrumbs" => $breadcrumbs,
-            "categorie" => "COLLECTIONS ". strtoupper($category),
+            "categorie" => "COLLECTIONS ". strtoupper($categoryName),
             "others" => $others,
             "title" => "",
             "subtitle" => "",

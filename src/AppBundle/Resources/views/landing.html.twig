@@ -18,7 +18,7 @@
 {% block content %}
 <div class="container-fluid mb-5">
 
-    <div id="carousel" class="carousel slide mb-3" data-ride="carousel">
+    <div id="carousel" class="carousel slide mb-4" data-ride="carousel" data-interval="3000" data-pause="false">
         <ol class="carousel-indicators d-none d-md-flex">
             {% for ban in bannieres %}
             <li data-target="#carousel" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %}class="active"{% endif %}></li>

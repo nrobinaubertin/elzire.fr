@@ -14,6 +14,7 @@ class ListController extends Controller
         // get the list of directories in that location
         if (empty($category)) {
             $listDir = $this->get('kernel')->getRootDir() . '/../data' . $location;
+            $link = $location;
         } else {
             foreach(scandir($this->get('kernel')->getRootDir()."/../data/collections/") as $dir) {
                 if (preg_match("/^\d+_$category/", $dir)) {
@@ -22,9 +23,10 @@ class ListController extends Controller
                 }
             }
             $listDir = $this->get('kernel')->getRootDir() . '/../data/collections/' . $category ."/";
+            $categoryName = preg_replace("/^\d+_(.*)/", "$1", $category);
             $location = "/collections/$category/";
+            $link = "/collections/$categoryName/";
             $canonicalUrl = rtrim($location, "/ ");
-            $categoryName = ucfirst(preg_replace("/^\d+_(.*)/", "$1", $category));
         }
         $infos = [];
 
@@ -62,7 +64,7 @@ class ListController extends Controller
             // if we have a miniature, then we fill the infos for this collection
             if($miniature != "") {
                 $image = "/miniature".$location.$collection."/".$miniature;
-                $url = strtolower($location.preg_replace("/^\d+[_-]+/","",$collection));
+                $url = strtolower($link.preg_replace("/^\d+[_-]+/","",$collection));
                 $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($listDir.$collection."/".$miniature));
                 $infos[] = array(
                     "name" => $name,
@@ -79,7 +81,7 @@ class ListController extends Controller
         );
         return $this->render('@App/list.html.twig', array(
             "list" => $infos,
-            "categorie" => $categoryName,
+            "categorie" => ucfirst($categoryName),
             "title" => $categoryName,
             "breadcrumbs" => $breadcrumbs
         ));

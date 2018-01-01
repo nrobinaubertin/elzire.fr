@@ -11,6 +11,12 @@ class ElementController extends Controller
     public function indexAction($category, $collection, $element)
     {
         // first we find the root directory of the collection
+        foreach(scandir($this->get('kernel')->getRootDir()."/../data/collections/") as $dir) {
+            if (preg_match("/^\d+_$category/", $dir)) {
+                $category = $dir;
+                break;
+            }
+        }
         $listDir = $this->get('kernel')->getRootDir() . "/../data/collections/$category/";
         foreach(scandir($listDir) as $directory) {
             if(
@@ -35,8 +41,10 @@ class ElementController extends Controller
 
         $path = [$listDir, $collectionDir, $elementDir];
         $infos = $this->getFiles($listDir, $collectionDir, $elementDir);
-        $base_url = "/collections/$category/$collectionDir/";
-        return $this->renderHTML($path, $infos, $base_url, $category);
+        $infos["categoryName"] = preg_replace("/^\d+_(.*)/", "$1", $category);
+        $infos["category"] = $category;
+        $infos["base_url"] = "/collections/$category/$collectionDir/";
+        return $this->renderHTML($path, $infos);
     }
 
     public function getFiles($listDir, $collectionDir, $elementDir)
@@ -93,17 +101,19 @@ class ElementController extends Controller
         return $name;
     }
 
-    private function renderHTML($path, $infos, $base_url, $category) {
-
+    private function renderHTML($path, $infos) {
+        $base_url = $infos["base_url"];
+        $categoryName = $infos["categoryName"];
+        $category = $infos["category"];
         $collection = $this->getName($path[1]);
         $element = $this->getName($path[2]);
 
         $breadcrumbs = array(
             ["/", "Accueil"],
             ["/collections", "Collections"],
-            ["/collections/$category", ucfirst($category)],
-            ["/collections/$category/".$path[1], $collection],
-            ["/collections/$category/".$path[1]."/".$path[2], $element],
+            ["/collections/$categoryName", ucfirst($categoryName)],
+            ["/collections/$categoryName/".$path[1], $collection],
+            ["/collections/$categoryName/".$path[1]."/".$path[2], $element],
         );
 
         $others = [];
@@ -127,7 +137,7 @@ class ElementController extends Controller
                 }
             }
             $others[] = array(
-                "url" => $this->getNiceUrl("/collections/$category/".$path[1]."/".$e),
+                "url" => $this->getNiceUrl("/collections/$categoryName/".$path[1]."/".$e),
                 "name" => $this->getName($e),
                 "miniature" => $miniature
             );
