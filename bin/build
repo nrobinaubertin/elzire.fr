@@ -9,7 +9,8 @@ cdroot() {
 }
 
 cdroot
-php bin/console c:c --env=prod
 cd web || exit
 yarn build
-
+cdroot
+php bin/console cache:clear --env=prod --no-debug --no-warmup
+php bin/console cache:warmup --env=prod

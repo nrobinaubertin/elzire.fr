@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# go to the root of the repo
+cdroot() {
+	if ! [ -d ".git" ]; then
+		cd ..
+		cdroot
+	fi
+}
+
+if [ "$(id -u)" -eq 0 ]; then
+    echo "This script should not be run as root"
+    echo "If you are using docker, be sure to add yourself to the docker group"
+    exit 1
+fi
+
+sudo_mode=true
+docker_mode=true
+
+curl -o- -L https://yarnpkg.com/install.sh | bash
+export PATH="$HOME/.yarn/bin:$PATH"
+
+cdroot
+
+sudo rm -rf vendor web/node_modules
+
+# get user's name/group
+name=$(id -un)
+group=$(id -gn)
+# bypass for the test serveur
+group="elzire"
+
+chmod 755 .
+
+# reset rights for some folders
+LIST=(data bin web)
+for folder in "${LIST[@]}";
+do
+    if [ $sudo_mode  = true ]
+    then
+        sudo chown -R "${name}:${group}" "$folder"
+    else
+        chown -R "${name}:${group}" "$folder"
+    fi
+    chmod -R 744 "$folder"
+    find "$folder" -type d -exec chmod 755 {} \;
+    find "$folder" -type f -name "*.png" -exec chmod 755 {} \;
+    find "$folder" -type f -name "*.jpg" -exec chmod 755 {} \;
+    find "$folder" -type f -name "*.svg" -exec chmod 755 {} \;
+    find "$folder" -type f -name "*.jpeg" -exec chmod 755 {} \;
+    find "$folder" -type f -name "*.php" -exec chmod 744 {} \;
+    find "$folder" -type f -name "*.sh" -exec chmod 744 {} \;
+    find "$folder" -type f -name "*.ts" -exec chmod 744 {} \;
+    find "$folder" -type f -name "*.html" -exec chmod 744 {} \;
+    find "$folder" -type f -name "*.yml" -exec chmod 744 {} \;
+    find "$folder" -type f -name "*.twig" -exec chmod 744 {} \;
+done
+
+chmod -R 774 data
+
+# add correct rights to some runtime folders
+HTTPDUSER=$(id -un)
+tempfile=$(mktemp)
+
+echo "HTTPDUSER: $HTTPDUSER"
+echo "tempfile: $tempfile"
+
+if [ -z "$(chmod u+a "root write" "$tempfile" 2>&1 1>/dev/null)" ]; then
+    printf "Using chmod u+a\\n"
+    chmod -R +a "$HTTPDUSER allow delete,write,append,file_inherit,directory_inherit" var
+    chmod -R +a "$(whoami) allow delete,write,append,file_inherit,directory_inherit" var
+else
+    if [ -n "$(command -v setfacl)" ]; then
+        printf "Using setfacl\\n"
+        setfacl -bR var  
+        setfacl -R -m u:"$HTTPDUSER":rwX -m u:"$(whoami)":rwX var
+        setfacl -dR -m u:"$HTTPDUSER":rwX -m u:"$(whoami)":rwX var
+    else
+        printf "Using chmod 777\\n"
+        chmod -R 777 var
+    fi
+fi
+
+# reinstall bundles
+php bin/composer install
+
+cdroot
+cd web || exit
+yarn install
