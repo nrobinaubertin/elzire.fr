@@ -285,6 +285,7 @@ header {
     display: block;
     text-align: center;
     overflow: hidden;
+    position: relative;
     & > div {
         @include roboto-light;
         text-transform: uppercase;
@@ -302,6 +303,10 @@ header {
         overflow: hidden;
         text-align: left;
         transition: 0.3s ease;
+        small {
+            @include roboto-light;
+            font-size: 1rem;
+        }
     }
     &:hover > div {
         opacity: 1;
@@ -314,6 +319,13 @@ header {
         width: 100%;
         height: auto;
         transition: 0.3s ease;
+    }
+}
+
+.img-link.disabled {
+    filter: grayscale(1);
+    &:hover > div {
+        background: rgba(100, 100, 100, 0.5);
     }
 }
 

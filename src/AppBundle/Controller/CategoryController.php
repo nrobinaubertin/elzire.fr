@@ -44,7 +44,8 @@ class CategoryController extends Controller
                     "name" => $name,
                     "image" => $image,
                     "url" => $url,
-                    "placeholder" => $placeholder
+                    "placeholder" => $placeholder,
+                    "activated" => count(scandir($listDir.$category)) > 3
                 );
             }
         }

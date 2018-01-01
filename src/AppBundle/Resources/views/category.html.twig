@@ -15,12 +15,19 @@
 
     <div class="row mb-5">
 
-        {% for collection in list %}
+        {% for category in list %}
 
         <div class="col-60 col-md-30 col-lg-20 col-xl-20 mb-30px">
-            <a href="{{ collection["url"] }}" class="img-link bg-light rounded-circle">
-                <img class="img-fluid img-fill lazyload blur-up" src="{{ collection["placeholder"] }}" data-src="{{ asset(collection["image"]) }}"/>
-                <div class="d-flex flex-column justify-content-center rounded-circle"><div class="text-center">{{ collection["name"] }}</div></div>
+            <a {% if category["activated"] == true %}href="{{ category["url"] }}"{% endif %} class="img-link bg-light rounded-circle{% if category["activated"] == false %} disabled{% endif %}">
+                <img class="img-fluid img-fill lazyload blur-up" src="{{ category["placeholder"] }}" data-src="{{ asset(category["image"]) }}"/>
+                <div class="d-flex flex-column justify-content-center rounded-circle w-100">
+                    <div class="text-center">
+                        {{ category["name"] }}
+                        {% if category["activated"] == false %}
+                            <br><small>Très prochainement !</small>
+                        {% endif %}
+                </div>
+            </div>
             </a>
         </div>
 
