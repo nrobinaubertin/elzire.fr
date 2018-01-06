@@ -134,6 +134,7 @@ class CollectionController extends Controller
             "others" => $others,
             "title" => "",
             "subtitle" => "",
+            "domain" => $this->getParameter("domain"),
         ));
     }
 

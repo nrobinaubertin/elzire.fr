@@ -84,7 +84,8 @@ class ListController extends Controller
             "list" => $infos,
             "categorie" => ucfirst($categoryName),
             "title" => $categoryName,
-            "breadcrumbs" => $breadcrumbs
+            "breadcrumbs" => $breadcrumbs,
+            "domain" => $this->getParameter("domain"),
         ));
     }
 }

@@ -58,7 +58,8 @@ class CategoryController extends Controller
         return $this->render('@App/category.html.twig', array(
             "list" => $infos,
             "title" => ucfirst($family),
-            "breadcrumbs" => $breadcrumbs
+            "breadcrumbs" => $breadcrumbs,
+            "domain" => $this->getParameter("domain"),
         ));
     }
 }

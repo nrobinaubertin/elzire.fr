@@ -136,7 +136,8 @@ class DecorationController extends Controller
             "categorie" => "Decorations",
             "others" => $others,
             "othersTitle" => "Autres ".strtolower($category)."...",
-            "description" => $description
+            "description" => $description,
+            "domain" => $this->getParameter("domain"),
         ));
     }
 

@@ -21,7 +21,8 @@ class ContactController extends Controller
             "title" => "CONTACT",
             "email_sent" => $email_sent,
             "success" => $success,
-            "g_recaptcha_key" => $this->getParameter("google_recaptcha_site_key")
+            "g_recaptcha_key" => $this->getParameter("google_recaptcha_site_key"),
+            "domain" => $this->getParameter("domain"),
         ));
     }
 

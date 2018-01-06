@@ -54,7 +54,8 @@ class LandingController extends Controller
         }
 
         return $this->render('@App/landing.html.twig', array(
-            "bannieres" => $bannieres
+            "bannieres" => $bannieres,
+            "domain" => $this->getParameter("domain"),
         ));
 
     }

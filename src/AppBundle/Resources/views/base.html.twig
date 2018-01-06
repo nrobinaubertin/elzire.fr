@@ -2,10 +2,19 @@
 <html lang="fr">
     <head>
         <title>{% block title %}Elzire{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        {% block metadata %}
+        <meta property="og:title" content="Elzire" />
+        <meta property="og:description" content="Les faire-parts créatifs façon Elzire" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:url" content="https://{{ domain }}" />
+        <meta property="og:image" content="https://{{ domain }}/assets/og_image.jpg" />
+        {% endblock %}
 
         {% block head_javascript %}
         {% endblock %}

@@ -142,7 +142,8 @@ class IllustrationController extends Controller
             "categorie" => "Illustrations",
             "others" => $others,
             "othersTitle" => "Autres illustrations...",
-            "description" => $description
+            "description" => $description,
+            "domain" => $this->getParameter("domain"),
         ));
     }
 
