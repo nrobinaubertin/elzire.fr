@@ -102,8 +102,8 @@ class DecorationController extends Controller
         $breadcrumbs = array(
             ["/", "Accueil"],
             ["/decorations", "Decorations"],
-            ["/decorations/$category", ucfirst($category)],
-            ["/decorations/$category/".$dir, $title] 
+            ["/decorations/".strtolower($category), ucfirst($category)],
+            ["/decorations/".strtolower($category)."/".$dir, $title] 
         );
         
         $others = [];
