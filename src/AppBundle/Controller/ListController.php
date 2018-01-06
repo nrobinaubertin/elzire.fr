@@ -9,23 +9,23 @@ use AppBundle\Utils\ImageWorker;
 
 class ListController extends Controller
 {
-    public function indexAction($location = "", $canonicalUrl = "", $categoryName = "", $category = "")
+    public function indexAction($location = "", $canonicalUrl = "", $categoryName = "", $category = "", $family)
     {
         // get the list of directories in that location
         if (empty($category)) {
             $listDir = $this->get('kernel')->getRootDir() . '/../data' . $location;
             $link = $location;
         } else {
-            foreach(scandir($this->get('kernel')->getRootDir()."/../data/collections/") as $dir) {
-                if (preg_match("/^\d+_$category/", $dir)) {
+            foreach(scandir($this->get('kernel')->getRootDir()."/../data/$family/") as $dir) {
+                if (preg_match("/^\d*[_-]?$category/i", $dir)) {
                     $category = $dir;
                     break;
                 }
             }
-            $listDir = $this->get('kernel')->getRootDir() . '/../data/collections/' . $category ."/";
+            $listDir = $this->get('kernel')->getRootDir() . "/../data/$family/" . $category ."/";
             $categoryName = preg_replace("/^\d+_(.*)/", "$1", $category);
-            $location = "/collections/$category/";
-            $link = "/collections/$categoryName/";
+            $location = "/$family/$category/";
+            $link = "/$family/$categoryName/";
             $canonicalUrl = rtrim($location, "/ ");
         }
         $infos = [];
@@ -43,8 +43,8 @@ class ListController extends Controller
             // it can be a file with "AP" in the name or a file inside a presentation dir inside the collection
             foreach(scandir($listDir.$collection) as $p) {
                 if(
-                    preg_match("/AP/",$p) &&
-                    preg_match("/image/",mime_content_type($listDir.$collection."/".$p))
+                    (preg_match("/AP/",$p) || preg_match("/^V/", $p))
+                    && preg_match("/image/",mime_content_type($listDir.$collection."/".$p))
                 ) {
                     $miniature = $p;
                     break;
@@ -77,6 +77,7 @@ class ListController extends Controller
         // get breadcrumbs
         $breadcrumbs = array(
             ["/", "Accueil"],
+            ["/$family", ucfirst($family)],
             [$canonicalUrl, $categoryName]
         );
         return $this->render('@App/list.html.twig', array(

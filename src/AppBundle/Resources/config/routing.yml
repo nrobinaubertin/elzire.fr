@@ -58,9 +58,19 @@ illustrationList:
         canonicalUrl: "/illustrations"
         categoryName: "Illustrations"
 
-element:
-    path: /collections/{category}/{collection}/{element}
+decoration:
+    path: /{family}/{category}/{dir}
     requirements:
+        family: .+
+        category: .+
+        dir: .+
+    defaults:
+        _controller: AppBundle:Decoration:index
+
+element:
+    path: /{family}/{category}/{collection}/{element}
+    requirements:
+        family: .+
         category: .+
         collection: .+
         element: .+
@@ -75,8 +85,8 @@ collection:
     defaults:
         _controller: AppBundle:Collection:index
 
-category:
-    path: /collections/{category}
+list:
+    path: /{family}/{category}
     requirements:
         category: .+
     defaults:
@@ -86,3 +96,10 @@ collectionsCategories:
     path: /collections
     defaults:
         _controller: AppBundle:Category:index
+        family: collections
+
+decorationsCategories:
+    path: /decorations
+    defaults:
+        _controller: AppBundle:Category:index
+        family: decorations

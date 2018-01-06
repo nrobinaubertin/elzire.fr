@@ -9,10 +9,10 @@ use AppBundle\Utils\ImageWorker;
 
 class CategoryController extends Controller
 {
-    public function indexAction()
+    public function indexAction($family)
     {
         // get the list of directories in that location
-        $listDir = $this->get('kernel')->getRootDir() . "/../data/collections/";
+        $listDir = $this->get('kernel')->getRootDir() . "/../data/$family/";
         $infos = [];
 
         // each directory is a category
@@ -37,8 +37,8 @@ class CategoryController extends Controller
 
             // if we have a miniature, then we fill the infos for this category
             if($miniature != "") {
-                $image = "/miniature/collections/".$category."/".$miniature;
-                $url = strtolower("/collections/".preg_replace("/^\d+[_-]+/","",$category));
+                $image = "/miniature/$family/".$category."/".$miniature;
+                $url = strtolower("/$family/".preg_replace("/^\d+[_-]+/","",$category));
                 $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($listDir.$category."/".$miniature));
                 $infos[] = array(
                     "name" => $name,
@@ -53,11 +53,11 @@ class CategoryController extends Controller
         // get breadcrumbs
         $breadcrumbs = array(
             ["/", "Accueil"],
-            ["/collections", "Collections"],
+            ["/$family", ucfirst($family)],
         );
         return $this->render('@App/category.html.twig', array(
             "list" => $infos,
-            "title" => "Collections",
+            "title" => ucfirst($family),
             "breadcrumbs" => $breadcrumbs
         ));
     }
