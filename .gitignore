@@ -19,3 +19,4 @@
 /web/yarn.lock
 /data/
 *.orig
+/.composer

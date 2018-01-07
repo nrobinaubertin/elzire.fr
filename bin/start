@@ -30,7 +30,7 @@ isDockerRunning
 
 cdroot
 pathToProject=$(pwd)
-cd docker || exit
+cd "docker/server" || exit
 
 if [ -n "$(sudo docker ps | grep elzire)" ]; then
     sudo docker stop elzire && sudo docker rm elzire

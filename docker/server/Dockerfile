@@ -18,7 +18,7 @@ RUN set -xe \
     && mkdir -p /var/lib/nginx/logs
 
 COPY s6.d /etc/s6.d
-COPY run.sh /usr/local/bin/run.sh 
+COPY run.sh /usr/local/bin/run.sh
 COPY php-fpm.conf /etc/php7/php-fpm.conf
 COPY nginx /etc/nginx
 
