@@ -39,16 +39,16 @@ fi
 if sudo docker build -t elzire .; then
     echo "$pathToProject"
     if [ "$1" = "--dev" ]; then
-        sudo docker run --init --rm -it --tmpfs /tmp -e UID="$(id -u)" -e GID="$(id -g)" -v "${pathToProject}":/www --name elzire elzire
+        sudo docker run --init --rm -it -p 80:8080 --tmpfs /tmp -e UID="$(id -u)" -e GID="$(id -g)" -v "${pathToProject}":/www --name elzire elzire
     else
         if [ "$1" = "--local" ]; then
             sudo docker run --init --rm -it -p 80:8080 --tmpfs /tmp -e UID="$(id -u)" -e GID="$(id -g)" -v "${pathToProject}":/www --name elzire elzire
         else
-            sudo docker run --init --tmpfs /tmp -d -e UID="$(id -u)" -e GID="$(id -g)" -v "${pathToProject}":/www --name elzire elzire
+            sudo docker run --init --tmpfs /tmp -d -p 80:8080 -e UID="$(id -u)" -e GID="$(id -g)" -v "${pathToProject}":/www --name elzire elzire
         fi
     fi
 fi
 
 cdroot
-php bin/console cache:clear --env=prod --no-debug --no-warmup
-php bin/console cache:warmup --env=prod
+bin/exec php bin/console cache:clear --env=prod --no-debug --no-warmup
+bin/exec php bin/console cache:warmup --env=prod
