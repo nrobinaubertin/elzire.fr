@@ -32,9 +32,9 @@
     {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-    <h3> France métropolitaine </h3>
-    <p class="description">
+<div class="container-fluid mb-5">
+    <h4> France métropolitaine </h4>
+    <p class="description roboto-light">
         Les frais de port sont fixés au minimum de 9€ et comprennent l'emballage soigné de votre commande ainsi que les frais postaux.
         <br />
         La livraison est effectuée par la Poste et les colis sont livrés en <b>Colissimo remis contre signature</b>.
@@ -46,10 +46,16 @@
         Autre pays que la France, <a href="/contact">veuillez contacter Elzire pour les tarifs</a>.
         <br />
     </p>
-    <img class="img-fluid" src="{{ asset('assets/tableauFP.jpg') }}"/>
-    <br />
-    <br />
-    <img class="img-fluid" src="{{ asset('assets/tableauFP-badges.jpg') }}"/>
+    <div class="row mb-3">
+        <div class="col-60 col-lg-40">
+            <img class="img-fluid" src="{{ asset('assets/tableauFP.jpg') }}"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-60 col-lg-40">
+            <img class="img-fluid" src="{{ asset('assets/tableauFP-badges.jpg') }}"/>
+        </div>
+    </div>
 </div>
 {% endblock %}
 

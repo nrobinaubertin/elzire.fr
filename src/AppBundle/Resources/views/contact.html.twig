@@ -36,8 +36,11 @@
     {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid mb-5">
     {% if email_sent == false %}
+        <p class="roboto-light mb-3">
+            N'hésitez pas à me poser vos questions, à me partager vos commentaires ou encore vos idées. Je serai à l'écoute et ravie de vous répondre !
+        </p>
         <form id="contactForm" method="post" action="/send">
             <div class="form-group">
                 <label for="sender">Votre email :</label>
