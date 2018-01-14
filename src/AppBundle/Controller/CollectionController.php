@@ -81,7 +81,9 @@ class CollectionController extends Controller
                     break;
                 }
             }
-            $elements[] = $element;
+            if ($element["miniature"]) {
+                $elements[] = $element;
+            }
         }
 
         $infos = array(

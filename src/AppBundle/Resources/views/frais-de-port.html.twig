@@ -1,0 +1,57 @@
+{% extends 'AppBundle::page.html.twig' %}
+
+{% block contentHeader %}
+    <div class="container-fluid mb-1">
+        <div class="row justify-content-center">
+            <div class="col-60">
+
+                {% block breadcrumbs %}
+                <nav class="breadcrumb px-0">
+                    {% for breadcrumb in breadcrumbs %}
+                    {% if loop.last %}
+                    <span class="breadcrumb-item active">{{ breadcrumb[1] }}</span>
+                    {% else %}
+                    <a class="breadcrumb-item" href="{{ breadcrumb[0] }}">{{ breadcrumb[1] }}</a>
+                    {% endif %}
+                    {% endfor %}
+                </nav>
+                {% endblock %}
+
+                {% block underTitle %}
+                <div class="w-25 green-separator mb-3"></div>
+                <div class="mb-3">
+                <h2 class="roboto-thin">
+                    {{ title }}
+                </h2>
+                </div>
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h3> France métropolitaine </h3>
+    <p class="description">
+        Les frais de port sont fixés au minimum de 9€ et comprennent l'emballage soigné de votre commande ainsi que les frais postaux.
+        <br />
+        La livraison est effectuée par la Poste et les colis sont livrés en <b>Colissimo remis contre signature</b>.
+        <br />
+        Vous pouvez suivre l'acheminement de votre colis à tout moment en vous connectant au site <a href="https://www.laposte.fr/colissimo">https://www.laposte.fr/colissimo</a> et en spécifiant le numéro de colis qui vous sera envoyé par mail.
+        <br /><br />
+        Les frais postaux peuvent augmenter si votre colis excède les 2Kg. Ils seront alors définis lors de votre devis.
+        <br />
+        Autre pays que la France, <a href="/contact">veuillez contacter Elzire pour les tarifs</a>.
+        <br />
+    </p>
+    <img class="img-fluid" src="{{ asset('assets/tableauFP.jpg') }}"/>
+    <br />
+    <br />
+    <img class="img-fluid" src="{{ asset('assets/tableauFP-badges.jpg') }}"/>
+</div>
+{% endblock %}
+
+{% block end_body %}
+{% endblock %}

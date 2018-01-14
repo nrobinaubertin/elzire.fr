@@ -9,7 +9,7 @@ use AppBundle\Utils\ImageWorker;
 
 class ListController extends Controller
 {
-    public function indexAction($location = "", $canonicalUrl = "", $categoryName = "", $category = "", $family)
+    public function indexAction($location = "", $canonicalUrl = "", $categoryName = "", $category = "", $family = "")
     {
         // get the list of directories in that location
         if (empty($category)) {
