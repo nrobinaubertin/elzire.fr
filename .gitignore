@@ -19,3 +19,9 @@
 /web/yarn.lock
 /data/
 *.orig
+
+/.composer
+/.gnupg
+/.yarn
+/.yarnrc
+/.cache
