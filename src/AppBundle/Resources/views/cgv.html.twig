@@ -1,0 +1,208 @@
+{% extends 'AppBundle::page.html.twig' %}
+
+{% block contentHeader %}
+<div class="container-fluid mb-1">
+    <div class="row justify-content-center">
+        <div class="col-60">
+
+            {% block breadcrumbs %}
+            <nav class="breadcrumb px-0">
+                {% for breadcrumb in breadcrumbs %}
+                {% if loop.last %}
+                <span class="breadcrumb-item active">{{ breadcrumb[1] }}</span>
+                {% else %}
+                <a class="breadcrumb-item" href="{{ breadcrumb[0] }}">{{ breadcrumb[1] }}</a>
+                {% endif %}
+                {% endfor %}
+            </nav>
+            {% endblock %}
+
+            {% block underTitle %}
+            <div class="w-25 green-separator mb-3"></div>
+            <div class="mb-3">
+                <h2 class="roboto-thin">
+                    {{ title }}
+                </h2>
+            </div>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+    <small><b>Avant de passer commande, veuillez consulter les présentes Conditions Générales de Ventes.</b></small>
+    <br>
+    <br>
+    <h2>Mentions Légales</h2>
+    <br>
+    <b>Editeur du site et directeur de la publication :</b>
+    <br>
+    <b>Nom de l’entreprise</b> : Elzire
+    <br>
+    <b>Nom de l’entrepreneur</b> : Posso Sabine
+    <br>
+
+    <b>Email</b> : elzire.fr@gmail.com
+    <br>
+    <b>N°Siret</b> :  En cours
+    <br>
+    <b>Déclaration Cnil</b> :  En cours
+    <br>
+    <b>N°</b>
+    <br>
+    <br>
+
+    <h4>Préambule</h4>
+    <p class="roboto-light">
+        Les conditions de vente suivantes sont conclues d’une part entre Elzire,  immatriculée sous le numéro(en cours de création) dont le siège social est basé au 2 rue de Bruxelles - 67000 Strasbourg, intervenant sous la marque Elzire ci- après dénommée " Elzire ". D'autre part, par toute personne physique ou morale dénommée ci-après " Client " souhaitant procéder à un achat de produit via le site internet www.elzire.fr.
+        Le client s’engage à lire et respecter les Conditions Générales de Vente et y adhérer sans réserve. Les présentes conditions prévaudront sur toute réclamation en cas de litige. Elzire se réserve le droit de modifier les présentes conditions à tout moment.
+        Pour toutes questions, le client peut contacter Elzire par mail à l’adresse suivante : elzire.fr@gmail.com
+        La personne qui souhaite acheter sur le site déclare avoir la pleine capacité juridique.
+        Dans ce cas les conditions applicables seront celles en vigueur sur le site à la date de la validation de la commande par l’acheteur.
+        Les conditions générales de ventes visent à définir les relations contractuelles entre "Elzire" et l’acheteur à tout achat effectué par le biais du site elzire.fr.
+    </p>
+
+    <h4>Droit de propriété intellectuelle</h4>
+    <p class="roboto-light">
+        Ce site et tout son contenu (créations, dessins, maquettes, illustrations, photographies et toutes œuvres délivrées sous quelques formes que ce soit) sont la propriété exclusive de Elzire. Il est strictement interdit de conserver, de copier, de distribuer, de publier ou d'utiliser toute partie du contenu (sauf autorisation au préalable d’ Elzire). Le client s’engage à garder un usage purement personnel du produit acheté et n’est en aucun cas autorisé à le reproduire. Elzire se réserve le droit de photographier et publier ses créations pour servir de références sous réserve de rendre illisibles les coordonnées et photos du client.
+        Elzire se réserve le droit d'ajouter, de supprimer ou de modifier n'importe quelle partie du contenu à tout moment, sans notification préalable et de proposer des créations similaires à d'autres clients. De plus, Elzire ne garantit pas que les créations ne seront pas similaires à d’autres déjà existantes.
+        Toute autre utilisation des créations d’Elzire (dessins, logos, photographie, objets…) telles que reproduction, commercialisation, diffusion et édition par quiconque est rigoureusement interdite et constitutive d'une contrefaçon pouvant être sanctionnée pénalement et civilement.
+    </p>
+
+    <h4>Tarifs</h4>
+    <p class="roboto-light">
+        Elzire se réserve le droit de modifier les tarifs à tous moments sans information préalable, en fonction des conditions économiques, de la politique tarifaire des différents intervenants : les fournitures, la poste et Elzire.
+        Elzire s’engage à appliquer les tarifs en vigueur qui auront été indiqués au moment de la commande.
+        Le devis est valable 2 mois après sa date d‘émission, au delà de ce délais, les prix indiqués sont susceptibles de varier.
+        Les prix de vente affichés sont en Euros, correspondent au prix unitaire et tiennent compte des prestations suivantes :
+        <ul class="roboto-light">
+            <li>le traitement de la commande</li>
+            <li>la création graphique</li>
+            <li>la personnalisation par une graphiste (texte, couleur, l'intégration et le traitement de la photo transmise par le client)</li>
+            <li>L'envoi par e-mail d'un Bon A Tirer (BAT). Une maquette finale de votre produit que Elzire vous envoie sous forme de pièce jointe par e-mail.</li>
+            <li>L'impression, la découpe, l’assemblage et la préparation de la commande.</li>
+            <li>La livraison en Colissimo.</li>
+        </ul>
+    </p>
+
+    <h4>Produits</h4>
+    <p class="roboto-light">
+        Les produits "Elzire" sont des produits réalisés entièrement à la main (du concept à la création). Chaque commande est exécutée avec le plus grand soin, cependant il peut y avoir de légères différences d’apparence (par exemple d’un faire part à l’autre), de petites imperfections de découpe etc,  qui ne peuvent en aucun cas être un motif de non qualité recevable.
+    </p>
+    <p class="roboto-light">
+        Au dos de certains modèles figurent discrètement le logo “Elzire”.
+        La maquette définitive, faisant office de bon à tirer, vous sera présentée avant la signature définitive.
+        Différence entre l’écran et le rendu final: Il peut exister des différences de couleurs, entre l’affichage à l’écran et le modèle imprimé.
+        "Elzire" ne peut être tenu responsable en cas de déception quant à l’impression et à la réalisation de la commande si le client n’a pas choisi de recevoir un échantillon.
+        Toute validation vaut pour acceptation pleine et entière de l’impression telle qu’elle est figurée sur les images écran.
+        Les produits présents peuvent être modifiés selon vos goûts (couleurs, textes, photos) pour en faire des modèles adaptés à votre personnalité, dans ce cas le devis sera révisé.
+        Les modèles sont livrés entièrement montés (sauf mention contraire).
+    </p>
+
+    <h4>Echantillons</h4>
+    <p class="roboto-light">
+        Vous aimeriez voir le modèle choisi de plus prêt ? C’est possible ! 
+        N’hésitez pas à demander à Elzire le pack d’échantillon de votre choix. 
+        Chaque pack comprend le faire part et plusieurs élément de la même collection (marque place, programme, boite de dragées, non personnalisés sauf sur demande).
+        Le tout pour 6€ par pack, l’envoi compris. 
+        Dès réception du règlement je vous ferai parvenir vos échantillons.
+        Pour toutes questions, contactez directement Elzire.
+    </p>
+
+    <h4>Commande</h4>
+    <p class="roboto-light">
+        Pour toutes commandes merci de prendre contact par mail : elzire.fr@gmail.com
+        Elzire vous transmettra par mail un devis.
+        Ce devis est à retourner daté et signé par mail à elzire.fr@gmail.com, accompagnés du règlement de la commande dans sa totalité (en affranchissant au tarif en vigueur).
+        Le règlement des achats s’effectue par virement bancaire. Les coordonnées du compte à créditer vous seront communiquées à la réception du devis signé (validation de la commande à réception du virement).
+        Dès la réception du paiement, Elzire vous enverra par mail une photo du prototype. La photo est à vérifier (texte, orthographe, mise en page, typographie, couleur, photographie, etc) par le client et à valider. 
+        Aucune commande ne sera expédiée avant réception du règlement de la commande.
+    </p>
+    <p class="roboto-light">
+        Toute validation du bon à tirer (BAT) vaut pour acceptation pleine et entière de l’impression tel qu’il est figuré sur les photos.
+        Aucune modification ne pourra être possible une fois votre commande validée. “Elzire” ne pourra en aucun cas être tenu responsable d'une erreur due à une négligence du client.
+        Il appartient au client de vérifier soigneusement le prototype final, la typographie, l’orthographe, la conformité du texte (noms, prénoms, dates, adresse…), des couleurs et de signaler toutes erreurs afin que la correction soit faite avant confirmation. Elzire ne pourra en aucun cas être tenu responsable d'une erreur due à une négligence du Client.
+    </p>
+    <p class="roboto-light">
+        Toute modification de la commande (format, quantité, couleur, etc) fera l’objet d’une révision du devis.
+        Après acceptation du BAT, vous serez tenu informé par e-mail de l'expédition de votre colis.
+    </p>
+
+    <h4>Traitement et délais</h4>
+    <p class="roboto-light">
+        Toute commande sera honorée dans un délais variable de 1 à 3 semaines et uniquement à partir de la réception et l'acceptation du règlement.
+        Les délais sont donnés en jours ouvrés (hors samedi, dimanche, jours fériés et vacances annoncées).
+        La réalisation de votre commande (faire-part, boites, décoration de table etc) est entièrement réalisée par Elzire et demande de la minutie et de la rigueur. C’est pourquoi l’artisanat demande un délai de réalisation un peu plus long.
+        Le temps de traitement est variable selon votre demande (quantité, complexité du modèles, fournitures etc).
+        Suivants la confirmation (et donc la réception et l'acceptation) du paiement de la commande, Elzire envoie le plus rapidement possible (selon les stock disponibles) au client par e-mail, une photo du prototype afin de lui permettre de visualiser le rendu de sa commande personnalisée et ainsi de vérifier l'orthographe, les éléments du texte (noms, prénoms, date, heure, lieu,...), les couleurs et l'intégration des photos, le tout avant l'impression finale. Le Client doit valider cette maquette en répondant par email "Bon à Tirer" pour que la fabrication de sa commande soit lancée.
+        Naissance : Une fois votre modèle choisi,  Elzire pourra commencer la réalisation de votre commande (après réception de votre règlement). Et de la finaliser dès la naissance de votre enfant, avec le texte et les éventuelles photos, ainsi vous pourrez recevoir vos faire parts plus rapidement.
+        Attention : La visualisation sur le site ainsi que par e-mail ne permet pas d'apprécier et de restituer pleinement les couleurs ou textures de papier. En conséquence la responsabilité de Elzire ne saurait être engagée du fait d'une nuance marginale entre les couleurs visualisées et les couleurs du produit tel que livré ainsi que pour la texture du papier.
+    </p>
+
+    <p class="roboto-light">
+        Si le BAT ne convient pas au client, (référence, texte, couleur ou photo incorrectes,...) Elzire s’engage à le retoucher et à renvoyer au client une nouvelle maquette dans les 48 heures (jours ouvrés).
+        Après acceptation du BAT, vous serez tenu informé par e-mail de l'expédition de votre colis.
+        Il est conseillé de réserver le plus rapidement possible pour être garantie de la disponibilité.
+        Les délais sont donnés à titre indicatif, un retard éventuel ne donnera pas droit à l’acheteur de refuser la livraison ou de demander des dommages et intérêts.
+        En cas d’indisponibilité du produit commandé, notamment du fait des fournisseurs, le client sera informé le plus rapidement possible.
+    </p>
+
+    <h4>Traitement des données</h4>
+    <p class="roboto-light">
+        Toutes informations nominatives relatives aux clients sont indispensable pour le traitement, l’acheminement des commandes et l’établissement des devis et factures.
+        Elles sont entièrement confidentielles et ne seront utilisées que pour le traitement des commandes.
+        Aucune adresse e-mail ne sera transmise.
+    </p>
+
+    <h4>Livraison</h4>
+    <p class="roboto-light">
+        Les frais de port sont fixé au minimum de 9€ et comprennent l’emballage soigné de votre commande ainsi que les frais postaux  pour la France métropolitaine..
+        Aucune livraison ne sera faite avant le règlement intégrale de la facture.
+        La livraison est effectuée par la Poste et les colis sont livrés en Colissimo remis contre signature. 
+        Il est possible de choisir à la demande du client un envoi classique pour votre commande, mais Elzire se dégage de toute responsabilité en cas de retard de livraison ou de dégradation du colis.
+        Vous pouvez suivre l’acheminement de votre colis à tout moment grâce au numéro de colis qui vous sera envoyé par mail, en vous connectant au site www.laposte.fr/colissimo.
+        En cas d’absence, le coli sera déposé dans la boite à lettre, ou un avis de passage sera laissé au client l’invitant à se présenter à son bureau de poste habituel.
+    </p>
+    <p class="roboto-light">
+        Selon la quantité et le poids de votre commande les frais postaux peuvent varier*. Ils seront alors définis ensemble lors du devis.
+        *(Valable uniquement pour les colis faisant plus de 2kg).
+        Autres pays que la France : Veuillez contacter Elzire pour les tarifs.
+        Pour toute expédition dans les DOM TOM et les pays en dehors de l’Union Européenne les éventuels frais de douanes ou taxes diverses restent à la charge du destinataire.
+        Elzire ne pourra pas être tenu pour responsable d'une adresse de livraison indiquée erronée par le Client ainsi que de la qualité du transport et des conséquences en cas de retard de livraison.
+        Les produits voyagent aux risques et périls du destinataire dès l'expédition. En cas de dommage pendant le transport, le client dispose d’un délais de 48h, pour déposer d’éventuelles réserves auprès du transporteur, en cas de manquant ou de dégradation.
+        Elzire  ne peut être tenu responsable en cas de retard de livraison dû à un cas de force majeur (grève, inondation, incendie, erreur, émeute, accidents, erreur et l’impossibilité d’être approvisionné quelle qu'en soit la cause). Aucun dédommagement ou remboursement ne pourra être effectué
+        Compter en moyenne 48h pour les délais de livraison. Ils sont donnés à titre indicatif  et sont nullement contractuels
+        Sauf accord préalable d’Elzire, aucun retour de produit ne sera accepté.
+        Pour voir les tarifs de frais de port cliquez ici.
+    </p>
+
+    <h4>Paiement</h4>
+    <p class="roboto-light">
+        Le règlement des achats s’effectue par virement bancaire. Les coordonnées du compte à créditer vous seront communiquées à la réception du devis signé (validation de la commande à réception du virement).
+        Aucune commande ne sera expédiée avant réception du règlement du solde de la commande.
+        Une facture vous sera envoyé en même temps que votre commande sur demande.
+        Elzire se réserve le droit de ne pas confirmer ou de ne pas honorer une commande dont le paiement n’aura pas
+        été effectué sans avoir à fournir d’explication. Elzire remboursera alors par chèque ou par virement les sommes éventuellements versées.  Toute annulation de commande à la demande du client, entrainera des frais de traitements du dossier facturé.
+    </p>
+
+    <h4>Responsabilité</h4>
+    <p class="roboto-light">
+        Les renseignements données sur le site ( photo, fiche produits, prix) sont donnés à titre indicatifs. Elzire s’efforce de veiller à l’exactitude des informations présente sur son site. Les erreurs susceptible de s’y être introduite sont imprévues et sont rectifiées dans les plus brefs délais.
+        Elzire n’est tenu que par une obligation de moyen. Sa responsabilité ne pourra être engagée pour un dommage résultant de l’utilisation du réseau internet tel que perte de donné, intrusion, virus, rupture de service, ou autre problème involontaire.
+        La responsabilité d’Elzire ne saurait être mise en cause pour de simple erreur qui aurait pu subsister, malgré toutes les précautions prises, dans la présentation des produits.
+        Le Client reconnaît que l'utilisation dont il peut faire des produits commandés est limitée à un usage conforme à leur destination.
+        Le Client est personnellement responsable des tous les contenus qu'il transmet à Elzire ( Photos, graphismes, texte, etc). Il accepte de n'inclure dans ses produits aucun éléments dont les droits de propriété intellectuelle appartiennent à un tiers quelconque sans avoir obtenu préalablement les autorisations appropriées des propriétaires.Le client garantit qu'il a tous les droits requis ou permissions nécessaires à l'incorporation de produits d'une tierce partie dans ses produits.
+    </p>
+
+    <h4>Politique de Confidentialité</h4>
+    <p class="roboto-light">
+        Elzire prend la confidentialité de vos informations très au sérieux et s'engage à ne pas collecter d'information personnelle, à ne pas céder d'information personnelle à un tiers et à ne pas utiliser d'informations personnelles à des fins non prévues sans votre accord.
+        De plus, Elzire se réserve le droit de diffuser sur le site Elzire.fr, Facebook et instagram, des photos des faire-part et autres documents réalisés pour vous à des fins de promotion sauf sur demande de votre part, sans laisser apparaître vos coordonnées ou information personnelle. Elzire se réserve également le droit d'utiliser des exemplaires de documents créés pour le Client comme échantillons pour d'autres clients.
+    </p>
+</div>
+{% endblock %}
+
+{% block end_body %}
+{% endblock %}

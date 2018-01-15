@@ -40,6 +40,11 @@ contact:
     defaults:
         _controller: AppBundle:Contact:index
 
+cgv:
+    path: /cgv
+    defaults:
+      _controller: AppBundle:CGV:index
+
 frais-de-port:
     path: /frais-de-port
     defaults:
