@@ -504,3 +504,11 @@ footer {
 .description a:hover {
     color: $elzire-green;
 }
+
+.cgv {
+    color: white;
+    &:hover {
+        text-decoration: underline;
+        color: white;
+    }
+}
