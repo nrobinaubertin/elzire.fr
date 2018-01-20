@@ -32,6 +32,6 @@ cdroot
 pathToProject=$(pwd)
 cd "docker/exec" || exit
 
-if sudo docker build -t "exec" .; then
+if sudo docker build -t "exec" . >/dev/null; then
     sudo docker run --init --rm -it -e UID="$(id -u)" -e GID="$(id -g)" -e USER="$(id -un)" -e GROUP="$(id -gn)" -v "${pathToProject}:/exec" --name "exec" "exec" "$@"
 fi
