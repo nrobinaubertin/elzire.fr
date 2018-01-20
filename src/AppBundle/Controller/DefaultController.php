@@ -2,11 +2,11 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Utils\ImageWorker;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Utils\ImageWorker;
 
 class DefaultController extends Controller
 {
@@ -17,23 +17,29 @@ class DefaultController extends Controller
     public function imageAction($path, Request $request)
     {
         $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
+        $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
         $watermark = $this->get('kernel')->getRootDir()."/../web/assets/watermark.png";
 
-        ImageWorker::displayImage($path, 1200, 1200, $watermark);
+        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
+        $imageWorker->displayImage($path, 1200, 1200, $watermark);
         return new Response("");
     }
     public function banniereAction($path, Request $request)
     {
         $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
+        $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
         $watermark = "";
 
-        ImageWorker::displayImage($path, 1024, 1024, $watermark);
+        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
+        $imageWorker->displayImage($path, 1024, 1024, $watermark);
         return new Response("");
     }
     public function miniatureAction($path, Request $request)
     {
         $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
-        ImageWorker::displayMiniature($path, 400);
+        $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
+        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
+        $imageWorker->displayMiniature($path, 400);
         return new Response("");
     }
 }

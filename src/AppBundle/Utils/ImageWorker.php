@@ -4,11 +4,18 @@ namespace AppBundle\Utils;
 
 class ImageWorker
 {
+    private $cacheDir;
+
+    public function __construct(string $cacheDir)
+    {
+        $this->cacheDir = $cacheDir;
+    }
+
     public function getPlaceholder($source)
     {
         $size = 16;
         $im = new \Imagick();
-        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, "placeholder", $size);
+        $filename = $this->cacheDir."/".self::getThumbnailHash($source, "placeholder", $size);
         if (file_exists($filename)) {
             try {
                 if(!$im->readImage($filename)) {
@@ -71,10 +78,12 @@ class ImageWorker
 
     public function displayMiniature($source, $size)
     {
-        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, "miniature", $size, "");
+        $filename = $this->cacheDir."/".self::getThumbnailHash($source, "miniature", $size, "");
         if (file_exists($filename)) {
-            header("Content-Type: image/jpeg");
-            readfile($filename);
+            if (php_sapi_name() !== "cli") {
+                header("Content-Type: image/jpeg");
+                readfile($filename);
+            }
             return true;
         }
 
@@ -93,8 +102,10 @@ class ImageWorker
         $im->setSamplingFactors(['2x2', '1x1', '1x1']);
         $im->setImageCompressionQuality(85);
 
-        header("Content-Type: image/jpeg");
-        echo $im;
+        if (php_sapi_name() !== "cli") {
+            header("Content-Type: image/jpeg");
+            echo $im;
+        }
 
         $im->writeImage($filename);
         $im->destroy();
@@ -103,10 +114,12 @@ class ImageWorker
 
     public function displayImage($source, $width, $height, $watermark)
     {
-        $filename = sys_get_temp_dir()."/".self::getThumbnailHash($source, "image", $width*$height, $watermark);
+        $filename = $this->cacheDir."/".self::getThumbnailHash($source, "image", $width*$height, $watermark);
         if (file_exists($filename)) {
-            header("Content-Type: image/jpeg");
-            readfile($filename);
+            if (php_sapi_name() !== "cli") {
+                header("Content-Type: image/jpeg");
+                readfile($filename);
+            }
             return true;
         }
 
@@ -130,8 +143,10 @@ class ImageWorker
         $im->setSamplingFactors(['2x2', '1x1', '1x1']);
         $im->setImageCompressionQuality(85);
 
-        header("Content-Type: image/jpeg");
-        echo $im;
+        if (php_sapi_name() !== "cli") {
+            header("Content-Type: image/jpeg");
+            echo $im;
+        }
 
         $im->writeImage($filename);
         $im->destroy();

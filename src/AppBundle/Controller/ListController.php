@@ -11,6 +11,8 @@ class ListController extends Controller
 {
     public function indexAction($location = "", $canonicalUrl = "", $categoryName = "", $category = "", $family = "")
     {
+        $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
+        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
         // get the list of directories in that location
         if (empty($category)) {
             $listDir = $this->get('kernel')->getRootDir() . '/../data' . $location;
@@ -65,7 +67,7 @@ class ListController extends Controller
             if($miniature != "") {
                 $image = "/miniature".$location.$collection."/".$miniature;
                 $url = strtolower($link.preg_replace("/^\d+[_-]+/","",$collection));
-                $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($listDir.$collection."/".$miniature));
+                $placeholder = "data:image/jpeg;base64,".base64_encode($imageWorker->getPlaceholder($listDir.$collection."/".$miniature));
                 $infos[] = array(
                     "name" => $name,
                     "image" => $image,

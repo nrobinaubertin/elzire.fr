@@ -11,6 +11,8 @@ class CategoryController extends Controller
 {
     public function indexAction($family)
     {
+        $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
+        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
         // get the list of directories in that location
         $listDir = $this->get('kernel')->getRootDir() . "/../data/$family/";
         $infos = [];
@@ -39,7 +41,7 @@ class CategoryController extends Controller
             if($miniature != "") {
                 $image = "/miniature/$family/".$category."/".$miniature;
                 $url = strtolower("/$family/".preg_replace("/^\d+[_-]+/","",$category));
-                $placeholder = "data:image/jpeg;base64,".base64_encode(ImageWorker::getPlaceholder($listDir.$category."/".$miniature));
+                $placeholder = "data:image/jpeg;base64,".base64_encode($imageWorker->getPlaceholder($listDir.$category."/".$miniature));
                 $infos[] = array(
                     "name" => $name,
                     "image" => $image,
