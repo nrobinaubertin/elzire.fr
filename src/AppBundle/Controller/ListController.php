@@ -77,11 +77,11 @@ class ListController extends Controller
             }
         }
         // get breadcrumbs
-        $breadcrumbs = array(
-            ["/", "Accueil"],
-            ["/$family", ucfirst($family)],
-            [$canonicalUrl, $categoryName]
-        );
+        $breadcrumbs = array(["/", "Accueil"]);
+        if (!empty($family)) {
+            $breadcrumbs[] = ["/$family", ucfirst($family)];
+        }
+        $breadcrumbs[] = [$canonicalUrl, $categoryName];
         return $this->render('@App/list.html.twig', array(
             "list" => $infos,
             "categorie" => ucfirst($categoryName),
