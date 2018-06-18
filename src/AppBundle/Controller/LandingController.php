@@ -30,11 +30,11 @@ class LandingController extends Controller
                     $image = "/banniere/bannieres/".$dir."/".$file;
                 } else {
                     if(preg_match("/titre/", $file)) {
-                        $title = file_get_contents($banniereDir.$dir."/".$file);
+                        $title = self::convertEncoding(file_get_contents($banniereDir.$dir."/".$file);
                         continue;
                     }
                     if(preg_match("/texte/", $file)) {
-                        $text = file_get_contents($banniereDir.$dir."/".$file);
+                        $text = self::convertEncoding(file_get_contents($banniereDir.$dir."/".$file);
                         continue;
                     }
                     if(preg_match("/lien/", $file)) {
@@ -58,5 +58,16 @@ class LandingController extends Controller
             "domain" => $this->getParameter("domain"),
         ));
 
+    }
+
+    private function convertEncoding($str) {
+        $enc = mb_detect_encoding($str, mb_detect_order(), true);
+        if ($enc === "ISO-8859-1") {
+            return utf8_encode($str);
+        }
+        if($enc === "Windows-1252" || !$enc) {
+            return mb_convert_encoding($str, "UTF-8", "Windows-1252");
+        }
+        return $str;
     }
 }
