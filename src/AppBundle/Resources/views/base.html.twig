@@ -3,11 +3,13 @@
     <head>
         <title>{% block title %}Elzire{% endblock %}</title>
         <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
+        <link rel="manifest" href="manifest.json" />
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         {% block metadata %}
+        <meta property="description" content="Les faire-parts créatifs façon Elzire" />
         <meta property="og:title" content="Elzire" />
         <meta property="og:description" content="Les faire-parts créatifs façon Elzire" />
         <meta property="og:type" content="website" />
