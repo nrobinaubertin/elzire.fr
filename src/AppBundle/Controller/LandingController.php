@@ -30,11 +30,11 @@ class LandingController extends Controller
                     $image = "/banniere/bannieres/".$dir."/".$file;
                 } else {
                     if(preg_match("/titre/", $file)) {
-                        $title = self::convertEncoding(file_get_contents($banniereDir.$dir."/".$file);
+                        $title = self::convertEncoding(file_get_contents($banniereDir.$dir."/".$file));
                         continue;
                     }
                     if(preg_match("/texte/", $file)) {
-                        $text = self::convertEncoding(file_get_contents($banniereDir.$dir."/".$file);
+                        $text = self::convertEncoding(file_get_contents($banniereDir.$dir."/".$file));
                         continue;
                     }
                     if(preg_match("/lien/", $file)) {
