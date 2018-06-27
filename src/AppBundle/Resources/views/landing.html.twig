@@ -4,8 +4,8 @@
 <header class="landing-header mb-3">
     <div class="surlignage"></div>
     <div class="pt-2 pb-2 en-tete d-flex flex-column justify-content-center align-items-center">
-        <img src="{{ asset('assets/logo-elzire.png') }}" class="logo-img d-none d-sm-block" />
-        <img src="{{ asset('assets/logo.png') }}" class="logo-img small-logo d-block d-sm-none mb-1" />
+        <img src="{{ asset('assets/logo-elzire.png') }}" alt="logo elzire" class="logo-img d-none d-sm-block" />
+        <img src="{{ asset('assets/logo.png') }}" alt="logo elzire short" class="logo-img small-logo d-block d-sm-none mb-1" />
         <div class="mb-1 header-separator"></div>
         <div class="slogan"> Les faire-parts créatifs façon Elzire </div>
     </div>
@@ -25,7 +25,7 @@
             {% endfor %}
         </ol>
 
-        <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner">
             {% for ban in bannieres %}
                 {% if loop.index0 == 0 %}
                     <div class="carousel-item active">
@@ -33,9 +33,9 @@
                     <div class="carousel-item">
                 {% endif %}
                     {% if ban['url'] != "" %}
-                        <a href="{{ ban['url'] }}">
+                    <a aria-label="{{ban["title"]}}" href="{{ ban['url'] }}">
                     {% endif %}
-                    <img class="d-block img-fill" src="{{ ban['image'] }}"/>
+                    <img alt="{{ban["title"]}}" class="d-block img-fill" src="{{ ban['image'] }}"/>
                     <div class="elzire-carousel-caption d-none d-md-block roboto-light">
                         <h2 class="roboto-thin">{{ ban["title"] | raw }}</h2>
                         <p>{{ ban["text"] | raw }}</p>
