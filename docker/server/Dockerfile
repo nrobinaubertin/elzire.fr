@@ -1,10 +1,10 @@
-FROM alpine:3.6
+FROM alpine:3.7
 
 ENV UID=791 GID=791
 ENV DOMAIN=elzire.fr
 ENV MAIL=niels.robin.aubertin@gmail.com
 
-VOLUME /www
+VOLUME ["/www", "/certs"]
 EXPOSE 8080 8443
 
 # install core
@@ -17,8 +17,7 @@ RUN set -xe \
     && mkdir -p /nginx/tmp/proxy \
     && mkdir -p /nginx/tmp/fastcgi \
     && mkdir -p /nginx/tmp/uwsgi \
-    && mkdir -p /var/lib/nginx/logs \
-    && mkdir -p /letsencrypt/.well-known/acme-challenge
+    && mkdir -p /var/lib/nginx/logs
 
 COPY s6.d /etc/s6.d
 COPY run.sh /usr/local/bin/run.sh
