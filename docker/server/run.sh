@@ -6,5 +6,5 @@
 # mkdir -p /letsencrypt/.well-known/acme-challenge
 # echo "plop" > /letsencrypt/.well-known/acme-challenge/plop
 
-chown -R "${UID}:${GID}" /php /nginx /etc/s6.d /var/log/nginx /var/tmp/nginx /letsencrypt
+chown -R "${UID}:${GID}" /php /nginx /etc/s6.d /var/log/nginx /var/tmp/nginx /certs
 exec su-exec "${UID}:${GID}" /bin/s6-svscan /etc/s6.d
