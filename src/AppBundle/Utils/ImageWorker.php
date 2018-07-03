@@ -175,4 +175,4 @@ class ImageWorker
         }
         return sha1($filehash.$size.$watermarkhash.$salt);
     }
-} 
+}

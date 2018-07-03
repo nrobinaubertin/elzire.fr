@@ -16,7 +16,7 @@ class DefaultController extends Controller
     }
     public function imageAction($path, Request $request)
     {
-        $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
+        $path = $this->get('kernel')->getRootDir()."/../data/".$path;
         $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
         $watermark = $this->get('kernel')->getRootDir()."/../web/assets/watermark.png";
 
@@ -26,17 +26,17 @@ class DefaultController extends Controller
     }
     public function banniereAction($path, Request $request)
     {
-        $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
+        $path = $this->get('kernel')->getRootDir()."/../data/".$path;
         $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
         $watermark = "";
 
         $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
-        $imageWorker->displayImage($path, 1024, 1024, $watermark);
+        $imageWorker->displayImage($path, 1200, 1200, $watermark);
         return new Response("");
     }
     public function miniatureAction($path, Request $request)
     {
-        $path = $this->get('kernel')->getRootDir()."/../data/".$path; 
+        $path = $this->get('kernel')->getRootDir()."/../data/".$path;
         $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
         $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
         $imageWorker->displayMiniature($path, 400);
