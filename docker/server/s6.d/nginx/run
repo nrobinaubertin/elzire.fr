@@ -1,3 +1,2 @@
 #!/bin/sh
-#certbot certonly -n --debug-challenges --dry-run --agree-tos --webroot -w /letsencrypt --force-renewal --email $MAIL -d $DOMAIN --cert-name elzire --cert-path /certs/cert.pem --key-path /certs/privkey.pem --fullchain-path /certs/fullchain.pem --chain-path /certs/cert.pem --work-dir /letsencrypt --logs-dir /letsencrypt --config-dir /letsencrypt
 exec nginx
