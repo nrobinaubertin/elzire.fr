@@ -1,0 +1,65 @@
+{% extends 'AppBundle::page.html.twig' %}
+
+{% block contentHeader %}
+<div class="container-fluid mb-1">
+    <div class="row justify-content-center">
+        <div class="col-60">
+
+            {% block breadcrumbs %}
+            <nav class="breadcrumb px-0">
+                {% for breadcrumb in breadcrumbs %}
+                {% if loop.last %}
+                <span class="breadcrumb-item active">{{ breadcrumb[1] }}</span>
+                {% else %}
+                <a class="breadcrumb-item" href="{{ breadcrumb[0] }}">{{ breadcrumb[1] }}</a>
+                {% endif %}
+                {% endfor %}
+            </nav>
+            {% endblock %}
+
+            {% block underTitle %}
+            <div class="w-25 green-separator mb-3"></div>
+            <div class="mb-3">
+                <h2 class="roboto-thin">
+                    {{ title }}
+                </h2>
+            </div>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-60 col-md-30 col-lg-20">
+            <div class="card mb-3" style="width: 18rem">
+                <img class="card-img-top" src="assets/dorianee.jpg"/>
+                <div class="card-body">
+                    <h5 class="card-title">Dorianee</h5>
+                    <p class="card-text">
+                        Création de miroirs de poche, magnets et badges épingle
+                    </p>
+                    <a href="https://www.etsy.com/shop/DorianeeMiroirs" class="btn btn-primary">Visiter son shop</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-60 col-md-30 col-lg-20">
+            <div class="card mb-3" style="width: 18rem">
+                <img class="card-img-top" src="assets/princesse.jpg"/>
+                <div class="card-body">
+                    <h5 class="card-title">Princesse Elle Même</h5>
+                    <p class="card-text">
+                        Des Box spéciales futures mariées personnalisées et de qualité ! 
+                    </p>
+                    <a href="https://www.princesse-elle-meme.fr" class="btn btn-primary">Visiter son site</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block end_body %}
+{% endblock %}
