@@ -22,6 +22,14 @@ image:
         path: .+
     methods: [GET]
 
+assets:
+    path: /assets/{path}
+    defaults:
+        _controller: AppBundle:Default:assets
+    requirements:
+        path: .+
+    methods: [GET]
+
 miniature:
     path: /miniature/{path}
     defaults:
@@ -34,6 +42,11 @@ landing:
     path: /
     defaults:
       _controller: AppBundle:Landing:index
+
+partners:
+    path: /partenaires
+    defaults:
+        _controller: AppBundle:Partners:index
 
 contact:
     path: /contact

@@ -24,6 +24,14 @@ class DefaultController extends Controller
         $imageWorker->displayImage($path, 1200, 1200, $watermark);
         return new Response("");
     }
+    public function assetsAction($path, Request $request)
+    {
+        $path = $this->get('kernel')->getRootDir()."/../web/assets/".$path;
+        $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
+        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
+        $imageWorker->displayImage($path, 640, 640, null);
+        return new Response("");
+    }
     public function banniereAction($path, Request $request)
     {
         $path = $this->get('kernel')->getRootDir()."/../data/".$path;
