@@ -26,3 +26,7 @@
 /.yarnrc
 /.cache
 /certs
+/.bash_history
+/config
+/data
+/elzire-data
