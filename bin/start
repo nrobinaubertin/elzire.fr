@@ -39,12 +39,12 @@ fi
 if sudo docker build -t elzire .; then
     echo "$pathToProject"
     if [ "$1" = "--dev" ]; then
-        sudo docker run --init --rm -it -p 80:8080 -p 443:8443 --tmpfs /tmp -e UID="$(id -u)" -e GID="$(id -g)" -v "${pathToProject}"/certs:/certs -v "${pathToProject}":/www --name elzire elzire
+        sudo docker run --rm -it -p 80:8080 --tmpfs /tmp -e UID="$(id -u)" -e GID="$(id -g)" -v "${pathToProject}":/www --name elzire elzire
     else
         if [ "$1" = "--local" ]; then
-            sudo docker run --init --rm -it -p 80:8080 -p 443:8443 --tmpfs /tmp -e UID="$(id -u)" -e GID="$(id -g)" -v "${pathToProject}":/www --name elzire elzire
+            sudo docker run --rm -it -p 80:8080 --tmpfs /tmp -e UID="$(id -u)" -e GID="$(id -g)" -v "${pathToProject}":/www --name elzire elzire
         else
-            sudo docker run --init --tmpfs /tmp -d -p 80:8080 -p 443:8443 -e UID="$(id -u)" -e GID="$(id -g)" -v "${pathToProject}"/certs:/certs -v "${pathToProject}":/www --name elzire elzire
+            sudo docker run --tmpfs /tmp -d -p 80:8080 -e UID="$(id -u)" -e GID="$(id -g)" -v "${pathToProject}":/www --name elzire elzire
         fi
     fi
 fi
