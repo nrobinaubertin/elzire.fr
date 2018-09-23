@@ -1,0 +1,15 @@
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: symfony
+    database_user: root
+    database_password: null
+    mailer_transport: gmail
+    mailer_host: null
+    mailer_user: null
+    mailer_password: null
+    secret: 1placeholder
+    google_recaptcha_site_key: null
+    google_recaptcha_secret_key: null
+    mail_to: null
+    domain: null
