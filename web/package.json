@@ -10,14 +10,14 @@
         "build": "yarn run clean && yarn run build:css"
     },
     "dependencies": {
-        "@fancyapps/fancybox": "^3.0.48",
-        "bootstrap": "4.0.0-beta.2",
+        "@fancyapps/fancybox": "~3",
+        "bootstrap": "~4.1",
         "font-awesome": "~4.7",
-        "jquery": "~3.2",
-        "lazysizes": "~3.0",
-        "node-sass": "~4.5",
-        "npm-check-updates": "~2.11",
-        "popper.js": "~1.12",
-        "shx": "~0.2"
+        "jquery": "~3",
+        "lazysizes": "~4",
+        "node-sass": "~4",
+        "npm-check-updates": "~2",
+        "popper.js": "~1",
+        "shx": "~0.3"
     }
 }
