@@ -26,3 +26,6 @@
 /.yarnrc
 /.cache
 /.bash_history
+/.ash_history
+/.config
+/.npm
