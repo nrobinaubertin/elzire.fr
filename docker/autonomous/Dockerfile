@@ -6,7 +6,7 @@ ENV UID=791 GID=791
 ENV MAIL=mail@example.com
 
 VOLUME ["/elzire/data"]
-EXPOSE 8080 8443
+EXPOSE 8080
 WORKDIR /elzire
 COPY parameters.yml /elzire/data/parameters.yml
 
@@ -19,7 +19,7 @@ RUN set -xe \
     && rmdir elzire.fr-master \
     && rm master.zip \
     && composer install \
-    && cd web && yarn && yarn build && rm -rf node_modules && cd /elzire \
+    && cd web && yarn && yarn build && cd /elzire \
     && apk del .build-deps \
     && mkdir -p /run/nginx
 
