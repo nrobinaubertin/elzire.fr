@@ -3,7 +3,7 @@
     <head>
         <title>{% block title %}Elzire{% endblock %}</title>
         <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
-        <link rel="manifest" href="manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,7 +20,7 @@
 
         {% block head_javascript %}
         {% endblock %}
-        
+
         {% block head_stylesheets %}
             <link rel="stylesheet" href="{{ asset('dist/css/elzire.css') }}" />
             <noscript id="deferred-styles">
