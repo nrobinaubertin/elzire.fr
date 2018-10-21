@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function indexAction($family)
     {
         $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
-        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
+        $imageWorker = new ImageWorker($rootDir."/data/cache/thumbs");
         // get the list of directories in that location
         $listDir = $this->get('kernel')->getRootDir() . "/../data/$family/";
         $infos = [];
