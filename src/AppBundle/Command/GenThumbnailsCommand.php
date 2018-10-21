@@ -22,7 +22,7 @@ class GenThumbnailsCommand extends ContainerAwareCommand
         $watermark = $this->getContainer()->get('kernel')->getRootDir()."/../web/assets/watermark.png";
         $rootDir = realpath($this->getContainer()->get('kernel')->getRootDir()."/..");
         $finder = new Finder();
-        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
+        $imageWorker = new ImageWorker($rootDir."/data/cache/thumbs");
         if (!file_exists($rootDir."/data")) {
             $output->writeln("No data folder !");
             return;

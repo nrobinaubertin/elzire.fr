@@ -20,7 +20,7 @@ class DefaultController extends Controller
         $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
         $watermark = $this->get('kernel')->getRootDir()."/../web/assets/watermark.png";
 
-        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
+        $imageWorker = new ImageWorker($rootDir."/data/cache/thumbs");
         $imageWorker->displayImage($path, 1200, 1200, $watermark);
         return new Response("");
     }
@@ -28,7 +28,7 @@ class DefaultController extends Controller
     {
         $path = $this->get('kernel')->getRootDir()."/../web/assets/".$path;
         $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
-        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
+        $imageWorker = new ImageWorker($rootDir."/data/cache/thumbs");
         $imageWorker->displayImage($path, 640, 640, null);
         return new Response("");
     }
@@ -38,7 +38,7 @@ class DefaultController extends Controller
         $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
         $watermark = "";
 
-        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
+        $imageWorker = new ImageWorker($rootDir."/data/cache/thumbs");
         $imageWorker->displayImage($path, 1200, 1200, $watermark);
         return new Response("");
     }
@@ -46,7 +46,7 @@ class DefaultController extends Controller
     {
         $path = $this->get('kernel')->getRootDir()."/../data/".$path;
         $rootDir = realpath($this->get('kernel')->getRootDir()."/..");
-        $imageWorker = new ImageWorker($rootDir."/var/cache/thumbs");
+        $imageWorker = new ImageWorker($rootDir."/data/cache/thumbs");
         $imageWorker->displayMiniature($path, 400);
         return new Response("");
     }
