@@ -21,7 +21,7 @@ class CollectionController extends Controller
         foreach(scandir($listDir) as $directory) {
             if(
                 is_dir($listDir.$directory)
-                && preg_match("/".$collection."/i", $directory)
+                && preg_match("/".$collection."$/i", $directory)
             ) {
                 $collectionDir = $directory;
                 break;
