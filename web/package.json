@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "@fancyapps/fancybox": "~3",
-        "bootstrap": "~4.1",
+        "bootstrap": "~4.3",
         "font-awesome": "~4.7",
         "jquery": "~3",
         "lazysizes": "~4",
