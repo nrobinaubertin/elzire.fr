@@ -41,12 +41,10 @@ class CategoryController extends Controller
             if($miniature != "") {
                 $image = "/miniature/$family/".$category."/".$miniature;
                 $url = strtolower("/$family/".preg_replace("/^\d+[_-]+/","",$category));
-                $placeholder = "data:image/jpeg;base64,".base64_encode($imageWorker->getPlaceholder($listDir.$category."/".$miniature));
                 $infos[] = array(
                     "name" => $name,
                     "image" => $image,
                     "url" => $url,
-                    "placeholder" => $placeholder,
                     "activated" => count(scandir($listDir.$category)) > 3
                 );
             }

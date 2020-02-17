@@ -67,12 +67,10 @@ class ListController extends Controller
             if($miniature != "") {
                 $image = "/miniature".$location.$collection."/".$miniature;
                 $url = strtolower($link.preg_replace("/^\d+[_-]+/","",$collection));
-                $placeholder = "data:image/jpeg;base64,".base64_encode($imageWorker->getPlaceholder($listDir.$collection."/".$miniature));
                 $infos[] = array(
                     "name" => $name,
                     "image" => $image,
                     "url" => $url,
-                    "placeholder" => $placeholder
                 );
             }
         }

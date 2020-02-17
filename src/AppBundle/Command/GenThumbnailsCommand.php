@@ -35,7 +35,6 @@ class GenThumbnailsCommand extends ContainerAwareCommand
             $imageWorker->displayImage($file->getRealPath(), 1200, 1200, $watermark);
             $imageWorker->displayImage($file->getRealPath(), 1024, 1024, $watermark);
             $imageWorker->displayMiniature($file->getRealPath(), 400);
-            $imageWorker->getPlaceholder($file->getRealPath());
         }
     }
 }

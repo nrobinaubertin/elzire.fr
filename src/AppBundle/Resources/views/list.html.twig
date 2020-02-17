@@ -19,7 +19,12 @@
 
         <div class="col-60 col-md-30 col-lg-20 col-xl-20 mb-30px">
             <a href="{{ collection["url"] }}" class="img-link bg-light">
-                <img class="img-fluid img-fill lazyload blur-up" alt="{{ collection["name"] }}" src="{{ collection["placeholder"] }}" data-src="{{ asset(collection["image"]) }}"/>
+                <img
+                    class="img-fluid img-fill lazyload"
+                    alt="{{ collection["name"] }}"
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAAA1BMVEWamprMihg2AAAAKklEQVQYGe3BgQAAAADDoPtTD+AK1QAAAAAAAAAAAAAAAAAAAAAAAACAE0+wAAECMoKpAAAAAElFTkSuQmCC"
+                    data-src="{{ asset(collection["image"]) }}"
+                />
                 <div class="w-100">{{ collection["name"] }}</div>
             </a>
         </div>

@@ -11,40 +11,6 @@ class ImageWorker
         $this->cacheDir = $cacheDir;
     }
 
-    public function getPlaceholder($source)
-    {
-        $size = 16;
-        $im = new \Imagick();
-        $filename = $this->cacheDir."/".self::getThumbnailHash($source, "placeholder", $size);
-        if (file_exists($filename)) {
-            try {
-                if(!$im->readImage($filename)) {
-                    throw new Exception("Impossible to read source image");
-                }
-                return $im;
-            } catch(Exception $e) {
-                return false;
-            }
-        }
-
-        try {
-            if(!$im->readImage($source)) {
-                throw new Exception("Impossible to read source image");
-            }
-        } catch(Exception $e) {
-            return false;
-        }
-
-        $im->thumbnailImage($size, $size);
-        $im->blurImage(3, 1);
-        $im->setImageFormat('jpeg');
-        $im->setImageCompression(\Imagick::COMPRESSION_JPEG);
-        $im->setSamplingFactors(['2x2', '1x1', '1x1']);
-        $im->setImageCompressionQuality(50);
-        $im->writeImage($filename);
-        return $im;
-    }
-
     public function applyWatermark($input, $watermark)
     {
         $water = new \Imagick();

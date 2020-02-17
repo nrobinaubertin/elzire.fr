@@ -76,7 +76,7 @@ class IllustrationController extends Controller
                 );
                 continue;
             }
-            $infos = preg_replace("/^(\d+)[_-]([A-Z])([A-Z])?[_-]([a-z\-]+).*/","$1 $2 $3 $4",$f);
+            $infos = preg_replace("/^(\d+)[_-]([A-Z])([A-Z])?[_-]([A-Za-z\-]+).*/","$1 $2 $3 $4",$f);
             $infos = explode(" ", $infos);
             if (count($infos) < 4) {
                 continue;
