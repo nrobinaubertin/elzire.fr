@@ -11,12 +11,12 @@
     },
     "dependencies": {
         "@fancyapps/fancybox": "~3",
-        "bootstrap": "~4.1",
+        "bootstrap": "~4.3",
         "font-awesome": "~4.7",
         "jquery": "~3",
         "lazysizes": "~4",
         "node-sass": "~4",
-        "npm-check-updates": "~2",
+        "npm-check-updates": "~3",
         "popper.js": "~1",
         "shx": "~0.3"
     }
