@@ -114,7 +114,7 @@ class CollectionController extends Controller
             ["/collections/$categoryName", ucfirst($categoryName)],
             ["/collections/$categoryName/".$collectionDir, $collection] 
         );
-        
+
         $others = [];
         $listDir = $this->get('kernel')->getRootDir() . "/../data/collections/$category/";
         foreach(scandir($listDir) as $e) {

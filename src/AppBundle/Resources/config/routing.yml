@@ -81,6 +81,19 @@ illustrationList:
         canonicalUrl: "/illustrations"
         categoryName: "Illustrations"
 
+surMesure:
+    path: /sur-mesure/{dir}
+    defaults:
+        _controller: AppBundle:SurMesure:index
+
+surMesureList:
+    path: /sur-mesure
+    defaults:
+        _controller: AppBundle:List:index
+        location: "/sur-mesure/"
+        canonicalUrl: "/sur-mesure"
+        categoryName: "SurMesure"
+
 element:
     path: /{family}/{category}/{collection}/{element}
     requirements:

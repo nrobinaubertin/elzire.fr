@@ -1,0 +1,56 @@
+{% extends 'AppBundle::page.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block underTitle %}
+<!-- <div class="w-25 green-separator my-2"></div> -->
+<div>
+    <h5 class="text-uppercase elziregreen">
+        {{ categorie }} - <small>{{ title }}</small>
+    </h5>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mx-auto">
+
+    <div class="mb-4 text-center bg-gray-lightest">
+        <img role="button" onclick="$.fancybox.open(window.gallery).jumpTo(0)" class="img-fluid main-image" src="{{ main_image }}"/>
+    </div>
+
+    <div class="row">
+        {% for mini in miniatures %}
+        <a data-fancybox="gallery" href="{{ mini[1] }}" class="col-30 col-sm-20 col-md-15 col-xl-10 mb-4">
+            <img class="img-fluid img-fill" src="{{ mini[0] }}"/>
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="m-1 row">
+        <p class="roboto-light description">
+            {{ description | raw }}
+        </p>
+    </div>
+
+</div>
+<div class="container other pt-2 my-5">
+    <p>
+        {{ othersTitle }}
+    </p>
+    <div class="px-1 px-sm-2 px-md-5 py-3 row">
+        {% for el in others %}
+        <a href="{{ el["url"] }}" class="col-30 col-sm-15 col-md-12 text-center mb-4">
+            <img src="{{ el["image"] }}" class="img-fluid img-fill"/>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block end_body %}
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        window.gallery = $('[data-fancybox="gallery"]').fancybox();
+    });
+</script>
+{% endblock %}
